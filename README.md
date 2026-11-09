@@ -1,6 +1,6 @@
 <div align="center">
 
-# TrueLane website
+# TrueLane Website
 
 **A fast, hand-built marketing site: three audiences, one design system, no framework.**
 The live site for TrueLane, built and written by one person, and a working example of the sites I build for other businesses.
