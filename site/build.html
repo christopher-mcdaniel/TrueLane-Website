@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>TrueLane Desk: one system for your whole fleet</title>
+<meta name="description" content="One environment for your fleet: every offer priced against what each truck really costs, then dispatch, billing, driver pay, fuel and ELD on the same numbers, every missed dollar in view and every change on the record. Keep your TMS and start with the $750 Leak Read, or run the whole day from the desk. Shown on a sample fleet.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://truelane-three.vercel.app/build.html">
+<meta name="theme-color" content="#0e1117">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrueLane">
+<meta property="og:title" content="TrueLane Desk: one environment, one set of numbers">
+<meta property="og:description" content="Every offer priced against what each truck really costs, before you say yes, and every missed dollar in view. Shown on a sample fleet.">
+<meta property="og:url" content="https://truelane-three.vercel.app/build.html">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230E1117'/%3E%3Cg%20fill='%23E8A020'%20transform='translate(7%207)%20scale(0.18)'%3E%3Crect%20x='0'%20y='0'%20width='100'%20height='17'/%3E%3Crect%20x='41.5'%20y='0'%20width='17'%20height='50.25'/%3E%3Crect%20x='41.5'%20y='55.75'%20width='17'%20height='44.25'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* ===== Industry design system — tokens (inlined, self-contained) ===== */
+  :root{
+    --color-bg:#0e1117; --color-surface:#161b24; --color-text:#e8edf2;
+    --color-accent:#e8a020; --color-accent-2:#d4921c;
+    --color-divider:color-mix(in srgb, #e8edf2 14%, transparent);
+    --color-accent-600:#d4921c; --color-accent-700:#c98b18;
+    --color-accent-800:#8a5e0f; --color-accent-900:#1a2030;
+    --font-heading:"Barlow Condensed", system-ui, sans-serif;
+    --font-heading-weight:600;
+    --font-body:"Barlow", system-ui, sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--color-bg); color:var(--color-text);
+    font-family:var(--font-body); font-size:15px; line-height:1.55; font-weight:400;
+    text-wrap:pretty; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,h5,h6{font-family:var(--font-heading); font-weight:var(--font-heading-weight); line-height:1.12; letter-spacing:-0.015em; margin:0;}
+  p{margin:0;}
+  a{color:var(--color-accent-700); text-underline-offset:3px;}
+  a:hover{color:var(--color-accent-900);}
+  img{display:block; max-width:100%;}
+  section[id]{scroll-margin-top:84px;}
+  :focus{outline:none;}
+  :focus-visible{outline:2px solid var(--color-accent); outline-offset:2px;}
+  ::selection{background:color-mix(in srgb, var(--color-accent) 30%, transparent);}
+  .wrap{max-width:1100px;margin:0 auto;}
+  .kicker{display:block;font-size:13px;line-height:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);margin:0 0 12px;}
+  .lede{color:color-mix(in srgb, var(--color-text) 82%, transparent);}
+  .muted{color:color-mix(in srgb, var(--color-text) 78%, transparent);}
+  .fine{color:color-mix(in srgb, var(--color-text) 80%, transparent);}
+
+  /* rules */
+  .hr{height:1px; border:0; background:var(--color-divider);}
+
+  /* ===== Sleek sticky header ===== */
+  .site-header{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--color-bg) 82%, transparent);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--color-divider);
+  }
+  .nav{display:flex; align-items:center; gap:26px; max-width:1100px; margin:0 auto; padding:13px 24px;}
+  .nav-brand{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:19px; letter-spacing:0.04em; margin-right:28px; text-decoration:none;}
+  .nav-link{white-space:nowrap;}
+  .nav-link{color:inherit; text-decoration:none; font-size:14px; letter-spacing:0.01em;}
+  .nav-link:hover{color:var(--color-accent-700);}
+
+  /* buttons */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:6px;
+    cursor:pointer; text-decoration:none;
+    font-family:var(--font-heading); font-weight:var(--font-heading-weight);
+    font-size:14px; line-height:1.2; color:var(--color-text);
+    background:transparent; border:1px solid var(--color-divider); border-radius:0;
+    padding:7px 12px;
+  }
+  .btn-primary{background:var(--color-accent); color:#0e1117; border-color:var(--color-accent);}
+  .btn-primary:hover{background:var(--color-accent-600); color:#0e1117;}
+  .btn-primary:active{background:var(--color-accent-700);}
+  .btn-ghost{color:#e8edf2; border-color:color-mix(in srgb, #e8edf2 30%, transparent); padding-inline:6px;}
+  .btn-ghost:hover{background:color-mix(in srgb, #e8edf2 10%, transparent); color:#fff;}
+  .btn-ghost:active{background:color-mix(in srgb, #e8edf2 18%, transparent);}
+
+  /* blueprint frame + corner registration marks */
+  .blueprint{position:relative; border:1px solid var(--color-divider); border-radius:0;}
+  .blueprint>.corner{position:absolute; width:11px; height:11px; color:var(--color-accent);}
+  .blueprint>.corner::before,.blueprint>.corner::after{content:""; position:absolute; background:currentColor;}
+  .blueprint>.corner::before{left:5px; top:0; width:1px; height:100%;}
+  .blueprint>.corner::after{top:5px; left:0; width:100%; height:1px;}
+  .blueprint>.corner.tl{top:-6px; left:-6px;}
+  .blueprint>.corner.tr{top:-6px; right:-6px;}
+  .blueprint>.corner.bl{bottom:-6px; left:-6px;}
+  .blueprint>.corner.br{bottom:-6px; right:-6px;}
+
+  /* section title blocks */
+  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;}
+  .grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;}
+  .card-h{font-family:var(--font-heading);font-weight:var(--font-heading-weight);text-transform:uppercase;margin:0;}
+
+  /* Header on phones: links wrap to their own row instead of vanishing */
+  @media (max-width:560px){
+    .nav{flex-wrap:wrap; gap:10px 16px;}
+    .nav-brand{margin-right:auto;}
+    .nav-links{order:3; flex-basis:100%; margin:0; gap:8px 20px; justify-content:flex-start; flex-wrap:wrap;}
+    .nav-link{white-space:nowrap;}
+    .nav-link{font-size:13px;}
+  }
+
+  /* ===== Hero with aerial freight-interchange night photo ===== */
+  .hero{position:relative; isolation:isolate; overflow:hidden;
+    background:#0a0c0f url('image (5).jpg') center/cover no-repeat;}
+  .hero::before{content:""; position:absolute; inset:0; z-index:-1; background:
+    linear-gradient(90deg, rgba(10,12,15,.92) 0%, rgba(10,12,15,.74) 32%, rgba(10,12,15,.40) 60%, rgba(10,12,15,.18) 100%),
+    linear-gradient(180deg, rgba(10,12,15,.16) 0%, rgba(10,12,15,0) 32%, rgba(10,12,15,.08) 68%, rgba(10,12,15,.86) 100%);}
+  .hero h1{color:#f5f8fb;}
+  .hero .lede{color:color-mix(in srgb,#eef4fa 88%, transparent);}
+  .hero .fine{color:color-mix(in srgb,#eef4fa 68%, transparent);}
+  .hero .btn-ghost{color:#e8edf2; border-color:color-mix(in srgb,#e8edf2 38%, transparent);}
+  .hero .btn-ghost:hover{background:color-mix(in srgb,#ffffff 14%, transparent); color:#fff;}
+  .site-header{background:color-mix(in srgb, #0d1013 70%, transparent);}
+  .site-header .nav-brand,.site-header .nav-link{color:#eef4fa;}
+  .site-header .nav-link:hover{color:#fff;}
+
+  /* ===== rhythm: full-bleed bands ===== */
+  .band{position:relative;}
+  .band-tint{background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg));}
+  .band-cta{text-align:center;}
+  .band-cta .kicker{display:inline-block;}
+  .band-cta h3,.band-cta p{margin-left:auto;margin-right:auto;}
+  .band-cta .hr{max-width:120px;margin-left:auto;margin-right:auto;}
+  .band-cta .btn-primary{margin:0 auto;}
+
+  /* ===== pricing: four plans, one row ===== */
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px;align-items:stretch;}
+  .price-card{display:flex;flex-direction:column;padding:26px 22px;}
+  .price-card .price{font-family:var(--font-heading);font-weight:600;font-size:40px;line-height:1;color:var(--color-accent-700);letter-spacing:-0.01em;margin:14px 0 0;}
+  .price-card .price span{font-size:16px;font-weight:400;color:color-mix(in srgb,var(--color-text) 62%,transparent);letter-spacing:0;}
+  .price-card .fleet{font-family:var(--font-heading);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;font-size:12.5px;color:var(--color-accent-700);margin:10px 0 0;}
+  .price-card ul{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:9px;}
+  .price-card li{position:relative;padding-left:22px;font-size:14.5px;line-height:1.45;color:color-mix(in srgb,var(--color-text) 88%,transparent);}
+  .price-card li::before{content:"";position:absolute;left:0;top:6px;width:11px;height:7px;border-left:2px solid var(--color-accent);border-bottom:2px solid var(--color-accent);transform:rotate(-45deg);}
+  .price-card .price-cta{margin-top:auto;padding-top:22px;}
+  .price-card .price-cta .btn{width:100%;padding:12px 14px;font-size:15px;text-decoration:none;}
+
+  /* ===== icons (Lucide, thin stroke) ===== */
+  .ico{width:30px;height:30px;stroke:var(--color-accent-700);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block;margin-bottom:10px;}
+  .step-ico{width:26px;height:26px;stroke:var(--color-accent-700);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* ===== card hover ===== */
+  .card-lift{transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;}
+  .card-lift:hover{transform:translateY(-4px); border-color:color-mix(in srgb, var(--color-accent) 55%, var(--color-divider)); box-shadow:0 12px 30px color-mix(in srgb,#1d2d3d 13%, transparent);}
+  .card-lift:hover>.corner{color:var(--color-accent);}
+
+  /* ===== scroll reveal (class added by JS; no-JS shows everything) ===== */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} }
+
+  /* ===== motion: hero entrance, button press, drawn rules, wedge sequence (the same as the app page) ===== */
+  @keyframes hero-in{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;}}
+  .hero-in{animation:hero-in .7s cubic-bezier(.2,.7,.2,1) both; animation-delay:var(--d,0ms);}
+  .btn{transition:transform .08s ease, background .15s ease, border-color .15s ease;}
+  .btn:active{transform:translateY(1px);}
+  .hr.draw{transform:scaleX(0); transform-origin:left center; transition:transform .9s cubic-bezier(.2,.7,.2,1);}
+  .hr.draw.in{transform:none;}
+  .wedge p.seq .w1, .wedge p.seq .w2{display:inline-block; opacity:0; transform:translateY(8px); transition:opacity .7s ease, transform .7s ease;}
+  .wedge p.seq.in .w1{opacity:1; transform:none;}
+  .wedge p.seq.in .w2{opacity:1; transform:none; transition-delay:1s;}
+  @media (prefers-reduced-motion:reduce){
+    .hero-in{animation:none;}
+    .btn{transition:none;}
+    .btn:active{transform:none;}
+    .hr.draw,.wedge p.seq .w1,.wedge p.seq .w2{opacity:1; transform:none; transition:none;}
+  }
+
+  /* ===== nav links group ===== */
+  .nav-links{display:flex; align-items:center; gap:26px; margin-right:auto;}
+
+  /* ===== footer ===== */
+  .site-footer{border-top:1px solid var(--color-divider); background:color-mix(in srgb, var(--color-accent) 4%, var(--color-bg));}
+  .footer-inner{display:flex; flex-wrap:wrap; gap:20px 48px; align-items:flex-start; justify-content:space-between; padding:40px 24px;}
+  .footer-brand{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:20px; letter-spacing:0.04em; margin-bottom:10px;}
+  .footer-links{display:flex; flex-direction:column; gap:8px;}
+  .footer-label{font-size:12px; letter-spacing:0.03em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent);}
+  .footer-links a{font-size:14px; text-decoration:none; color:var(--color-accent-700);}
+  .footer-links a:hover{color:var(--color-accent-900);}
+
+  /* ===== intake form ===== */
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:12px;letter-spacing:0.03em;margin-bottom:6px;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 72%,transparent);}
+  .input{width:100%;font:inherit;font-size:15px;color:var(--color-text);background:var(--color-bg);border:1px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-divider));border-radius:0;padding:10px 12px;transition:border-color .15s ease;}
+  .input:hover{border-color:var(--color-accent);}
+  .input:focus-visible{border-color:var(--color-accent);outline:none;}
+  textarea.input{resize:vertical;min-height:96px;line-height:1.5;}
+  select.input{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8a020' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:38px;}
+  .form-note{display:block;margin-top:6px;font-size:12px;color:color-mix(in srgb,var(--color-text) 62%,transparent);}
+  .form-status{margin:12px 0 0;font-size:14px;line-height:1.5;}
+  .form-status.ok{color:var(--color-accent-700);}
+  .form-status.err{color:#b23b3b;}
+
+  /* ===== leaks section ===== */
+  .leak-intro{font-size:19px;line-height:1.65;max-width:60ch;margin:0 0 32px;color:color-mix(in srgb,var(--color-text) 86%,transparent);}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{display:inline-flex;font-size:13px;line-height:1;padding:7px 11px;border:1px solid var(--color-divider);color:color-mix(in srgb,var(--color-text) 82%,transparent);}
+  .leak-close{margin:38px 0 0;font-size:19px;line-height:1.5;max-width:56ch;font-family:var(--font-heading);font-weight:var(--font-heading-weight);}
+
+  /* ===== positioning wedge ===== */
+  .wedge{text-align:center;background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg));}
+  .wedge p{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(21px,3.3vw,32px);line-height:1.2;max-width:20ch;margin:0 auto;text-transform:uppercase;letter-spacing:0.01em;}
+  .wedge .sub{font-family:var(--font-body);font-weight:400;text-transform:none;letter-spacing:0;font-size:16px;line-height:1.6;max-width:54ch;margin:18px auto 0;color:color-mix(in srgb,var(--color-text) 76%,transparent);}
+
+  /* ===== founder block ===== */
+  .founder{display:grid;grid-template-columns:220px 1fr;gap:38px;align-items:start;margin-bottom:48px;}
+  .founder-photo img{width:100%;display:block;filter:grayscale(12%) contrast(1.02);}
+  .founder-photo > .corner{color:var(--color-accent);}
+  .founder-name{font-family:var(--font-heading);font-weight:var(--font-heading-weight);text-transform:uppercase;font-size:27px;line-height:1.05;margin:0;}
+  .founder-role{font-size:13px;letter-spacing:0.05em;text-transform:uppercase;margin:6px 0 18px;opacity:0.72;}
+  .founder .bio{font-size:15px;line-height:1.65;margin:0 0 12px;opacity:0.9;max-width:56ch;}
+  @media(max-width:620px){.founder{grid-template-columns:1fr;gap:22px;} .founder-photo{max-width:210px;}}
+
+  /* ===== real screens ===== */
+  /* Eight cards: 4 across (two even rows), 2 across (four even rows) on tablets, 1 on phones. Never 3, which would leave a short last row. */
+  .screen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  @media (max-width:900px){ .screen-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .screen-grid{grid-template-columns:1fr;} }
+  .screen-card{background:var(--color-bg);}
+  .screen-body{padding:20px 20px 22px;}
+  .screen-body h3{font-size:20px;text-transform:uppercase;margin:0 0 8px;}
+  .screen-body p{font-size:14.5px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 84%,transparent);}
+  .screen-body strong{color:var(--color-text);font-weight:700;}
+
+
+  /* =================================================================== */
+  /*  ENHANCEMENTS — additive polish, safe to delete this whole block     */
+  /*  1 depth · 2 corner discipline · 3 header · 4 form focus · 5 nav      */
+  /* =================================================================== */
+
+  /* 1 · engineered "blueprint board" depth: two ultra-faint fixed radials
+        that show only through the neutral sections — no grunge, no jank   */
+  html{background:var(--color-bg);}
+  body{background:transparent;}
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(1150px 760px at 78% -6%, color-mix(in srgb, var(--color-accent) 7%, transparent) 0%, transparent 58%),
+      radial-gradient(900px 720px at 2% 106%, color-mix(in srgb, #2b3a4d 16%, transparent) 0%, transparent 60%);
+  }
+
+  /* 2 · reserve the corner registration marks for signature moments */
+  .no-corner > .corner{display:none;}
+
+  /* 3 · premium settle instead of a hard pop on the sticky header          */
+  .site-header{transition:background .3s ease, backdrop-filter .3s ease, -webkit-backdrop-filter .3s ease, border-color .3s ease;}
+
+  /* 4 · the whole beta frame answers when any field is focused           */
+  .intake-form{transition:border-color .2s ease, box-shadow .2s ease;}
+  .intake-form:focus-within{
+    border-color:var(--color-accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--color-accent) 40%, transparent),
+               0 14px 40px color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+  .intake-form:focus-within > .corner{color:var(--color-accent);}
+
+  /* 5 · an engineered underline that draws in left-to-right on nav hover   */
+  .nav-link{position:relative;}
+  .nav-link::after{content:""; position:absolute; left:0; right:100%; bottom:-4px;
+    height:1px; background:var(--color-accent); transition:right .22s ease;}
+  .nav-link:hover::after,.nav-link[aria-current="page"]::after{right:0;}
+
+  @media (prefers-reduced-motion:reduce){
+    .site-header,.intake-form{transition:none;}
+    .nav-link::after{transition:none;}
+  }
+
+  /* ===== build page ===== */
+  .offer{padding:26px;background:var(--color-bg);display:flex;flex-direction:column;gap:10px;}
+  .offer h3{font-size:22px;text-transform:uppercase;margin:0;}
+  .offer .when{font-size:12px;letter-spacing:0.06em;text-transform:uppercase;color:var(--color-accent-700);margin:0;}
+  .offer p{font-size:14.5px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 86%,transparent);}
+  .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;counter-reset:step;}
+  .step{counter-increment:step;border-top:1px solid var(--color-divider);padding-top:16px;}
+  .step::before{content:"0" counter(step);display:block;font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:28px;color:var(--color-accent-700);margin-bottom:6px;}
+  .step h3{font-size:19px;text-transform:uppercase;margin:0 0 6px;}
+  .step p{font-size:14.5px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 84%,transparent);}
+  .proof{padding:30px 28px;background:var(--color-bg);overflow:visible;}
+  .proof ul{list-style:none;margin:18px 0 0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px 36px;}
+  .proof li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.5;color:color-mix(in srgb,var(--color-text) 90%,transparent);}
+  .proof li::before{content:"";position:absolute;left:0;top:6px;width:12px;height:8px;border-left:2px solid var(--color-accent);border-bottom:2px solid var(--color-accent);transform:rotate(-45deg);}
+  .straight{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;}
+  .straight h3{font-size:19px;text-transform:uppercase;margin:0 0 8px;}
+  .straight p{font-size:14.5px;line-height:1.65;color:color-mix(in srgb,var(--color-text) 86%,transparent);}
+  details.faq{border-top:1px solid var(--color-divider);padding:16px 0;}
+  details.faq:last-of-type{border-bottom:1px solid var(--color-divider);}
+  details.faq summary{cursor:pointer;font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:20px;list-style:none;display:flex;justify-content:space-between;gap:16px;min-height:44px;align-items:center;}
+  details.faq summary::-webkit-details-marker{display:none;}
+  details.faq summary::after{content:"+";color:var(--color-accent);font-size:24px;line-height:1;}
+  details.faq[open] summary::after{content:"\2212";}
+  details.faq p{font-size:15px;line-height:1.65;margin:8px 0 0;max-width:62ch;color:color-mix(in srgb,var(--color-text) 86%,transparent);}
+
+</style>
+<link rel="stylesheet" href="dscreen.css">
+<link rel="stylesheet" href="scale.css">
+<link rel="stylesheet" href="mobile.css">
+<script src="mobile.js" defer></script>
+</head>
+<body>
+<style>
+/* The three doors: the same strip, in the same order, on every page of the site (app, dispatcher software, consulting). */
+.doors{background:#0a0d12;border-bottom:1px solid var(--color-divider);}
+.doors-in{display:flex;max-width:1100px;margin:0 auto;padding:0 24px;}
+.door{display:flex;align-items:baseline;gap:8px;padding:10px 18px 9px 0;margin-right:18px;text-decoration:none;color:color-mix(in srgb,var(--color-text) 72%,transparent);border-bottom:2px solid transparent;min-height:44px;align-items:center;}
+.door b{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:15px;letter-spacing:0.06em;text-transform:uppercase;}
+.door span{font-size:12.5px;opacity:.8;}
+.door:hover{color:#fff;}
+.door[aria-current="page"]{color:var(--color-accent);border-bottom-color:var(--color-accent);}
+@media (max-width:640px){.doors-in{padding:0 16px;justify-content:space-between;}.door{margin-right:0;padding-right:0;}.door span{display:none;}}
+</style>
+<nav class="doors" aria-label="TrueLane">
+ <div class="doors-in">
+  <a href="index.html" class="door"><b>App</b><span>for drivers</span></a>
+  <a href="build.html" class="door" aria-current="page"><b>Software</b><span>one system for your fleet</span></a>
+  <a href="consulting.html" class="door"><b>Carriers</b><span>find your leaks</span></a>
+ </div>
+</nav>
+
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">TRUELANE</a>
+    <span class="nav-links">
+      <a href="#desk" class="nav-link">The desk</a>
+      <a href="#inside" class="nav-link">What&rsquo;s inside</a>
+      <a href="#pricing" class="nav-link">Pricing</a>
+      <a href="#faq" class="nav-link">Questions</a>
+    </span>
+    <a href="https://calendly.com/cm145571/new-meeting" class="btn btn-primary" target="_blank" rel="noopener" style="text-decoration:none">Book a 15-min call</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="padding:132px 24px 108px">
+  <span class="kicker hero-in" style="--d:0ms;color:color-mix(in srgb,#f0c67a 92%, transparent);margin:0 0 16px">TrueLane Desk &middot; one environment for your fleet</span>
+  <h1 style="font-size:clamp(40px,6vw,72px);line-height:1.04;letter-spacing:0.01em;text-transform:uppercase;margin:0;max-width:18ch">
+    <span class="hero-in" style="display:block;--d:120ms">Every dispatch tool shows you the load.</span>
+    <span class="hero-in" style="display:block;--d:260ms">This one shows you the money.</span>
+  </h1>
+  <p class="lede hero-in" style="--d:420ms;font-size:20px;line-height:1.6;max-width:50ch;margin:28px 0 0">Price each offer against what that truck really costs, then dispatch it, bill it, pay the driver and reconcile fuel and ELD, all in one environment where the numbers match everywhere and every change is on the record.</p>
+  <div class="hero-in hero-ctas" style="--d:540ms;display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;align-items:center">
+    <a href="https://calendly.com/cm145571/new-meeting" class="btn btn-primary" target="_blank" rel="noopener" style="padding:14px 28px;font-size:15px;text-decoration:none">Book a walkthrough</a>
+    <a href="#desk" class="btn btn-ghost" style="padding:14px 20px;font-size:15px;text-decoration:none">Watch the desk</a>
+    <button type="button" class="btn btn-ghost m-only m-share" style="padding:14px 20px;font-size:15px">Send this page to my computer</button>
+  </div>
+  <p class="fine hero-in" style="--d:640ms;font-size:13px;margin-top:18px">Already on a TMS and an ELD? You don&rsquo;t have to switch. <a href="consulting.html" style="color:inherit;text-decoration:underline">Start with the $750 Leak Read &rarr;</a></p>
+  <div class="m-fold" data-more="More about the Desk">
+  <p class="fine hero-in" style="--d:700ms;font-size:13px;margin-top:8px">Dispatching for several carriers? Each carrier runs as its own terminal in one desk, and invoices and driver statements carry that carrier&rsquo;s own MC, DOT and remit-to.</p>
+  <p class="fine hero-in" style="--d:760ms;font-size:13px;margin-top:8px">One builder, one point of contact. Walkthroughs run on a sample fleet.</p>
+  </div>
+  </div>
+</section>
+
+<section id="desk" class="band">
+  <div class="wrap" style="padding:72px 24px 64px">
+    <span class="kicker">01 &middot; The desk</span>
+    <hr class="hr" style="margin:0 0 28px">
+    <h2 class="card-h" style="font-size:30px;margin:0 0 10px;max-width:26ch">One environment, one set of numbers.</h2>
+    <p class="muted" style="font-size:16px;line-height:1.65;margin:0 0 30px;max-width:62ch">A walk through the desk on a sample fleet: pricing an offer, the planner, the invoices still owed, and the numbers behind them. Every name and figure on screen is invented.</p>
+    <div class="dslot" data-slot="dispatch" data-title="The dispatch desk">
+      <div class="dmon">
+        <div class="dmon-screen">
+          <video muted loop playsinline preload="metadata" poster="media/dispatch.jpg"><source src="media/dispatch.mp4" type="video/mp4"></video>
+          <button type="button" class="dslot-open" aria-label="Play video: The dispatch desk"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button>
+        </div>
+      </div>
+      <div class="dslot-stand"></div><div class="dslot-base"></div>
+    </div>
+    <p class="fine" style="font-size:13px;margin:16px 0 0"><span class="m-hide">Click the monitor to watch it large, with sound.</span><span class="m-only" style="display:inline">Tap to watch it full screen, and turn your phone sideways.</span> About two minutes, with music and no voice.</p>
+  </div>
+</section>
+
+<section id="inside" class="band band-tint">
+  <style>
+    .inc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:0 44px;}
+    .inc{border-top:1px solid var(--color-divider);padding:16px 0 18px;}
+    .inc h3{font-size:18px;text-transform:uppercase;margin:0 0 4px;}
+    .inc p{font-size:14.5px;line-height:1.5;margin:0;color:color-mix(in srgb,var(--color-text) 80%,transparent);}
+  </style>
+  <div class="wrap" style="padding:72px 24px 56px">
+    <span class="kicker">02 &middot; What&rsquo;s inside</span>
+    <hr class="hr" style="margin:0 0 28px">
+    <h2 class="card-h" style="font-size:30px;margin:0 0 10px;max-width:26ch">All in one. Nothing to stitch together.</h2>
+    <p class="muted" style="font-size:16px;line-height:1.6;margin:0 0 30px;max-width:56ch">One record from the quote to the invoice to the driver&rsquo;s pay, on the same audited math as the driver app.</p>
+    <div class="inc-grid">
+      <div class="inc"><h3>Quoting</h3><p>Every offer priced at that truck&rsquo;s own cost</p></div>
+      <div class="inc"><h3>Leak ledger</h3><p>Detention, dwell and empty miles, in dollars</p></div>
+      <div class="inc"><h3>Rate cons to loads</h3><p>Drop in the PDF, check it, it&rsquo;s a load</p></div>
+      <div class="inc"><h3>Dispatch and planner</h3><p>Trucks, drivers and loads on one board</p></div>
+      <div class="inc"><h3>Billing</h3><p>Invoices with detention on them, late ones chased</p></div>
+      <div class="m-fold" data-more="See all nine">
+      <div class="inc"><h3>Driver pay</h3><p>Per mile, hourly, flat or a percent</p></div>
+      <div class="inc"><h3>Live fleet map</h3><p>Idle and dwell flagged</p></div>
+      <div class="inc"><h3>Driver app</h3><p>Stops, PODs and check-calls from the cab</p></div>
+      <div class="inc"><h3>Accounting export</h3><p>Invoices and settlements, clean</p></div>
+      </div>
+    </div>
+    <p class="fine" style="font-size:13px;margin:26px 0 0;max-width:66ch">Factoring, fuel cards, load tracking and fuel tax connect from the same desk.</p>
+    <p class="fine" style="font-size:13px;margin:10px 0 0;max-width:66ch">Founding-carrier onboarding: I load your trucks, drivers and customers with you and connect the services you use.</p>
+  </div>
+</section>
+
+<section id="pricing" class="band band-tint">
+  <div class="wrap" style="padding:72px 24px 56px">
+    <span class="kicker">03 &middot; Pricing</span>
+    <hr class="hr" style="margin:0 0 28px">
+    <h2 class="card-h" style="font-size:30px;margin:0 0 14px;max-width:26ch">Start where you are.</h2>
+    <p class="muted" style="font-size:16px;line-height:1.65;margin:0 0 26px;max-width:64ch">Running a fleet or dispatching for carriers? The Desk is all you need. The Leak Read and Signals are optional, for established carriers who keep their own TMS.</p>
+    <div class="price-grid">
+      <div class="blueprint price-card">
+        <h3 class="card-h" style="font-size:21px">TrueLane Desk + driver app</h3>
+        <div class="price">$99<span> + $25 a truck</span></div>
+        <p class="fleet">Run it on TrueLane</p>
+        <ul>
+          <li>Quote, dispatch, bill and pay drivers from one desk</li>
+          <li>Signals, the driver app, and 2 drivers and 2 trailers per truck included</li>
+          <li>$349 a month minimum: 10 trucks is $349, 25 trucks is $724</li>
+          <li>50+ trucks: quoted. No Read required</li>
+        </ul>
+        <div class="price-cta"><a href="https://calendly.com/cm145571/new-meeting" class="btn btn-primary" target="_blank" rel="noopener">Book a walkthrough</a></div>
+      </div>
+      <div class="m-fold" data-more="Optional for carriers with their own TMS: the Leak Read and Signals">
+      <div class="blueprint price-card">
+        <h3 class="card-h" style="font-size:21px">The Leak Read</h3>
+        <div class="price">$750</div>
+        <p class="fleet">For carriers with their own TMS &middot; Optional</p>
+        <ul>
+          <li>Not needed to use the Desk. Dispatchers and fleets can skip it</li>
+          <li>90 days of your loads, fuel and ELD detention in, one page of dollars by leak out</li>
+          <li>About a week turnaround, credited toward your first 3 months of Signals or the Desk</li>
+        </ul>
+        <div class="price-cta"><a href="consulting.html#intake" class="btn btn-ghost">Get the Leak Read</a></div>
+      </div>
+      <div class="blueprint price-card">
+        <h3 class="card-h" style="font-size:21px">TrueLane Signals</h3>
+        <div class="price" style="font-size:24px;line-height:1.2">Founding-carrier pricing</div>
+        <p class="fleet">For carriers with their own TMS</p>
+        <ul>
+          <li>Reads your exports and feeds, no TMS login needed</li>
+          <li>Alerts your dispatchers and CFO by Slack, email or text</li>
+          <li>A leak report every Monday</li>
+        </ul>
+        <div class="price-cta"><a href="#start" class="btn btn-ghost">Ask about Signals</a></div>
+      </div>
+      </div>
+    </div>
+    <p class="muted" style="font-size:12.5px;line-height:1.6;margin:20px 0 0;max-width:72ch">Signals is quoted after the Read. No card and no contract to start. Each truck includes 25 rate-confirmation reads a month; extra reads are 25 cents each, billed separately. The driver app for owner-operators is priced on its own <a href="pricing.html" style="color:var(--color-accent-700)">pricing page</a>.</p>
+  </div>
+</section>
+
+<section id="who" class="band">
+  <div class="wrap" style="padding:64px 24px">
+    <span class="kicker" style="color:color-mix(in srgb, var(--color-text) 70%, transparent)">04 &middot; Who</span>
+    <hr style="height:1px;border:0;background:color-mix(in srgb, var(--color-text) 20%, transparent);margin:0 0 32px">
+    <div class="founder">
+      <div class="founder-photo blueprint" style="overflow:visible">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <img src="Imagery/founder.jpg" alt="Christopher McDaniel, founder of TrueLane">
+      </div>
+      <div>
+        <h3 class="founder-name">Christopher McDaniel</h3>
+        <p class="founder-role">Founder, TrueLane</p>
+        <div class="m-fold" data-more="Why I built this">
+        <p class="bio">&ldquo;I&rsquo;ve spent a decade in transportation &mdash; managing some of the largest accounts at Fortune 500 companies, on both the brokerage and carrier side. I&rsquo;ve done the negotiating, run the dispatch, and owned the accounts on both ends of the load.</p>
+        <p class="bio">&ldquo;Along the way I&rsquo;ve seen real data buried, lost in translation, or overlooked &mdash; costing companies hundreds of thousands to millions. TrueLane reads between the lines and produces a clear picture of where your money is going and where the operation can improve.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+    <h2 class="card-h" style="font-size:28px;margin:0 0 4px;max-width:24ch">Real data. Real solutions. Real deal.</h2>
+  </div>
+</section>
+
+<section id="faq" class="band band-tint">
+  <div class="wrap" style="padding:64px 24px">
+    <span class="kicker">05 &middot; Questions</span>
+    <hr class="hr" style="margin:0 0 20px">
+    <details class="faq"><summary>Is it live?</summary><p>Yes, in early access. I onboard each carrier personally: your trucks, drivers, customers and alerts set up with you. The walkthrough above runs on a sample fleet, so no customer data is shown.</p></details>
+    <details class="faq"><summary>Is this only for dispatchers?</summary><p>No. Dispatch is one room. Quoting, billing, driver pay, fuel, ELD, trailers and the audit trail share one record, so the numbers match everywhere and a leak in one place shows up in all of them.</p></details>
+    <details class="faq"><summary>What does it cost?</summary><p>The Desk is $99 plus $25 a truck a month, with a $349 minimum (10 trucks is $349, 25 trucks is $724). It includes Signals and the driver app, and no Read is required. Signals on its own, for carriers who keep their TMS, is founding-carrier pricing quoted after the Leak Read, which is $750 and credited toward your first 3 months of Signals or the Desk. No card and no contract to start.</p></details>
+    <details class="faq"><summary>I dispatch for several carriers. Can I use it?</summary><p>Yes. Each carrier runs as its own terminal in one desk, so trucks, drivers and loads stay separate, and invoices and driver statements carry that carrier&rsquo;s own MC, DOT and remit-to. Payment goes to the carrier, not through the desk.</p></details>
+    <details class="faq"><summary>What counts as a read?</summary><p>A read is one rate confirmation or dispatch screenshot read by an AI service and turned into a draft load. Each truck includes 25 a month, pooled across your desk. Extra reads are 25 cents each, billed separately, with a monthly limit so a busy month never surprises you. A read that fails is free.</p></details>
+    <details class="faq"><summary>How big a fleet can it handle?</summary><p>It has been tested on 1,500 tractors, 5,000 trailers and 50,000 loads of invented data, with most pages opening in about a second.</p></details>
+    <details class="faq"><summary>Do I have to leave my TMS?</summary><p>No. Start with the Leak Read and Signals alongside the system you run today. The desk is for when you want dispatch, billing and driver pay in one place.</p></details>
+    <details class="faq"><summary>Does it connect to my drivers&rsquo; phones, ELD, fuel cards or factoring company?</summary><p>Yes. Driver phones, ELD and telematics, fuel cards and factoring connect to the desk. I confirm which connections are live for your providers before you sign, and if you use one that is not connected yet, tell me and it goes on the list.</p></details>
+    <details class="faq"><summary>How does this fit with the Leak Read and Signals?</summary><p>The <a href="consulting.html" style="color:var(--color-accent-700)">Leak Read</a> finds where your money leaks, Signals alerts you when the next leak starts, and the desk is where you run the day. Start anywhere. The $750 is credited if you go further.</p></details>
+  </div>
+</section>
+
+<section id="start" class="band" style="background-image:linear-gradient(180deg,rgba(14,17,23,.42) 0%,rgba(14,17,23,.14) 32%,rgba(14,17,23,.20) 68%,rgba(14,17,23,.72) 100%),url('Imagery/Bottom_Image.jpg');background-size:cover;background-position:center;">
+  <div class="wrap" style="padding:64px 24px 72px">
+  <span class="kicker">06 &middot; Start here</span>
+  <hr class="hr" style="margin:0 0 24px">
+  <div class="m-split" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:44px;align-items:start">
+    <div>
+      <h2 class="card-h" style="font-size:28px;max-width:16ch">How do you run your fleet today?</h2>
+      <p class="muted" style="font-size:15px;line-height:1.6;margin:16px 0 0;max-width:40ch">Book a free 15 minutes, or send me a few lines and I&rsquo;ll reply by email.</p>
+      <div style="margin-top:22px"><a href="https://calendly.com/cm145571/new-meeting" class="btn btn-primary" target="_blank" rel="noopener" style="padding:14px 28px;font-size:15px;text-decoration:none">Book a 15-minute call</a></div>
+    </div>
+    <div class="m-fold" data-more="Or send a few lines">
+    <form class="blueprint intake-form" style="overflow:visible;padding:26px;background:rgba(14,17,23,.88)" action="https://api.web3forms.com/submit" method="POST">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="New TrueLane dispatcher software inquiry">
+      <input type="hidden" name="from_name" value="TrueLane dispatcher software page">
+      <input type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" style="display:none">
+      <div class="field"><label for="b-email">Email</label><input class="input" id="b-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="b-name">Name <span style="text-transform:none;letter-spacing:0;opacity:0.6">(optional)</span></label><input class="input" id="b-name" name="name" type="text" autocomplete="name"></div>
+      <div class="field"><label for="b-job">How many trucks, and how do you run them today? <span style="text-transform:none;letter-spacing:0;opacity:0.6">(a few lines is plenty)</span></label><textarea class="input" id="b-job" name="message" rows="4" required></textarea></div>
+      <button class="btn btn-primary" type="submit" style="padding:13px 24px;font-size:15px;width:100%">Send it over</button>
+      <span class="form-note">Please don&rsquo;t send passwords, customer data or anything private here.</span>
+      <p class="form-status" hidden></p>
+    </form>
+    </div>
+  </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div style="max-width:54ch">
+      <div class="footer-brand">TRUELANE</div>
+      <p class="fine" style="font-size:13px;margin:0">One system for carriers and fleets. Based in the Dallas&ndash;Fort Worth area, working remote.</p>
+    </div>
+    <div class="footer-links">
+      <span class="footer-label">Get in touch</span>
+      <a href="mailto:hello@usetruelane.com">hello@usetruelane.com</a>
+      <a href="tel:+14696676823">(469) 667-6823</a>
+      <a href="work.html">Portfolio</a>
+    </div>
+  </div>
+  <div class="wrap" style="padding:4px 24px 28px"><p class="fine" style="font-size:12px;margin:0">&copy; 2026 TrueLane. All rights reserved. &middot; Superior One Logistics Corp. &middot; <a href="privacy.html" style="color:inherit;text-decoration:underline">Privacy</a> &middot; <a href="terms.html" style="color:inherit;text-decoration:underline">Terms</a></p></div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)) return;
+  var sel = '.wrap > .kicker, .wrap > h1, .wrap > .lede, .wrap > h2, .wrap > h3, .grid-3 > *, .grid-4 > *, .price-grid > *, .inc-grid > *, .paths > *, .footer-inner > *';
+  var els = Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function(e){ return !e.closest('.hero'); });
+  els.forEach(function(e){
+    e.classList.add('reveal');
+    var par = e.parentNode;
+    if(par && /(^|\s)(grid-3|grid-4|price-grid|inc-grid|paths)(\s|$)/.test(par.className)){
+      var i = Array.prototype.indexOf.call(par.children, e);
+      e.style.transitionDelay = (i % 4) * 70 + 'ms';
+    }
+  });
+  var rules = Array.prototype.slice.call(document.querySelectorAll('.wrap > hr.hr'));
+  rules.forEach(function(e){ e.classList.add('draw'); });
+  var seq = document.querySelector('.wedge p');
+  if(seq) seq.classList.add('seq');
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var t = en.target;
+      t.classList.add('in'); io.unobserve(t);
+      if(t.classList.contains('reveal')){
+        setTimeout(function(){ t.classList.remove('reveal','in'); t.style.transitionDelay=''; }, 1100);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.concat(rules, seq ? [seq] : []).forEach(function(e){ io.observe(e); });
+})();
+</script>
+<script>
+(function(){
+  var form=document.querySelector('.intake-form'); if(!form) return;
+  var status=form.querySelector('.form-status');
+  function show(msg,cls){ status.hidden=false; status.textContent=msg; status.className='form-status '+cls; }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var btn=form.querySelector('button[type=submit]'); var label=btn.textContent;
+    btn.disabled=true; btn.textContent='Sending…';
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(r){
+        if(r.ok){ form.reset(); show('Got it. I will reply by email.','ok'); }
+        else { show('That did not send. Email superior.one.logistics@gmail.com and I will reply.','err'); }
+      })
+      .catch(function(){ show('Network hiccup. Email superior.one.logistics@gmail.com and I will reply.','err'); })
+      .finally(function(){ btn.disabled=false; btn.textContent=label; });
+  });
+})();
+</script>
+<div class="dscreen" id="dscreen" role="dialog" aria-modal="true" aria-label="Video" hidden><div class="dscreen-backdrop"></div><div class="dscreen-stage"><div class="dscreen-device"><span class="dscreen-chrome"></span><div class="dscreen-screen"><video playsinline disablepictureinpicture preload="auto"></video></div></div></div><p class="dscreen-turn" aria-hidden="true">Turn your phone sideways to fill the screen</p><div class="dscreen-bar" role="group" aria-label="Video controls"><button type="button" class="dscreen-play" aria-label="Pause"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><input type="range" class="dscreen-seek" min="0" max="1000" value="0" step="1" aria-label="Seek"><span class="dscreen-time" aria-hidden="true">0:00</span><button type="button" class="dscreen-mute" aria-label="Mute"></button><input type="range" class="dscreen-volume" min="0" max="100" value="100" step="1" aria-label="Volume"></div><button type="button" class="dscreen-close" aria-label="Close video">Close</button></div>
+<script src="dscreen.js" defer></script>
+</body>
+</html>

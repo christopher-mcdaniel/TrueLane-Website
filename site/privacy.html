@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — TrueLane</title>
+  <meta name="description" content="Privacy Policy for the TrueLane mobile application." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600&family=Barlow:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <main class="wrap">
+    <a class="brand" href="index.html"><span class="brand-mark"></span>TrueLane</a>
+
+    <p class="kicker">Legal</p>
+    <h1>Privacy Policy</h1>
+    <p class="meta">Effective date: <strong>September 18, 2026</strong> · Last updated: September 18, 2026</p>
+
+    <div class="callout">
+      <strong>Plain-English summary:</strong> We collect the data the app needs to work — your account,
+      the loads and costs you enter, and the photos you attach. Your data lives on your device first and
+      syncs to the cloud so you can restore it. We don't sell or share your data, we don't show ads, and
+      we don't track you across other apps. You can delete your account and your data at any time from
+      inside the app.
+    </div>
+
+    <p>
+      This Privacy Policy describes how Superior One Logistics Corp. (“TrueLane,” “we,” “us,” or “our”) collects, uses,
+      shares, and retains information when you use the TrueLane mobile application and related services
+      (the “App”). It applies to the App only. TrueLane is designed to keep your business data primarily
+      on your device, syncing to the cloud only to back it up and make it available across your own
+      devices. By using the App, you agree to this Policy.
+    </p>
+
+    <h2>Information we collect</h2>
+
+    <h3>Account information</h3>
+    <p>
+      When you create an account, we collect your email address, name, and a hashed password.
+      Authentication is provided by Clerk. We do not store your password ourselves.
+    </p>
+
+    <h3>Operational data you enter</h3>
+    <p>
+      We store the data you enter so it syncs across your devices and can be restored: vehicle details,
+      cost profiles (including your cost-per-mile breakdown), load details (origin, destination, rate,
+      broker name, reference numbers, notes), your accept/reject/override decisions, trip execution data
+      (segments, stops, timestamps, miles, expenses), and reconciliation records. This data is stored on
+      your device and, when you are signed in, in our cloud database (Supabase), isolated to your account.
+    </p>
+
+    <h3>Location</h3>
+    <p>
+      With your permission, the App collects <strong>foreground location only</strong> (“while in use”)
+      to set your home base, estimate accurate trip mileage, and record a breadcrumb trail during an
+      active trip for mileage and IFTA jurisdiction attribution. The App does <strong>not</strong>
+      collect location in the background. The route breadcrumb trail (<code>gps_path</code>) is stored
+      <strong>on your device only and is not uploaded to our servers.</strong> You can decline or revoke
+      location access at any time in your device settings; the App remains usable without it (you can
+      enter miles manually).
+    </p>
+
+    <h3>Photos and documents</h3>
+    <p>
+      With your permission, the App accesses your camera and photo library so you can attach
+      proof-of-delivery (POD) photos, fuel receipts, and rate confirmations to your records. The App
+      requests this access only when you use the feature. These images are stored on your device and may
+      be uploaded to our cloud storage under your account.
+    </p>
+
+    <h3>Addresses and routing</h3>
+    <p>
+      When you look up an address or request a route, the address or coordinates are sent to Mapbox to
+      return suggestions, distances, and travel times. We do not retain a history of your address lookups
+      beyond the destination records you save to a load.
+    </p>
+
+    <h3>Subscription and billing</h3>
+    <p>
+      If you purchase a subscription, RevenueCat (on our behalf) and the applicable app store process the
+      transaction. We receive a non-sensitive entitlement status (whether you have an active
+      subscription) and a customer identifier. We do <strong>not</strong> receive or store your full
+      payment-card or bank details — those stay with Apple or Google.
+    </p>
+
+    <h3>Analytics and diagnostics</h3>
+    <p>
+      Where enabled, we use PostHog to understand how the App is used (events such as app opened, load
+      accepted, subscription purchased) and Sentry to capture crash reports. These services receive a
+      pseudonymous user identifier and technical details about the device and error. They do
+      <strong>not</strong> receive your load data, cost profiles, location, or photos.
+    </p>
+
+    <h3>Fuel-price reference</h3>
+    <p>
+      When the App displays a fuel price for rate estimation, it retrieves a regional average from the
+      U.S. Energy Information Administration (EIA). No personal data is sent to the EIA.
+    </p>
+
+    <p>
+      We do <strong>not</strong> intentionally collect government IDs, Social Security numbers, or
+      financial-account numbers. Please do not enter them into free-text fields.
+    </p>
+
+    <h2>How we use your information</h2>
+    <ul>
+      <li>To provide the App's core features (rate calculation, load evaluation, trip logging, history, tax and analytics summaries);</li>
+      <li>To authenticate you and secure your account;</li>
+      <li>To back up and sync your data across your own devices and restore it on a new device;</li>
+      <li>To look up routes, distances, and fuel-price references used in calculations;</li>
+      <li>To determine your subscription tier and unlock the features you've paid for;</li>
+      <li>To detect, diagnose, and fix crashes and errors;</li>
+      <li>To respond to support requests you initiate and notify you about your account, security, or material changes to this Policy or our Terms; and</li>
+      <li>To comply with legal obligations.</li>
+    </ul>
+    <p>
+      The App's calculators and summaries are estimates for your own individual business decisions.
+      TrueLane does not tell you what rate to charge and does not coordinate rates among users; each
+      operator independently sees only their own numbers.
+    </p>
+
+    <h2>Service providers (sub-processors)</h2>
+    <p>We share data only with providers that process it on our behalf to run the App:</p>
+    <table>
+      <thead>
+        <tr><th>Provider</th><th>Purpose</th><th>Data involved</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Clerk</td><td>Authentication &amp; account management</td><td>Email, name, session tokens</td></tr>
+        <tr><td>Supabase</td><td>Cloud database &amp; file storage / sync</td><td>Your operational data and uploaded photos</td></tr>
+        <tr><td>RevenueCat + Apple App Store / Google Play</td><td>Subscriptions &amp; billing</td><td>Purchase and entitlement data</td></tr>
+        <tr><td>Mapbox</td><td>Geocoding, route distance &amp; travel time</td><td>Addresses and coordinates you look up</td></tr>
+        <tr><td>PostHog</td><td>Product analytics</td><td>Pseudonymous ID, usage events</td></tr>
+        <tr><td>Sentry</td><td>Crash &amp; error reporting</td><td>Pseudonymous ID, device/error diagnostics</td></tr>
+        <tr><td>U.S. Energy Information Administration (EIA)</td><td>Fuel-price reference</td><td>None personal</td></tr>
+        <tr><td>Expo</td><td>App delivery, updates &amp; build</td><td>Technical/diagnostic data</td></tr>
+      </tbody>
+    </table>
+    <p>
+      Each provider handles data under its own terms and security practices. We do <strong>not</strong>
+      sell your personal information, we do not share it for third-party advertising, and we do not use
+      it for cross-app tracking.
+    </p>
+
+    <h2>Where your data lives; security</h2>
+    <ul>
+      <li>Your data is stored locally on your device (in an on-device app database) and, when you are signed in, synced to our cloud database.</li>
+      <li>Data in transit is protected with TLS.</li>
+      <li>Cloud data is isolated per account by row-level security, so one account cannot read another's records.</li>
+      <li>You can enable an optional biometric App Lock (Face ID / fingerprint). It is verified on your device; we never receive or store your biometric data.</li>
+    </ul>
+    <p>No method of transmission or storage is 100% secure, but we take reasonable measures to protect your information.</p>
+
+    <h2>Notifications</h2>
+    <p>
+      The App may send local reminders (for example, about an unfinished trip) and, if enabled, register
+      for push notifications. You can disable notifications at any time in your device settings.
+    </p>
+
+    <h2>Data retention</h2>
+    <p>
+      We retain your account and operational data for as long as your account is active or as needed to
+      provide the App. You can export your records at any time via the in-app CSV export. When you delete
+      your account from within the App (Profile → Manage Account → Delete Account), we delete your
+      account record, your operational data (loads, vehicles, cost profiles, trips, stops, expenses), and
+      photos stored in our cloud storage. Some records may be retained for a limited period where
+      required by law (for example, tax or DOT recordkeeping), and backups are purged on a rolling
+      schedule.
+    </p>
+
+    <h2>Your choices and rights</h2>
+    <p>Depending on where you live, you may have rights to access, correct, export, or delete your personal information, and to withdraw permissions.</p>
+    <ul>
+      <li><strong>Access / export:</strong> use the in-app CSV export to download your records.</li>
+      <li><strong>Correct / delete:</strong> edit or delete data inside the App; delete your entire account and associated data via Profile → Manage Account → Delete Account.</li>
+      <li><strong>Location, camera &amp; notifications:</strong> grant or revoke anytime in your device settings.</li>
+      <li><strong>Requests:</strong> contact <a href="mailto:superior.one.logistics@gmail.com">superior.one.logistics@gmail.com</a> to exercise a right under applicable law (including GDPR or CCPA/CPRA).</li>
+    </ul>
+    <p>
+      California residents (CCPA/CPRA) and residents of other states with privacy laws have additional
+      rights, including the right not to be discriminated against for exercising them. We do
+      <strong>not</strong> sell or “share” personal information as those terms are defined under
+      California law.
+    </p>
+
+    <h2>Children</h2>
+    <p>
+      TrueLane is a business tool intended for commercial operators and is not directed to children. It
+      is not intended for anyone under 18 (and in no event under 13), and we do not knowingly collect
+      personal information from children.
+    </p>
+
+    <h2>International users</h2>
+    <p>
+      The App is operated from the United States. If you use the App from outside the United States, your
+      information will be transferred to and processed in the United States.
+    </p>
+
+    <h2>Changes to this Policy</h2>
+    <p>
+      We may update this Policy from time to time. If we make material changes, we will update the
+      effective date and, where appropriate, notify you in the App or by email. Your continued use of the
+      App after the changes take effect constitutes acceptance of the revised Policy.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Questions about this Policy? Email <a href="mailto:superior.one.logistics@gmail.com">superior.one.logistics@gmail.com</a>.
+    </p>
+
+    <footer>
+      <p>Superior One Logistics Corp. · <a href="index.html">Home</a> · <a href="terms.html">Terms</a> · <a href="privacy.html">Privacy</a> · <a href="consulting.html">Consulting</a></p>
+    </footer>
+  </main>
+</body>
+</html>

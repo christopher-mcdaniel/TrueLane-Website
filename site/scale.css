@@ -1,0 +1,7 @@
+/* Big screens. The pages are drawn for a ~1100px column; on a 1920px monitor that is a small strip of text in a wide field.
+   From 1500px up the page content is scaled up a step at a time (CSS zoom, so type, spacing and the column grow together).
+   The video overlays (.vphone, .dscreen) are not scaled: they size themselves from the viewport. Below 1500px nothing changes. */
+@media (min-width:1500px){body > nav,body > header,body > main,body > section,body > footer{zoom:1.12;}}
+@media (min-width:1800px){body > nav,body > header,body > main,body > section,body > footer{zoom:1.25;}}
+@media (min-width:2300px){body > nav,body > header,body > main,body > section,body > footer{zoom:1.45;}}
+@media (min-width:3000px){body > nav,body > header,body > main,body > section,body > footer{zoom:1.8;}}

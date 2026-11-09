@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================= -->
+<!--  SEO / social. truelane.com is not ours (a parked page for     -->
+<!--  sale), so the canonical address is the Vercel site until a    -->
+<!--  real domain is bought. No og:image until a real one exists.   -->
+<!-- ============================================================= -->
+<title>TrueLane — Know your costs, know the market, count every mile</title>
+<meta name="description" content="TrueLane reads your real cost per mile against every broker's offer — deadhead, fuel, fixed costs, driver time — so you know your break-even before you accept a load. Add booked loads from a rate con, run the trip, invoice and export your records. Built for owner-operators. Join the TestFlight beta.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://truelane-three.vercel.app/">
+<meta name="theme-color" content="#0e1117">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrueLane">
+<meta property="og:title" content="TrueLane — Know your costs, know the market, count every mile">
+<meta property="og:description" content="TrueLane reads your real cost per mile against every broker's offer, so you know your break-even before you accept. Built for owner-operators. Join the TestFlight beta.">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://truelane-three.vercel.app/">
+
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="TrueLane — Know your costs, know the market, count every mile">
+<meta name="twitter:description" content="Know your real cost per mile against every broker's offer before you accept. Built for owner-operators. Join the TestFlight beta.">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230E1117'/%3E%3Cg%20fill='%23E8A020'%20transform='translate(7%207)%20scale(0.18)'%3E%3Crect%20x='0'%20y='0'%20width='100'%20height='17'/%3E%3Crect%20x='41.5'%20y='0'%20width='17'%20height='50.25'/%3E%3Crect%20x='41.5'%20y='55.75'%20width='17'%20height='44.25'/%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== Industry design system — tokens (inlined, self-contained) ===== */
+  :root{
+    --color-bg:#0e1117; --color-surface:#161b24; --color-text:#e8edf2;
+    --color-accent:#e8a020; --color-accent-2:#d4921c;
+    --color-divider:color-mix(in srgb, #e8edf2 14%, transparent);
+    --color-accent-600:#d4921c; --color-accent-700:#c98b18;
+    --color-accent-800:#8a5e0f; --color-accent-900:#1a2030;
+    --font-heading:"Barlow Condensed", system-ui, sans-serif;
+    --font-heading-weight:600;
+    --font-body:"Barlow", system-ui, sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--color-bg); color:var(--color-text);
+    font-family:var(--font-body); font-size:15px; line-height:1.55; font-weight:400;
+    text-wrap:pretty; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,h5,h6{font-family:var(--font-heading); font-weight:var(--font-heading-weight); line-height:1.12; letter-spacing:-0.015em; margin:0;}
+  p{margin:0;}
+  a{color:var(--color-accent-700); text-underline-offset:3px;}
+  a:hover{color:var(--color-accent-900);}
+  img{display:block; max-width:100%;}
+  section[id]{scroll-margin-top:84px;}
+  :focus{outline:none;}
+  :focus-visible{outline:2px solid var(--color-accent); outline-offset:2px;}
+  ::selection{background:color-mix(in srgb, var(--color-accent) 30%, transparent);}
+  .wrap{max-width:1100px;margin:0 auto;}
+  .kicker{display:block;font-size:13px;line-height:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);margin:0 0 12px;}
+  .lede{color:color-mix(in srgb, var(--color-text) 82%, transparent);}
+  .muted{color:color-mix(in srgb, var(--color-text) 78%, transparent);}
+  .fine{color:color-mix(in srgb, var(--color-text) 80%, transparent);}
+
+  /* rules */
+  .hr{height:1px; border:0; background:var(--color-divider);}
+
+  /* ===== Sleek sticky header ===== */
+  .site-header{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--color-bg) 82%, transparent);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--color-divider);
+  }
+  .nav{display:flex; align-items:center; gap:26px; max-width:1100px; margin:0 auto; padding:13px 24px;}
+  .nav-brand{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:19px; letter-spacing:0.04em; margin-right:28px; text-decoration:none;}
+  .nav-link{white-space:nowrap;}
+  .nav-link{color:inherit; text-decoration:none; font-size:14px; letter-spacing:0.01em;}
+  .nav-link:hover{color:var(--color-accent-700);}
+
+  /* buttons */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:6px;
+    cursor:pointer; text-decoration:none;
+    font-family:var(--font-heading); font-weight:var(--font-heading-weight);
+    font-size:14px; line-height:1.2; color:var(--color-text);
+    background:transparent; border:1px solid var(--color-divider); border-radius:0;
+    padding:7px 12px;
+  }
+  .btn-primary{background:var(--color-accent); color:#0e1117; border-color:var(--color-accent);}
+  .btn-primary:hover{background:var(--color-accent-600); color:#0e1117;}
+  .btn-primary:active{background:var(--color-accent-700);}
+  .btn-ghost{color:#e8edf2; border-color:color-mix(in srgb, #e8edf2 30%, transparent); padding-inline:6px;}
+  .btn-ghost:hover{background:color-mix(in srgb, #e8edf2 10%, transparent); color:#fff;}
+  .btn-ghost:active{background:color-mix(in srgb, #e8edf2 18%, transparent);}
+
+  /* blueprint frame + corner registration marks */
+  .blueprint{position:relative; border:1px solid var(--color-divider); border-radius:0;}
+  .blueprint>.corner{position:absolute; width:11px; height:11px; color:var(--color-accent);}
+  .blueprint>.corner::before,.blueprint>.corner::after{content:""; position:absolute; background:currentColor;}
+  .blueprint>.corner::before{left:5px; top:0; width:1px; height:100%;}
+  .blueprint>.corner::after{top:5px; left:0; width:100%; height:1px;}
+  .blueprint>.corner.tl{top:-6px; left:-6px;}
+  .blueprint>.corner.tr{top:-6px; right:-6px;}
+  .blueprint>.corner.bl{bottom:-6px; left:-6px;}
+  .blueprint>.corner.br{bottom:-6px; right:-6px;}
+
+  /* section title blocks */
+  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;}
+  .grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;}
+  .card-h{font-family:var(--font-heading);font-weight:var(--font-heading-weight);text-transform:uppercase;margin:0;}
+
+  /* Header on phones: links wrap to their own row instead of vanishing */
+  @media (max-width:560px){
+    .nav{flex-wrap:wrap; gap:10px 16px;}
+    .nav-brand{margin-right:auto;}
+    .nav-links{order:3; flex-basis:100%; margin:0; gap:8px 20px; justify-content:flex-start; flex-wrap:wrap;}
+    .nav-link{white-space:nowrap;}
+    .nav-link{font-size:13px;}
+  }
+
+  /* ===== Hero with aerial freight-interchange night photo ===== */
+  .hero{position:relative; isolation:isolate; overflow:hidden;
+    background:#0a0c0f url('image (5).jpg') center/cover no-repeat;}
+  .hero::before{content:""; position:absolute; inset:0; z-index:-1; background:
+    linear-gradient(90deg, rgba(10,12,15,.92) 0%, rgba(10,12,15,.74) 32%, rgba(10,12,15,.40) 60%, rgba(10,12,15,.18) 100%),
+    linear-gradient(180deg, rgba(10,12,15,.16) 0%, rgba(10,12,15,0) 32%, rgba(10,12,15,.08) 68%, rgba(10,12,15,.86) 100%);}
+  .hero h1{color:#f5f8fb;}
+  .hero .lede{color:color-mix(in srgb,#eef4fa 88%, transparent);}
+  .hero .fine{color:color-mix(in srgb,#eef4fa 68%, transparent);}
+  .hero .btn-ghost{color:#e8edf2; border-color:color-mix(in srgb,#e8edf2 38%, transparent);}
+  .hero .btn-ghost:hover{background:color-mix(in srgb,#ffffff 14%, transparent); color:#fff;}
+  .site-header{background:color-mix(in srgb, #0d1013 70%, transparent);}
+  .site-header .nav-brand,.site-header .nav-link{color:#eef4fa;}
+  .site-header .nav-link:hover{color:#fff;}
+
+  /* ===== rhythm: full-bleed bands ===== */
+  .band{position:relative;}
+  .band-tint{background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg));}
+  .band-cta{text-align:center;}
+  .band-cta .kicker{display:inline-block;}
+  .band-cta h3,.band-cta p{margin-left:auto;margin-right:auto;}
+  .band-cta .hr{max-width:120px;margin-left:auto;margin-right:auto;}
+  .band-cta .btn-primary{margin:0 auto;}
+
+  /* ===== icons (Lucide, thin stroke) ===== */
+  .ico{width:30px;height:30px;stroke:var(--color-accent-700);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block;margin-bottom:10px;}
+  .step-ico{width:26px;height:26px;stroke:var(--color-accent-700);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* ===== card hover ===== */
+  .card-lift{transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;}
+  .card-lift:hover{transform:translateY(-4px); border-color:color-mix(in srgb, var(--color-accent) 55%, var(--color-divider)); box-shadow:0 12px 30px color-mix(in srgb,#1d2d3d 13%, transparent);}
+  .card-lift:hover>.corner{color:var(--color-accent);}
+
+  /* ===== scroll reveal (class added by JS; no-JS shows everything) ===== */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} }
+
+  /* ===== motion: hero entrance, button press, drawn rules, wedge sequence ===== */
+  @keyframes hero-in{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;}}
+  .hero-in{animation:hero-in .7s cubic-bezier(.2,.7,.2,1) both; animation-delay:var(--d,0ms);}
+  .btn{transition:transform .08s ease, background .15s ease, border-color .15s ease;}
+  .btn:active{transform:translateY(1px);}
+  .hr.draw{transform:scaleX(0); transform-origin:left center; transition:transform .9s cubic-bezier(.2,.7,.2,1);}
+  .hr.draw.in{transform:none;}
+  .wedge p.seq .w1, .wedge p.seq .w2{display:inline-block; opacity:0; transform:translateY(8px); transition:opacity .7s ease, transform .7s ease;}
+  .wedge p.seq.in .w1{opacity:1; transform:none;}
+  .wedge p.seq.in .w2{opacity:1; transform:none; transition-delay:1s;}
+  @media (prefers-reduced-motion:reduce){
+    .hero-in{animation:none;}
+    .btn{transition:none;}
+    .btn:active{transform:none;}
+    .hr.draw,.wedge p.seq .w1,.wedge p.seq .w2{opacity:1; transform:none; transition:none;}
+  }
+
+  /* ===== nav links group ===== */
+  .nav-links{display:flex; align-items:center; gap:26px; margin-right:auto;}
+
+  /* ===== footer ===== */
+  .site-footer{border-top:1px solid var(--color-divider); background:color-mix(in srgb, var(--color-accent) 4%, var(--color-bg));}
+  .footer-inner{display:flex; flex-wrap:wrap; gap:20px 48px; align-items:flex-start; justify-content:space-between; padding:40px 24px;}
+  .footer-brand{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:20px; letter-spacing:0.04em; margin-bottom:10px;}
+  .footer-links{display:flex; flex-direction:column; gap:8px;}
+  .footer-label{font-size:12px; letter-spacing:0.03em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent);}
+  .footer-links a{font-size:14px; text-decoration:none; color:var(--color-accent-700);}
+  .footer-links a:hover{color:var(--color-accent-900);}
+
+  /* ===== intake form ===== */
+  .field{margin-bottom:16px;}
+  .field label{display:block;font-size:12px;letter-spacing:0.03em;margin-bottom:6px;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 72%,transparent);}
+  .input{width:100%;font:inherit;font-size:15px;color:var(--color-text);background:var(--color-bg);border:1px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-divider));border-radius:0;padding:10px 12px;transition:border-color .15s ease;}
+  .input:hover{border-color:var(--color-accent);}
+  .input:focus-visible{border-color:var(--color-accent);outline:none;}
+  textarea.input{resize:vertical;min-height:96px;line-height:1.5;}
+  select.input{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e8a020' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:38px;}
+  .form-note{display:block;margin-top:6px;font-size:12px;color:color-mix(in srgb,var(--color-text) 62%,transparent);}
+  .form-status{margin:12px 0 0;font-size:14px;line-height:1.5;}
+  .form-status.ok{color:var(--color-accent-700);}
+  .form-status.err{color:#b23b3b;}
+
+  /* ===== leaks section ===== */
+  .leak-intro{font-size:19px;line-height:1.65;max-width:60ch;margin:0 0 32px;color:color-mix(in srgb,var(--color-text) 86%,transparent);}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;}
+  .chip{display:inline-flex;font-size:13px;line-height:1;padding:7px 11px;border:1px solid var(--color-divider);color:color-mix(in srgb,var(--color-text) 82%,transparent);}
+  .leak-close{margin:38px 0 0;font-size:19px;line-height:1.5;max-width:56ch;font-family:var(--font-heading);font-weight:var(--font-heading-weight);}
+
+  /* ===== positioning wedge ===== */
+  .wedge{text-align:center;background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg));}
+  .wedge p{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(21px,3.3vw,32px);line-height:1.2;max-width:20ch;margin:0 auto;text-transform:uppercase;letter-spacing:0.01em;}
+  .wedge .sub{font-family:var(--font-body);font-weight:400;text-transform:none;letter-spacing:0;font-size:16px;line-height:1.6;max-width:54ch;margin:18px auto 0;color:color-mix(in srgb,var(--color-text) 76%,transparent);}
+
+  /* ===== founder block ===== */
+  .founder{display:grid;grid-template-columns:220px 1fr;gap:38px;align-items:start;margin-bottom:48px;}
+  .founder-photo img{width:100%;display:block;filter:grayscale(12%) contrast(1.02);}
+  .founder-photo > .corner{color:var(--color-accent);}
+  .founder-name{font-family:var(--font-heading);font-weight:var(--font-heading-weight);text-transform:uppercase;font-size:27px;line-height:1.05;margin:0;}
+  .founder-role{font-size:13px;letter-spacing:0.05em;text-transform:uppercase;margin:6px 0 18px;opacity:0.72;}
+  .founder .bio{font-size:15px;line-height:1.65;margin:0 0 12px;opacity:0.9;max-width:56ch;}
+  @media(max-width:620px){.founder{grid-template-columns:1fr;gap:22px;} .founder-photo{max-width:210px;}}
+
+  /* ===== real screens ===== */
+  /* Eight cards: 4 across (two even rows), 2 across (four even rows) on tablets, 1 on phones. Never 3, which would leave a short last row. */
+  .screen-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  @media (max-width:900px){ .screen-grid{grid-template-columns:repeat(2,1fr);} }
+  @media (max-width:480px){ .screen-grid{grid-template-columns:1fr;} }
+  .screen-card{background:var(--color-bg);}
+  .screen-body{padding:20px 20px 22px;}
+  .screen-body h3{font-size:20px;text-transform:uppercase;margin:0 0 8px;}
+  .screen-body p{font-size:14.5px;line-height:1.6;color:color-mix(in srgb,var(--color-text) 84%,transparent);}
+  .screen-body strong{color:var(--color-text);font-weight:700;}
+
+  /* ===== featured card: rate cons (automation). Two columns wide; the other six cards are untouched =====
+     Left half is a normal card (video flush at the top, caption under it) so its video lines up with its neighbours';
+     the right half carries the explanation and fills the full height. ===== */
+  .screen-card.feature{grid-column:span 2; display:grid; grid-template-columns:calc((100% - 16px) / 2) minmax(0,1fr); grid-template-rows:auto 1fr; border-color:var(--color-accent); background:color-mix(in srgb,var(--color-accent) 5%,var(--color-bg));}
+  .screen-card.feature .vslot{grid-column:1; grid-row:1; max-width:none; margin:0;}
+  .screen-card.feature > .screen-body{display:contents;}
+  .feature .auto-head{grid-column:1; grid-row:2; padding:16px 20px 22px;}
+  .feature .auto-head h3{font-size:clamp(22px,2.2vw,28px); line-height:1.08; margin:0;}
+  .feature .auto-main{grid-column:2; grid-row:1 / span 2; display:flex; flex-direction:column; justify-content:space-between; padding:24px 22px 20px; border-left:1px solid var(--color-divider);}
+  .feature .auto-main p{font-size:16px; line-height:1.55; margin:0;}
+  .screen-card.feature:has(.vslot.empty){grid-template-columns:minmax(0,1fr);}
+  .screen-card.feature:has(.vslot.empty) .auto-main{grid-column:1; grid-row:2; border-left:0;}
+  .auto-tag{display:inline-block; margin:0 0 12px; padding:4px 8px; border:1px solid var(--color-accent); color:var(--color-accent); font-size:12px; line-height:1; letter-spacing:0.1em; text-transform:uppercase; font-weight:600;}
+  .auto-steps{list-style:none; margin:auto 0 0; padding:0; border-top:1px solid var(--color-divider);}
+  .auto-main p + .auto-steps{margin-top:auto; padding-top:0;}
+  .auto-steps li{display:flex; gap:12px; align-items:baseline; padding:12px 0; border-bottom:1px solid var(--color-divider); font-size:14.5px; line-height:1.4; color:var(--color-text);}
+  .auto-steps b{flex:none; width:20px; color:var(--color-accent); font-family:var(--font-heading); font-size:20px;}
+  .screen-body .auto-fine{margin:16px 0 0; font-size:13px; line-height:1.55; color:color-mix(in srgb,var(--color-text) 62%,transparent);}
+  @media (min-width:641px) and (max-width:900px){
+    .screen-card.feature{grid-template-columns:minmax(0,300px) minmax(0,1fr);}
+    .feature .auto-main{justify-content:center; padding:28px 30px;}
+    .feature .auto-main p{font-size:18px;}
+    .feature .auto-main p + .auto-steps{margin-top:24px;}
+    .auto-steps li{padding:17px 0; font-size:16px;}
+  }
+  @media (max-width:640px){
+    .screen-card.feature{display:block;}
+    .screen-card.feature .vslot{max-width:260px; margin:20px auto 0;}
+    .feature .auto-head{padding:16px 20px 0;}
+    .feature .auto-main{padding:14px 20px 22px; border-left:0;}
+    .feature .auto-main p + .auto-steps{margin-top:18px;}
+  }
+  @media (max-width:480px){ .screen-card.feature{grid-column:auto;} }
+  /* the Rate cons card takes two columns, so the Community card below it runs the full width as a band */
+  @media (min-width:481px){
+    .screen-card.soon{grid-column:1/-1;}
+    .screen-card.soon .screen-body{display:grid; grid-template-columns:240px minmax(0,1fr); column-gap:28px; align-items:start;}
+    .screen-card.soon .soon-art{grid-column:1; grid-row:1 / span 5; width:calc(100% + 20px); margin:-20px 0 0 -20px; border-bottom:0; border-right:1px solid var(--color-divider);}
+    .screen-card.soon .screen-body > h3, .soon .screen-body > p, .soon .screen-body > .soon-h{grid-column:2;}
+    .screen-card.soon .soon-stamp{order:0; grid-column:1; grid-row:5; align-self:end; justify-self:center; margin:0 0 16px -10px;}
+    .screen-card.soon .soon-h{margin:12px 0 8px; padding-top:12px;}
+  }
+  @media (min-width:901px){
+    .screen-card.soon .screen-body{grid-template-columns:280px minmax(0,1fr) minmax(0,1fr);}
+    .screen-card.soon .screen-body > h3{grid-column:2; grid-row:1;}
+    .screen-card.soon .screen-body > h3 + .soon-stamp + p{grid-column:2; grid-row:2;}
+    .screen-card.soon .screen-body > .soon-h{grid-column:3; grid-row:1; margin:0 0 8px; padding-top:0; border-top:0; font-size:20px;}
+    .screen-card.soon .screen-body > .soon-h + p{grid-column:3; grid-row:2;}
+    .screen-card.soon .soon-art{grid-row:1 / span 4;}
+    .screen-card.soon .soon-stamp{grid-row:4; align-self:end;}
+  }
+
+  /* ===== pricing ===== */
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;align-items:stretch;}
+  .price-card{display:flex;flex-direction:column;overflow:visible;padding:28px 26px;}
+  .price-card .price{font-family:var(--font-heading);font-weight:600;font-size:44px;line-height:1;color:var(--color-accent-700);letter-spacing:-0.01em;margin:14px 0 0;}
+  .price-card .price span{font-size:18px;font-weight:400;color:color-mix(in srgb,var(--color-text) 60%,transparent);}
+  .price-card ul{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .price-card li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.5;color:color-mix(in srgb,var(--color-text) 88%,transparent);}
+  .price-card li::before{content:"";position:absolute;left:0;top:6px;width:12px;height:8px;border-left:2px solid var(--color-accent);border-bottom:2px solid var(--color-accent);transform:rotate(-45deg);}
+  .price-card .price-cta{margin-top:24px;}
+  .price-featured{border-color:var(--color-accent);background:#0a0c0f;}
+
+  /* =================================================================== */
+  /*  ENHANCEMENTS — additive polish, safe to delete this whole block     */
+  /*  1 depth · 2 corner discipline · 3 header · 4 form focus · 5 nav      */
+  /* =================================================================== */
+
+  /* 1 · engineered "blueprint board" depth: two ultra-faint fixed radials
+        that show only through the neutral sections — no grunge, no jank   */
+  html{background:var(--color-bg);}
+  body{background:transparent;}
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(1150px 760px at 78% -6%, color-mix(in srgb, var(--color-accent) 7%, transparent) 0%, transparent 58%),
+      radial-gradient(900px 720px at 2% 106%, color-mix(in srgb, #2b3a4d 16%, transparent) 0%, transparent 60%);
+  }
+
+  /* 2 · reserve the corner registration marks for signature moments */
+  .no-corner > .corner{display:none;}
+
+  /* 3 · premium settle instead of a hard pop on the sticky header          */
+  .site-header{transition:background .3s ease, backdrop-filter .3s ease, -webkit-backdrop-filter .3s ease, border-color .3s ease;}
+
+  /* 4 · the whole beta frame answers when any field is focused           */
+  .intake-form{transition:border-color .2s ease, box-shadow .2s ease;}
+  .intake-form:focus-within{
+    border-color:var(--color-accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--color-accent) 40%, transparent),
+               0 14px 40px color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+  .intake-form:focus-within > .corner{color:var(--color-accent);}
+
+  /* 5 · an engineered underline that draws in left-to-right on nav hover   */
+  .nav-link{position:relative;}
+  .nav-link::after{content:""; position:absolute; left:0; right:100%; bottom:-4px;
+    height:1px; background:var(--color-accent); transition:right .22s ease;}
+  .nav-link:hover::after,.nav-link[aria-current="page"]::after{right:0;}
+
+  @media (prefers-reduced-motion:reduce){
+    .site-header,.intake-form{transition:none;}
+    .nav-link::after{transition:none;}
+  }
+
+  /* ===== video slots: a clip sits here once its file is in media/. With no file the slot is hidden for visitors (add ?slots to the address to see the placeholders). ===== */
+  .vslot{position:relative;aspect-ratio:9/16;width:100%;max-width:260px;margin:0 auto;background:#0a0c0f;border:1px solid var(--color-divider);overflow:hidden;}
+  .vslot video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#0a0c0f;}
+  .vslot video:fullscreen,.vslot video:-webkit-full-screen{object-fit:contain!important;width:100%;height:100%;background:#000;}
+  .vslot-ph{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:16px;gap:8px;border:1px dashed color-mix(in srgb,var(--color-accent) 60%,transparent);margin:8px;}
+  .vslot-ph b{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:17px;text-transform:uppercase;letter-spacing:.04em;color:var(--color-accent);}
+  .vslot-ph span{font-size:12.5px;line-height:1.45;color:color-mix(in srgb,var(--color-text) 78%,transparent);}
+  .vslot-ph code{font-size:12px;color:var(--color-text);}
+  .vslot.empty{display:none;}
+  .show-slots .vslot.empty{display:block;}
+  .show-slots .vslot.empty .vslot-ph{display:flex;}
+  .vslot + .screen-body{padding-top:16px;}
+  /* Community is not open yet: a road closed at night, a stamped "Coming soon" laid across it. The picture sits first on screen (order) and last in the markup. */
+  .soon .screen-body{display:flex;flex-direction:column;}
+  .soon .soon-art{order:-2;display:block;width:calc(100% + 40px);max-width:none;height:auto;margin:-20px -20px 0;border-bottom:1px solid var(--color-divider);}
+  .soon .soon-stamp{order:-1;align-self:center;margin:-30px 0 16px;padding:8px 14px 7px;transform:rotate(-5deg);font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(24px,2.6vw,30px);line-height:1;letter-spacing:.1em;text-transform:uppercase;color:var(--color-accent);background:rgba(14,17,23,.9);border:2px solid var(--color-accent);outline:1px solid color-mix(in srgb,var(--color-accent) 45%,transparent);outline-offset:3px;box-shadow:0 8px 20px rgba(0,0,0,.5);}
+  .soon .soon-h{font-size:20px;text-transform:uppercase;margin:16px 0 8px;padding-top:14px;border-top:1px solid var(--color-divider);}
+  .soon-lamp{animation:soon-blink 2.4s ease-in-out infinite;}
+  .soon-lamp.b{animation-delay:1.2s;}
+  @keyframes soon-blink{0%,100%{opacity:.25}50%{opacity:1}}
+  @media (prefers-reduced-motion:reduce){.soon-lamp{animation:none;opacity:.7}}
+  .hero-grid{display:block;}
+  .hero-grid.has-video{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:48px;align-items:center;}
+  .show-slots .hero-grid{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:48px;align-items:center;}
+  .hero-grid .vslot{margin:0;}
+  @media (max-width:860px){.hero-grid.has-video{grid-template-columns:1fr;gap:28px;}.hero-grid .vslot{max-width:240px;}}
+  .vrow{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin:26px 0 0;}
+  .vrow figure{margin:0;}
+  .vrow figcaption{font-size:13px;line-height:1.45;margin-top:8px;text-align:center;color:color-mix(in srgb,var(--color-text) 80%,transparent);}
+  .vrow figure:has(.vslot.empty){display:none;}
+  .show-slots .vrow figure:has(.vslot.empty){display:block;}
+</style>
+<link rel="stylesheet" href="vslot.css">
+<link rel="stylesheet" href="scale.css">
+<link rel="stylesheet" href="mobile.css">
+<script src="mobile.js" defer></script>
+</head>
+<body>
+<style>
+/* The three doors: the same strip, in the same order, on every page of the site (app, build, consulting). */
+.doors{background:#0a0d12;border-bottom:1px solid var(--color-divider);}
+.doors-in{display:flex;max-width:1100px;margin:0 auto;padding:0 24px;}
+.door{display:flex;align-items:baseline;gap:8px;padding:10px 18px 9px 0;margin-right:18px;text-decoration:none;color:color-mix(in srgb,var(--color-text) 72%,transparent);border-bottom:2px solid transparent;min-height:44px;align-items:center;}
+.door b{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:15px;letter-spacing:0.06em;text-transform:uppercase;}
+.door span{font-size:12.5px;opacity:.8;}
+.door:hover{color:#fff;}
+.door[aria-current="page"]{color:var(--color-accent);border-bottom-color:var(--color-accent);}
+@media (max-width:640px){.doors-in{padding:0 16px;justify-content:space-between;}.door{margin-right:0;padding-right:0;}.door span{display:none;}}
+</style>
+<nav class="doors" aria-label="TrueLane">
+ <div class="doors-in">
+  <a href="index.html" class="door" aria-current="page"><b>App</b><span>for drivers</span></a>
+  <a href="build.html" class="door"><b>Software</b><span>one system for your fleet</span></a>
+  <a href="consulting.html" class="door"><b>Carriers</b><span>find your leaks</span></a>
+ </div>
+</nav>
+
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">TRUELANE</a>
+    <span class="nav-links">
+      <a href="index.html#why" class="nav-link">Why TrueLane</a>
+      <a href="index.html#app" class="nav-link">App</a>
+      <a href="pricing.html" class="nav-link">Pricing</a>
+    </span>
+    <a href="index.html#beta" class="btn btn-primary" style="text-decoration:none">Join the beta</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="padding:132px 24px 108px">
+  <div class="hero-grid"><div>
+  <span class="kicker hero-in" style="--d:0ms;color:color-mix(in srgb,#f0c67a 92%, transparent);margin:0 0 16px">Freight decision-support for owner-operators</span>
+  <h1 style="font-size:clamp(40px,6vw,72px);line-height:1.04;letter-spacing:0.01em;text-transform:uppercase;margin:0;max-width:18ch">
+    <span class="hero-in" style="display:block;--d:120ms">Know your costs.</span>
+    <span class="hero-in" style="display:block;--d:260ms">Know the market.</span>
+    <span class="hero-in" style="display:block;--d:400ms">Count every mile.</span>
+  </h1>
+  <p class="lede hero-in" style="--d:560ms;font-size:20px;line-height:1.6;max-width:44ch;margin:28px 0 0">Your real cost per mile, against every offer, before you accept.</p>
+  <div class="hero-in hero-ctas m-hide" style="--d:680ms;display:flex;gap:12px;flex-wrap:wrap;margin-top:32px;align-items:center">
+    <a href="#beta" class="btn btn-primary" style="padding:14px 28px;font-size:15px;text-decoration:none">Join the TestFlight beta</a>
+    <a href="#app" class="btn btn-ghost" style="padding:14px 20px;font-size:15px;text-decoration:none">See the app</a>
+  </div>
+  <form class="m-only m-beta hero-in" style="--d:680ms" action="https://api.web3forms.com/submit" method="POST">
+    <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+    <input type="hidden" name="subject" value="TrueLane app beta request">
+    <input type="hidden" name="from_name" value="TrueLane app landing (phone)">
+    <input type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" style="display:none">
+    <label for="m-email">Get the beta invite</label>
+    <input class="input" id="m-email" name="email" type="email" autocomplete="email" inputmode="email" placeholder="you@email.com" required>
+    <button class="btn btn-primary" type="submit">Send me the invite</button>
+    <p class="form-status" hidden></p>
+  </form>
+  <p class="fine hero-in" style="--d:780ms;font-size:13px;margin-top:18px">Beta is free. No credit card. Built by someone who&rsquo;s been behind the wheel. Running a fleet? <a href="build.html" style="color:inherit;text-decoration:underline">See the TrueLane Desk &rarr;</a></p>
+  </div>
+  <div class="vslot empty" data-slot="web-hero" data-title="The deadhead flip"><video muted loop playsinline preload="metadata" poster="media/web-hero.jpg"><source src="media/web-hero.mp4" type="video/mp4"></video><button type="button" class="vslot-open" aria-label="Play video: The deadhead flip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><div class="vslot-ph"><b>Hero video</b><span>The deadhead flip: the same offer goes from BELOW YOUR COST to AT MARKET when a load covers the way home. 15 to 25 seconds, no spoken call to action.</span><span>File: <code>media/web-hero.mp4</code></span></div></div>
+  </div>
+  </div>
+</section>
+
+<section class="wedge">
+  <div class="wrap" style="padding:58px 24px">
+    <p><span class="w1">The rate looked fine.</span> <span class="w2">Then you did the math.</span></p>
+  </div>
+</section>
+
+<section id="why" class="wrap" style="padding:16px 24px 72px">
+  <span class="kicker">01 · Why TrueLane</span>
+  <hr class="hr" style="margin:0 0 24px">
+  <p class="leak-intro">The broker quotes one number. Your floor is another. TrueLane counts what the rate leaves out.</p>
+  <div class="chips">
+    <span class="chip">Your real cost per mile</span>
+    <span class="chip">Deadhead</span>
+    <span class="chip">Fuel</span>
+    <span class="chip">Fixed costs per day</span>
+    <span class="chip">Time at the dock</span>
+    <span class="chip">Break-even floor</span>
+  </div>
+  <p class="leak-close">The broker knows their number. TrueLane makes sure you know yours.</p>
+</section>
+
+<section id="app" class="band band-tint">
+  <div class="wrap" style="padding:64px 24px 72px">
+  <span class="kicker">02 · App</span>
+  <hr class="hr" style="margin:0 0 24px">
+  <h2 class="card-h" style="font-size:clamp(22px,3vw,30px);max-width:24ch;margin:0 0 24px">Offer to invoice, in one app.</h2>
+  <div class="screen-grid">
+    <div class="blueprint screen-card"><div class="vslot empty" data-slot="web-costs" data-title="Your costs"><video muted loop playsinline preload="metadata" poster="media/web-costs.jpg"><source src="media/web-costs.mp4" type="video/mp4"></video><button type="button" class="vslot-open" aria-label="Play video: Your costs"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><div class="vslot-ph"><b>Your costs</b><span>Setting your truck's costs once: the four steps. 15 to 25 seconds.</span><span>File: <code>media/web-costs.mp4</code></span></div></div><div class="screen-body"><h3>Your costs</h3><p>Four short steps turn your truck&rsquo;s bills into your cost per mile: monthly bills, per-mile costs, how you get paid and your targets. Set once.</p></div></div>
+    <div class="blueprint screen-card"><div class="vslot empty" data-slot="web-calculate" data-title="Calculate"><video muted loop playsinline preload="metadata" poster="media/web-calculate.jpg"><source src="media/web-calculate.mp4" type="video/mp4"></video><button type="button" class="vslot-open" aria-label="Play video: Calculate"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><div class="vslot-ph"><b>Calculate</b><span>An offer goes in and the verdict comes out, with the basis line. 10 to 20 seconds.</span><span>File: <code>media/web-calculate.mp4</code></span></div></div><div class="screen-body"><h3>Calculate</h3><p>Put in the offer and the route. Get a plain verdict: below your cost, at market or above, with your net after fuel and what a load home would change.</p></div></div>
+    <div class="blueprint screen-card feature"><div class="vslot empty" data-slot="web-rate-con" data-title="Rate cons"><video muted loop playsinline preload="metadata" poster="media/web-rate-con.jpg"><source src="media/web-rate-con.mp4" type="video/mp4"></video><button type="button" class="vslot-open" aria-label="Play video: Rate cons"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><div class="vslot-ph"><b>Rate cons</b><span>A rate confirmation in, the check sheet, Add to Upcoming. 20 to 30 seconds. No verdict.</span><span>File: <code>media/web-rate-con.mp4</code></span></div></div><div class="screen-body"><div class="auto-head"><span class="auto-tag">Automated</span><h3>Rate con in. Load out.</h3></div><div class="auto-main"><p>Skip the typing. TrueLane reads your rate con and fills in the load: broker, stops, dates, equipment, pay terms.</p><ol class="auto-steps"><li><b>1</b>Photo, PDF or dispatch screenshots</li><li><b>2</b>An AI service reads it and fills the load</li><li><b>3</b>You check every field, then save</li></ol></div></div></div>
+    <div class="blueprint screen-card"><div class="vslot empty" data-slot="web-trip" data-title="Trip"><video muted loop playsinline preload="metadata" poster="media/web-trip.jpg"><source src="media/web-trip.mp4" type="video/mp4"></video><button type="button" class="vslot-open" aria-label="Play video: Trip"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><div class="vslot-ph"><b>Trip</b><span>Next stop, I've arrived, Mark loaded, ALL STOPS DONE. 20 to 30 seconds.</span><span>File: <code>media/web-trip.mp4</code></span></div></div><div class="screen-body"><h3>Trip</h3><p>Next stop, one tap: arrived, loaded, delivered. A dock clock times every wait, you snap a proof-of-delivery photo at each stop, and it keeps working with no signal.</p></div></div>
+    <div class="blueprint screen-card"><div class="vslot empty" data-slot="web-invoice" data-title="Invoice"><video muted loop playsinline preload="metadata" poster="media/web-invoice.jpg"><source src="media/web-invoice.mp4" type="video/mp4"></video><button type="button" class="vslot-open" aria-label="Play video: Invoice"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><div class="vslot-ph"><b>Invoice</b><span>The wrap-up chain to the invoice and Share. 15 to 25 seconds.</span><span>File: <code>media/web-invoice.mp4</code></span></div></div><div class="screen-body"><h3>Invoice</h3><p>Finish the trip and the invoice is ready to review: your details, payment terms and delivery photos. Share the PDF and confirm it went out. Reminders at 5 and 15 days.</p></div></div>
+    <div class="blueprint screen-card"><div class="vslot empty" data-slot="web-taxes" data-title="Taxes &amp; records"><video muted loop playsinline preload="metadata" poster="media/web-taxes.jpg"><source src="media/web-taxes.mp4" type="video/mp4"></video><button type="button" class="vslot-open" aria-label="Play video: Taxes &amp; records"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><div class="vslot-ph"><b>Taxes &amp; records</b><span>Tax info, the year&rsquo;s totals, the CSV and the audit bundle. 20 to 30 seconds.</span><span>File: <code>media/web-taxes.mp4</code></span></div></div><div class="screen-body"><h3>Taxes &amp; records</h3><p>Your year in one place: revenue, miles and tracked expenses, by actual expenses or standard mileage. Export a CSV, or an audit bundle with your receipts and delivery photos.</p></div></div>
+    <div class="blueprint screen-card"><div class="vslot empty" data-slot="web-scorecard" data-title="Insights &amp; analytics"><video muted loop playsinline preload="metadata" poster="media/web-scorecard.jpg"><source src="media/web-scorecard.mp4" type="video/mp4"></video><button type="button" class="vslot-open" aria-label="Play video: Insights &amp; analytics"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><div class="vslot-ph"><b>Insights &amp; analytics</b><span>The trip scorecard and All trip numbers, then Analytics. 20 to 30 seconds.</span><span>File: <code>media/web-scorecard.mp4</code></span></div></div><div class="screen-body"><h3>Insights &amp; analytics</h3><p>Every trip scored: profit per mile, net per hour, pay minus costs. Then the bigger picture: revenue by month, top lanes and brokers, how you price against market, and your Road Record.</p></div></div>
+    <div class="blueprint screen-card soon"><div class="screen-body"><h3>Community</h3><p class="soon-stamp">Coming soon</p><p>Carriers comparing what loads really paid. Rates, waits and dock notes from the drivers who hauled them, so you know before you say yes.</p><h4 class="soon-h">In-house factoring</h4><p>Get paid sooner on the invoices you send from TrueLane, without the wait on net 30.</p><svg class="soon-art" viewBox="0 0 240 170" role="presentation" aria-hidden="true" focusable="false"><defs><linearGradient id="soon-sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0b0e14"/><stop offset="1" stop-color="#1a2030"/></linearGradient><radialGradient id="soon-glow"><stop offset="0" stop-color="#e8a020" stop-opacity=".85"/><stop offset="1" stop-color="#e8a020" stop-opacity="0"/></radialGradient><pattern id="soon-grid" width="20" height="20" patternUnits="userSpaceOnUse"><path d="M20 0H0V20" fill="none" stroke="#e8edf2" stroke-opacity=".06"/></pattern><pattern id="soon-hazard" width="14" height="14" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="14" height="14" fill="#0e1117"/><rect width="7" height="14" fill="#e8a020"/></pattern></defs><rect width="240" height="170" fill="url(#soon-sky)"/><rect width="240" height="170" fill="url(#soon-grid)"/><polygon points="0,70 28,57 54,66 90,47 130,68 170,52 210,66 240,58 240,70" fill="#131924"/><line x1="0" y1="70" x2="240" y2="70" stroke="#e8edf2" stroke-opacity=".22"/><polygon points="112,70 128,70 236,170 4,170" fill="#0f141c"/><line x1="112" y1="70" x2="4" y2="170" stroke="#e8edf2" stroke-opacity=".5" stroke-width="1.4"/><line x1="128" y1="70" x2="236" y2="170" stroke="#e8edf2" stroke-opacity=".5" stroke-width="1.4"/><g fill="#e8a020" fill-opacity=".8"><polygon points="119.6,73 120.4,73 120.5,77 119.5,77"/><polygon points="119.4,83 120.6,83 120.8,90 119.2,90"/><polygon points="119,99 121,99 121.5,111 118.5,111"/><polygon points="118.4,128 121.6,128 122.4,147 117.6,147"/><polygon points="117.2,160 122.8,160 124,170 116,170"/></g><g><rect x="70" y="100" width="4" height="40" fill="#1a2030" stroke="#0a0d12"/><rect x="166" y="100" width="4" height="40" fill="#1a2030" stroke="#0a0d12"/><rect x="62" y="102" width="116" height="9" fill="url(#soon-hazard)" stroke="#0a0d12"/><rect x="62" y="116" width="116" height="9" fill="url(#soon-hazard)" stroke="#0a0d12"/><circle class="soon-lamp a" cx="72" cy="95" r="15" fill="url(#soon-glow)"/><circle class="soon-lamp b" cx="168" cy="95" r="15" fill="url(#soon-glow)"/><circle cx="72" cy="95" r="2.6" fill="#e8a020"/><circle cx="168" cy="95" r="2.6" fill="#e8a020"/></g></svg></div></div>
+  </div>
+  <p class="muted" style="font-size:14px;margin:22px 0 0">The math and saving work offline. The best way to learn it is to use it. <a href="#beta">Join the beta &rarr;</a></p>
+  </div>
+</section>
+
+<section id="pricing" class="wrap" style="padding:64px 24px 72px">
+  <span class="kicker">03 · Pricing</span>
+  <hr class="hr" style="margin:0 0 24px">
+  <h2 class="card-h" style="font-size:clamp(24px,3.5vw,32px);text-transform:uppercase;letter-spacing:0.01em;margin:0 0 24px;max-width:22ch">Start free. Pick what fits.</h2>
+  <div class="price-grid">
+    <div class="blueprint price-card no-corner">
+      <h3 class="card-h" style="font-size:21px">Free trial</h3>
+      <div class="price">$0<span> for 30 days</span></div>
+      <ul>
+        <li>Everything on</li>
+        <li>After that, viewing and export stay free</li>
+      </ul>
+    </div>
+    <div class="blueprint price-card price-featured no-corner">
+      <h3 class="card-h" style="font-size:21px;color:var(--color-accent)">TrueLane Pro</h3>
+      <div class="price">$19.99<span>/mo</span></div>
+      <p class="muted" style="font-size:13px;margin:6px 0 0">or $179/yr &mdash; about $14/mo, billed once a year</p>
+      <ul>
+        <li>Keep saving, invoicing and importing rate cons</li>
+      </ul>
+    </div>
+    <div class="blueprint price-card no-corner">
+      <h3 class="card-h" style="font-size:21px">Carriers and fleets</h3>
+      <div class="price" style="font-size:24px;line-height:1.2">From $349 a month</div>
+      <ul>
+        <li>The TrueLane Desk and driver app, no Read required. <a href="build.html">See the desk</a></li>
+        <li>Carriers with their own TMS can start with the optional $750 Leak Read. <a href="consulting.html">Start with the Read</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="fine" style="font-size:13px;margin-top:20px"><a href="pricing.html">Pricing details &rarr;</a> &nbsp;&middot;&nbsp; The Leak Read, Signals and the Desk are priced separately from the app.</p>
+</section>
+
+<section id="who" style="background:var(--color-accent-900);color:var(--color-text)">
+  <div class="wrap" style="padding:64px 24px">
+    <span class="kicker" style="color:color-mix(in srgb, var(--color-text) 70%, transparent)">04 · Who</span>
+    <hr style="height:1px;border:0;background:color-mix(in srgb, var(--color-text) 20%, transparent);margin:0 0 32px">
+    <div class="founder">
+      <div class="founder-photo blueprint" style="overflow:visible">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <img src="Imagery/founder.jpg" alt="Chris McDaniel, founder of TrueLane">
+      </div>
+      <div>
+        <h3 class="founder-name">Christopher McDaniel</h3>
+        <!-- Chris: keep or drop the "Freight data analyst" line as you like -->
+        <p class="founder-role">Founder, TrueLane</p>
+        <div class="m-fold" data-more="Why I built this">
+        <p class="bio">&ldquo;I&rsquo;ve spent a decade in transportation &mdash; managing some of the largest accounts at Fortune 500 companies, on both the brokerage and carrier side. I&rsquo;ve done the negotiating, run the dispatch, and owned the accounts on both ends of the load.</p>
+        <p class="bio">&ldquo;Along the way I&rsquo;ve seen real data buried, lost in translation, or overlooked &mdash; costing companies hundreds of thousands to millions. TrueLane reads between the lines and produces a clear picture of where your money is going and where the operation can improve.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+    <h2 class="card-h" style="font-size:28px;margin:0 0 4px;max-width:24ch">Real data. Real solutions. Real deal.</h2>
+    <p class="muted" style="font-size:15px;line-height:1.6;margin:14px 0 0;max-width:60ch">Same person, three things: the app for owner-operators, the desk for your whole fleet, and freight analytics for carriers. <a href="build.html" style="color:var(--color-accent-700)">See the desk &rarr;</a> &nbsp;&middot;&nbsp; <a href="consulting.html" style="color:var(--color-accent-700)">See the Leak Read &rarr;</a></p>
+  </div>
+</section>
+
+<section id="beta" class="band" style="background-image:linear-gradient(180deg,rgba(14,17,23,.42) 0%,rgba(14,17,23,.14) 32%,rgba(14,17,23,.20) 68%,rgba(14,17,23,.72) 100%),url('Imagery/Bottom_Image.jpg');background-size:cover;background-position:center;">
+  <div class="wrap" style="padding:64px 24px 72px">
+  <span class="kicker">05 · Join the beta</span>
+  <hr class="hr" style="margin:0 0 24px">
+  <div class="m-split" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:44px;align-items:start">
+    <div>
+      <h2 class="card-h" style="font-size:28px;max-width:16ch">Try TrueLane before it&rsquo;s on the App Store.</h2>
+      <p class="muted" style="font-size:15px;line-height:1.6;margin:16px 0 0;max-width:40ch">Drop your email and we&rsquo;ll send a TestFlight invite. Free, no card.</p>
+    </div>
+    <form class="blueprint intake-form" style="overflow:visible;padding:26px;background:rgba(14,17,23,.88)" action="https://api.web3forms.com/submit" method="POST">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="TrueLane app beta request">
+      <input type="hidden" name="from_name" value="TrueLane app landing">
+      <input type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" style="display:none">
+      <div class="field"><label for="f-email">Email</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="m-fold" data-more="Add a few details (optional)">
+      <div class="field"><label for="f-name">First name <span style="text-transform:none;letter-spacing:0;opacity:0.6">(optional)</span></label><input class="input" id="f-name" name="first_name" type="text" autocomplete="given-name"></div>
+      <div class="field"><label for="f-freight">What kind of freight do you run? <span style="text-transform:none;letter-spacing:0;opacity:0.6">(optional)</span></label>
+        <select class="input" id="f-freight" name="freight_type">
+          <option value="">Pick one…</option>
+          <option value="Cargo van">Cargo van</option>
+          <option value="Sprinter">Sprinter</option>
+          <option value="Box truck">Box truck</option>
+          <option value="Hotshot">Hotshot</option>
+          <option value="Tractor-trailer">Tractor-trailer</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="field"><label for="f-msg">Biggest headache right now? <span style="text-transform:none;letter-spacing:0;opacity:0.6">(optional)</span></label><textarea class="input" id="f-msg" name="message" rows="3" placeholder="Rates, deadhead, detention, knowing your real cost…"></textarea></div>
+      </div>
+      <button class="btn btn-primary" type="submit" style="padding:13px 24px;font-size:15px;width:100%">Request beta access</button>
+      
+      <p class="form-status" hidden></p>
+    </form>
+  </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div style="max-width:54ch">
+      <div class="footer-brand">TRUELANE</div>
+      <p class="fine" style="font-size:13px;margin:0">Know your costs, know the market, count every mile. Freight decision-support built for owner-operators.</p>
+    </div>
+    <div class="footer-links">
+      <span class="footer-label">Get in touch</span>
+      <a href="mailto:hello@usetruelane.com">hello@usetruelane.com</a>
+      <a href="work.html">Portfolio</a>
+    </div>
+  </div>
+  <div class="wrap" style="padding:4px 24px 28px"><p class="fine" style="font-size:12px;margin:0">© 2026 TrueLane. All rights reserved. · Superior One Logistics Corp. · <a href="privacy.html" style="color:inherit;text-decoration:underline">Privacy</a> · <a href="terms.html" style="color:inherit;text-decoration:underline">Terms</a></p></div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)) return;
+  var sel = '.wrap > .kicker, .wrap > h1, .wrap > .lede, .wrap > h2, .wrap > h3, .grid-3 > *, .grid-4 > *, .price-grid > *, .footer-inner > *';
+  var els = Array.prototype.slice.call(document.querySelectorAll(sel));
+  els.forEach(function(e){
+    e.classList.add('reveal');
+    var par = e.parentNode;
+    if(par && /(^|\s)(grid-3|grid-4|price-grid)(\s|$)/.test(par.className)){
+      var i = Array.prototype.indexOf.call(par.children, e);
+      e.style.transitionDelay = (i % 4) * 70 + 'ms';
+    }
+  });
+  var rules = Array.prototype.slice.call(document.querySelectorAll('.wrap > hr.hr'));
+  rules.forEach(function(e){ e.classList.add('draw'); });
+  var seq = document.querySelector('.wedge p');
+  if(seq) seq.classList.add('seq');
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var t = en.target;
+      t.classList.add('in'); io.unobserve(t);
+      if(t.classList.contains('reveal')){
+        setTimeout(function(){ t.classList.remove('reveal','in'); t.style.transitionDelay=''; }, 1100);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.concat(rules, seq ? [seq] : []).forEach(function(e){ io.observe(e); });
+})();
+</script>
+<script>
+(function(){
+  var form=document.querySelector('.intake-form'); if(!form) return;
+  var status=form.querySelector('.form-status');
+  function show(msg,cls){ status.hidden=false; status.textContent=msg; status.className='form-status '+cls; }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.querySelector('[name=access_key]').value.indexOf('PLACEHOLDER')>-1){
+      show('Beta form isn’t live yet — the access key still needs to be set. Email superior.one.logistics@gmail.com and we’ll add you.','err'); return;
+    }
+    var btn=form.querySelector('button[type=submit]'); var label=btn.textContent;
+    btn.disabled=true; btn.textContent='Sending…';
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(r){
+        if(r.ok){ form.reset(); show("Got it. You’re on the list — we’ll send a TestFlight invite shortly.","ok"); }
+        else { show("That didn’t send. Email superior.one.logistics@gmail.com and we’ll add you.","err"); }
+      })
+      .catch(function(){ show("Network hiccup. Email superior.one.logistics@gmail.com and we’ll add you.","err"); })
+      .finally(function(){ btn.disabled=false; btn.textContent=label; });
+  });
+})();
+</script>
+<script>
+(function(){
+  // Video slots: show a clip when its file loads; hide the slot when it does not. Add ?slots to the address (or open the page locally) to see the placeholders.
+  var preview=/[?&]slots\b/.test(location.search)||location.protocol==='file:'||/^(localhost|127\.0\.0\.1)$/.test(location.hostname);
+  if(preview) document.documentElement.classList.add('show-slots');
+  var slots=Array.prototype.slice.call(document.querySelectorAll('.vslot'));
+  var phone=!!(window.matchMedia&&window.matchMedia('(max-width:640px)').matches); // on a phone the clips stay still until tapped: they are 134 MB together
+  var io='IntersectionObserver' in window ? new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target.querySelector('video'); if(!v||e.target.classList.contains('empty')) return; if(e.isIntersecting){var p=v.play(); if(p&&p.catch)p.catch(function(){});} else {v.pause();}});},{threshold:0.5}) : null;
+  slots.forEach(function(s){
+    var v=s.querySelector('video'); if(!v) return;
+    function ok(){ s.classList.remove('empty'); var g=s.closest('.hero-grid'); if(g) g.classList.add('has-video'); if(io&&!phone) io.observe(s); }
+    if(v.readyState>=1) ok(); else v.addEventListener('loadedmetadata',ok,{once:true});
+  });
+})();
+</script>
+<div class="vphone" id="vphone" role="dialog" aria-modal="true" aria-label="Video" hidden><div class="vphone-backdrop"></div><div class="vphone-stage"><div class="vphone-device"><span class="vphone-chrome"><span class="vphone-btn vphone-btn-a"></span><span class="vphone-btn vphone-btn-b"></span><span class="vphone-btn vphone-btn-c"></span><span class="vphone-btn vphone-btn-r"></span></span><div class="vphone-screen"><video playsinline disablepictureinpicture preload="auto"></video><span class="vphone-island"></span></div><span class="vphone-volzone"><input type="range" class="vphone-volume" min="0" max="100" value="100" step="1" aria-label="Volume"><button type="button" class="vphone-volbtn" aria-label="Volume slider" aria-expanded="false" title="Volume"></button></span></div></div><div class="vphone-bar" role="group" aria-label="Video controls"><button type="button" class="vphone-play" aria-label="Pause"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M8 5v14l11-7z"/></svg></button><input type="range" class="vphone-seek" min="0" max="1000" value="0" step="1" aria-label="Seek"><span class="vphone-time" aria-hidden="true">0:00</span><button type="button" class="vphone-mute" aria-label="Mute"></button></div><button type="button" class="vphone-close" aria-label="Close video">Close</button></div>
+<script src="vslot.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+/* The desk video, in a desktop monitor: a clip sits on a monitor in the page and grows out of it into a large monitor (truelane-site/dscreen.js).
+   The same idea as the phones on the app page (vslot.css), for landscape footage. Used by build.html. Same-origin only: no fonts, images or scripts from anywhere else. */
+
+/* ---- the monitor in the page ---- */
+.dslot{max-width:1000px;margin:0 auto;}
+.dmon{position:relative;padding:10px 10px 30px;border-radius:12px;background:linear-gradient(160deg,#1a1f27,#0b0d11 55%,#14181e);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--color-accent) 38%,transparent),0 0 0 3px #0a0c0f,0 2px 0 3px rgba(255,255,255,.05),0 34px 90px rgba(0,0,0,.55);}
+.dmon-screen{position:relative;aspect-ratio:1280/606;background:#000;overflow:hidden;border-radius:4px;}
+.dmon-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#000;}
+.dmon::after{content:"";position:absolute;left:50%;bottom:10px;width:7px;height:7px;margin-left:-3.5px;border-radius:50%;background:#2a313b;}
+.dslot-stand{width:13%;height:40px;margin:0 auto;background:linear-gradient(90deg,#0b0d11,#1a1f27 50%,#0b0d11);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);}
+.dslot-base{width:30%;height:9px;margin:0 auto;border-radius:3px 3px 0 0;background:linear-gradient(#1a1f27,#0b0d11);box-shadow:0 1px 0 rgba(255,255,255,.05),0 14px 28px rgba(0,0,0,.5);}
+.dslot-open{position:absolute;inset:0;z-index:2;display:block;margin:0;padding:0;border:0;background:transparent;cursor:pointer;color:var(--color-accent);-webkit-tap-highlight-color:transparent;}
+.dslot-open svg{position:absolute;right:12px;bottom:12px;width:40px;height:40px;padding:9px;box-sizing:border-box;border-radius:999px;background:rgba(10,12,15,.74);border:1px solid color-mix(in srgb,var(--color-accent) 55%,transparent);transition:transform .18s ease,background .18s ease;}
+.dslot-open:hover svg{background:rgba(10,12,15,.9);transform:scale(1.07);}
+.dslot-open:focus-visible{outline:2px solid var(--color-accent);outline-offset:-4px;}
+
+/* ---- the large monitor ---- */
+.dscreen[hidden]{display:none;}
+.dscreen{position:fixed;inset:0;z-index:1000;overscroll-behavior:contain;
+  --bz:12px;                                   /* bezel on top and sides */
+  --chin:30px;                                 /* the bezel under the screen */
+  --sw:min(calc(100vw - 2 * var(--bz) - 24px),1500px,calc((100vh - 250px) * 2.1122)); /* screen width; the screen keeps the clip's shape (1280 x 606) */
+  --sh:calc(var(--sw) * 0.47344);
+}
+@supports (height:1dvh){.dscreen{--sw:min(calc(100vw - 2 * var(--bz) - 24px),1500px,calc((100dvh - 250px) * 2.1122));}}
+@media (max-width:560px){.dscreen{--bz:6px;--chin:16px;}}
+.dscreen-backdrop{position:absolute;inset:0;background:rgba(5,7,9,.84);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);}
+.dscreen-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:8px 8px 150px;}
+.dscreen-device{position:relative;flex:none;width:calc(var(--sw) + 2 * var(--bz));height:calc(var(--sh) + var(--bz) + var(--chin));will-change:transform;}
+/* the body of the monitor and its stand: drawn behind the screen so they can fade in while the screen grows out of the page */
+.dscreen-chrome{position:absolute;inset:0;border-radius:calc(var(--bz) + 4px);background:linear-gradient(160deg,#1a1f27,#0b0d11 55%,#14181e);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--color-accent) 38%,transparent),0 0 0 3px #0a0c0f,0 2px 0 3px rgba(255,255,255,.05),0 34px 90px rgba(0,0,0,.65);}
+.dscreen-chrome::before{content:"";position:absolute;left:43%;width:14%;top:100%;height:44px;background:linear-gradient(90deg,#0b0d11,#1a1f27 50%,#0b0d11);clip-path:polygon(10% 0,90% 0,100% 100%,0 100%);}
+.dscreen-chrome::after{content:"";position:absolute;left:35%;width:30%;top:calc(100% + 44px);height:9px;border-radius:3px 3px 0 0;background:linear-gradient(#1a1f27,#0b0d11);box-shadow:0 1px 0 rgba(255,255,255,.05),0 14px 28px rgba(0,0,0,.5);}
+.dscreen-screen{position:absolute;left:var(--bz);top:var(--bz);width:var(--sw);height:var(--sh);border-radius:4px;background:#000;overflow:hidden;}
+.dscreen-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#000;cursor:pointer;}
+/* the controls: ordinary page elements under the monitor (the player's own controls keep Esc and Tab to themselves once focused, so the page could not close) */
+.dscreen-bar{position:fixed;left:50%;bottom:16px;z-index:2;transform:translateX(-50%);display:flex;align-items:center;gap:8px;width:min(620px,calc(100vw - 24px));min-height:48px;padding:4px 10px;box-sizing:border-box;border-radius:999px;border:1px solid color-mix(in srgb,var(--color-accent) 45%,transparent);background:rgba(10,12,15,.88);color:var(--color-text);}
+.dscreen-bar button{flex:none;display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:999px;background:transparent;color:var(--color-accent);cursor:pointer;}
+.dscreen-bar button:hover{background:color-mix(in srgb,var(--color-accent) 16%,transparent);}
+.dscreen-bar button svg{width:22px;height:22px;pointer-events:none;}
+.dscreen-bar button:focus-visible,.dscreen-seek:focus-visible,.dscreen-volume:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px;}
+.dscreen-seek{flex:1;min-width:0;height:40px;margin:0;background:transparent;accent-color:var(--color-accent);cursor:pointer;}
+.dscreen-time{flex:none;min-width:5.6em;font-size:13px;font-variant-numeric:tabular-nums;color:color-mix(in srgb,var(--color-text) 85%,transparent);text-align:right;}
+.dscreen-volume{flex:none;width:84px;height:40px;margin:0;background:transparent;accent-color:var(--color-accent);cursor:pointer;}
+@media (hover:none),(max-width:560px){.dscreen-volume{display:none;}}
+.dscreen-close{position:fixed;top:14px;right:14px;z-index:2;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--color-accent) 60%,transparent);background:rgba(10,12,15,.86);color:var(--color-text);font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:16px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+.dscreen-close:hover{background:rgba(10,12,15,.96);border-color:var(--color-accent);}
+.dscreen-close:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px;}
+
+/* ---- a short screen (a laptop with its toolbars): the monitor's stand and the room it reserves would leave the clip smaller than it is in the page. Under 760px of height the large
+   view drops the monitor body and stand and gives the clip the room: as wide as the screen allows, or as tall as it allows less the controls. ---- */
+@media (max-height:760px){
+  .dscreen:not(.is-phone){--bz:0px;--chin:0px;--sw:min(calc(100vw - 24px),1700px,calc((100vh - 96px) * 2.1122));}
+  .dscreen:not(.is-phone) .dscreen-chrome{display:none;}
+  .dscreen:not(.is-phone) .dscreen-stage{padding:8px 8px 76px;}
+  .dscreen:not(.is-phone) .dscreen-screen{border-radius:0;}
+}
+@supports (height:1dvh){
+  @media (max-height:760px){.dscreen:not(.is-phone){--sw:min(calc(100vw - 24px),1700px,calc((100dvh - 96px) * 2.1122));}}
+}
+
+/* ---- on a phone (dscreen.js adds .is-phone): no monitor. The clip is the whole screen; held upright it is a strip, so a line asks for the phone to be turned ---- */
+.dscreen-turn{display:none;}
+.dscreen.is-phone{--bz:0px;--chin:0px;--sw:min(100vw,calc(100vh * 2.1122));}
+@supports (height:1dvh){.dscreen.is-phone{--sw:min(100vw,calc(100dvh * 2.1122));}}
+.dscreen.is-phone .dscreen-backdrop{background:#000;-webkit-backdrop-filter:none;backdrop-filter:none;}
+.dscreen.is-phone .dscreen-stage{padding:0;}
+.dscreen.is-phone .dscreen-chrome{display:none;}
+.dscreen.is-phone .dscreen-screen{border-radius:0;}
+.dscreen.is-phone .dscreen-bar{bottom:8px;}
+@media (orientation:portrait){
+  .dscreen.is-phone .dscreen-turn{display:block;position:absolute;left:16px;right:16px;top:calc(50% + var(--sh) / 2 + 26px);text-align:center;
+    font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--color-accent);pointer-events:none;}
+}
+
+/* ---- reduced motion: no animation anywhere (dscreen.js also skips the grow) ---- */
+@media (prefers-reduced-motion: reduce){
+  .dslot-open svg{transition:none;}
+  .dslot-open:hover svg{transform:none;}
+  .dscreen,.dscreen *{transition:none!important;animation:none!important;}
+}

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The checkout link carries a one-time token in the query string; never send it to another site (Google Fonts) in a Referer header. -->
+<meta name="referrer" content="same-origin">
+<title>TrueLane Pricing — 30 days free, then Pro</title>
+<meta name="description" content="TrueLane pricing: free for 30 days with everything on. After that, Pro keeps you saving loads, invoicing and importing rate cons. Viewing your data and exporting it stay free.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#0e1117">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230E1117'/%3E%3Cg%20fill='%23E8A020'%20transform='translate(7%207)%20scale(0.18)'%3E%3Crect%20x='0'%20y='0'%20width='100'%20height='17'/%3E%3Crect%20x='41.5'%20y='0'%20width='17'%20height='50.25'/%3E%3Crect%20x='41.5'%20y='55.75'%20width='17'%20height='44.25'/%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  /* Same tokens and parts as index.html (that page inlines its own copy of this). */
+  :root{
+    --color-bg:#0e1117; --color-surface:#161b24; --color-text:#e8edf2;
+    --color-accent:#e8a020; --color-accent-2:#d4921c;
+    --color-divider:color-mix(in srgb, #e8edf2 14%, transparent);
+    --color-accent-600:#d4921c; --color-accent-700:#c98b18;
+    --color-accent-800:#8a5e0f; --color-accent-900:#1a2030;
+    --font-heading:"Barlow Condensed", system-ui, sans-serif;
+    --font-heading-weight:600;
+    --font-body:"Barlow", system-ui, sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;background:var(--color-bg);}
+  body{
+    margin:0; background:transparent; color:var(--color-text);
+    font-family:var(--font-body); font-size:15px; line-height:1.55; font-weight:400;
+    text-wrap:pretty; -webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(1150px 760px at 78% -6%, color-mix(in srgb, var(--color-accent) 7%, transparent) 0%, transparent 58%),
+      radial-gradient(900px 720px at 2% 106%, color-mix(in srgb, #2b3a4d 16%, transparent) 0%, transparent 60%);
+  }
+  h1,h2,h3,h4{font-family:var(--font-heading); font-weight:var(--font-heading-weight); line-height:1.12; letter-spacing:-0.015em; margin:0;}
+  p{margin:0;}
+  a{color:var(--color-accent-700); text-underline-offset:3px;}
+  a:hover{color:var(--color-accent);}
+  :focus{outline:none;}
+  :focus-visible{outline:2px solid var(--color-accent); outline-offset:2px;}
+  .wrap{max-width:1100px;margin:0 auto;}
+  .kicker{display:block;font-size:13px;line-height:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);margin:0 0 12px;}
+  .muted{color:color-mix(in srgb, var(--color-text) 78%, transparent);}
+  .fine{color:color-mix(in srgb, var(--color-text) 80%, transparent);}
+  .hr{height:1px; border:0; background:var(--color-divider);}
+  .card-h{font-family:var(--font-heading);font-weight:var(--font-heading-weight);text-transform:uppercase;margin:0;}
+
+  .site-header{position:sticky; top:0; z-index:50; background:color-mix(in srgb, #0d1013 70%, transparent);
+    -webkit-backdrop-filter:saturate(180%) blur(12px); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--color-divider);}
+  .nav{display:flex; align-items:center; gap:26px; max-width:1100px; margin:0 auto; padding:13px 24px;}
+  .nav-brand{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:19px; letter-spacing:0.04em; margin-right:28px; color:#eef4fa; text-decoration:none;}
+  .nav-links{display:flex; align-items:center; gap:26px; margin-right:auto;}
+  .nav-link{position:relative; color:#eef4fa; text-decoration:none; font-size:14px; letter-spacing:0.01em;}
+  .nav-link:hover{color:#fff;}
+  .nav-link{white-space:nowrap;}
+  .nav-link::after{content:""; position:absolute; left:0; right:100%; bottom:-4px; height:1px; background:var(--color-accent); transition:right .22s ease;}
+  .nav-link:hover::after,.nav-link[aria-current="page"]::after{right:0;}
+  @media (max-width:560px){
+    .nav{flex-wrap:wrap; gap:10px 16px;}
+    .nav-brand{margin-right:auto;}
+    .nav-links{order:3; flex-basis:100%; margin:0; gap:20px; flex-wrap:wrap;}
+    .nav-link{font-size:13px;}
+  }
+
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:6px; cursor:pointer; text-decoration:none;
+    font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:14px; line-height:1.2; color:var(--color-text);
+    background:transparent; border:1px solid var(--color-divider); border-radius:0; padding:7px 12px;}
+  .btn-primary{background:var(--color-accent); color:#0e1117; border-color:var(--color-accent);}
+  .btn-primary:hover{background:var(--color-accent-600); color:#0e1117;}
+  .btn-primary:active{background:var(--color-accent-700);}
+  .btn-ghost{color:#e8edf2; border-color:color-mix(in srgb, #e8edf2 30%, transparent);}
+  .btn-ghost:hover{background:color-mix(in srgb, #e8edf2 10%, transparent); color:#fff;}
+  .btn[disabled]{opacity:.55; cursor:progress;}
+
+  .blueprint{position:relative; border:1px solid var(--color-divider); border-radius:0;}
+
+  .price-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;align-items:stretch;}
+  .price-card{display:flex;flex-direction:column;padding:28px 26px;}
+  .price-card .price{font-family:var(--font-heading);font-weight:600;font-size:44px;line-height:1;color:var(--color-accent-700);letter-spacing:-0.01em;margin:14px 0 0;}
+  .price-card .price span{font-size:18px;font-weight:400;color:color-mix(in srgb,var(--color-text) 60%,transparent);}
+  .price-card ul{list-style:none;margin:20px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  .price-card li{position:relative;padding-left:24px;font-size:14.5px;line-height:1.5;color:color-mix(in srgb,var(--color-text) 88%,transparent);}
+  .price-card li::before{content:"";position:absolute;left:0;top:6px;width:12px;height:8px;border-left:2px solid var(--color-accent);border-bottom:2px solid var(--color-accent);transform:rotate(-45deg);}
+  .price-card .price-cta{margin-top:auto;padding-top:24px;}
+  .price-featured{border-color:var(--color-accent);background:#0a0c0f;}
+  .plan-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .plan{border:1px solid var(--color-divider);padding:14px 14px 16px;display:flex;flex-direction:column;gap:4px;}
+  .plan .plan-name{font-family:var(--font-heading);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;font-size:13px;color:var(--color-accent);}
+  .plan .plan-price{font-family:var(--font-heading);font-weight:600;font-size:30px;line-height:1.05;color:var(--color-text);}
+  .plan .plan-price span{font-size:15px;font-weight:400;color:color-mix(in srgb,var(--color-text) 62%,transparent);}
+  .plan .plan-note{font-size:12.5px;color:color-mix(in srgb,var(--color-text) 72%,transparent);min-height:2.6em;}
+  .plan .btn{margin-top:8px;padding:11px 12px;font-size:15px;width:100%;}
+  @media (max-width:420px){ .plan-row{grid-template-columns:1fr;} .plan .plan-note{min-height:0;} }
+  .subhead{font-family:var(--font-heading);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;font-size:12px;color:var(--color-accent-700);margin:22px 0 0;}
+  .price-card .subhead + ul{margin-top:10px;}
+
+  .notice{border:1px solid var(--color-divider);padding:12px 14px;font-size:14px;line-height:1.5;color:color-mix(in srgb,var(--color-text) 88%,transparent);margin-top:18px;}
+  .notice.ok{border-color:var(--color-accent);}
+  .notice.err{border-color:#b23b3b;color:#f0b4b4;}
+  .banner{border:1px solid var(--color-accent);background:color-mix(in srgb,var(--color-accent) 7%,var(--color-bg));padding:14px 18px;font-size:15px;margin:0 0 28px;}
+  .banner.cancel{border-color:var(--color-divider);background:transparent;}
+  .manage{border:1px solid var(--color-accent);padding:22px 24px;margin:0 0 28px;}
+  .manage[hidden],.banner[hidden],.notice[hidden]{display:none;}
+  .need-app{font-size:14px;line-height:1.5;border:1px dashed color-mix(in srgb,var(--color-text) 30%,transparent);padding:12px 14px;color:color-mix(in srgb,var(--color-text) 88%,transparent);}
+
+  .site-footer{border-top:1px solid var(--color-divider); background:color-mix(in srgb, var(--color-accent) 4%, var(--color-bg));}
+  .footer-inner{display:flex; flex-wrap:wrap; gap:20px 48px; align-items:flex-start; justify-content:space-between; padding:40px 24px;}
+  .footer-brand{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:20px; letter-spacing:0.04em; margin-bottom:10px;}
+  .footer-links{display:flex; flex-direction:column; gap:8px;}
+  .footer-label{font-size:12px; letter-spacing:0.03em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%,transparent);}
+  .footer-links a{font-size:14px; text-decoration:none; color:var(--color-accent-700);}
+  .footer-links a:hover{color:var(--color-accent);}
+  @media (prefers-reduced-motion:reduce){ .nav-link::after{transition:none;} html{scroll-behavior:auto;} }
+</style>
+<link rel="stylesheet" href="scale.css">
+<link rel="stylesheet" href="mobile.css">
+</head>
+<body>
+<style>
+/* The three doors: the same strip, in the same order, on every page of the site (app, build, consulting). */
+.doors{background:#0a0d12;border-bottom:1px solid var(--color-divider);}
+.doors-in{display:flex;max-width:1100px;margin:0 auto;padding:0 24px;}
+.door{display:flex;align-items:baseline;gap:8px;padding:10px 18px 9px 0;margin-right:18px;text-decoration:none;color:color-mix(in srgb,var(--color-text) 72%,transparent);border-bottom:2px solid transparent;min-height:44px;align-items:center;}
+.door b{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:15px;letter-spacing:0.06em;text-transform:uppercase;}
+.door span{font-size:12.5px;opacity:.8;}
+.door:hover{color:#fff;}
+.door[aria-current="page"]{color:var(--color-accent);border-bottom-color:var(--color-accent);}
+@media (max-width:640px){.doors-in{padding:0 16px;justify-content:space-between;}.door{margin-right:0;padding-right:0;}.door span{display:none;}}
+</style>
+<nav class="doors" aria-label="TrueLane">
+ <div class="doors-in">
+  <a href="index.html" class="door" aria-current="page"><b>App</b><span>for drivers</span></a>
+  <a href="build.html" class="door"><b>Software</b><span>one system for your fleet</span></a>
+  <a href="consulting.html" class="door"><b>Carriers</b><span>find your leaks</span></a>
+ </div>
+</nav>
+
+
+<header class="site-header">
+  <nav class="nav">
+    <a href="index.html" class="nav-brand">TRUELANE</a>
+    <span class="nav-links">
+      <a href="index.html#why" class="nav-link">Why TrueLane</a>
+      <a href="index.html#app" class="nav-link">App</a>
+      <a href="pricing.html" class="nav-link" aria-current="page">Pricing</a>
+    </span>
+    <a href="index.html#beta" class="btn btn-primary" style="text-decoration:none">Join the beta</a>
+  </nav>
+</header>
+
+<main class="wrap" style="padding:64px 24px 80px">
+  <span class="kicker">Pricing</span>
+  <hr class="hr" style="margin:0 0 24px">
+
+  <div id="status-banner" class="banner" hidden role="status"></div>
+
+  <div id="manage-panel" class="manage" hidden>
+    <h2 class="card-h" style="font-size:22px">Manage your subscription</h2>
+    <p class="muted" style="margin:10px 0 16px;max-width:56ch">Change your card, see receipts or cancel in the billing portal.</p>
+    <button type="button" class="btn btn-primary" id="manage-btn" style="padding:12px 22px;font-size:15px">Open the billing portal</button>
+    <p id="manage-msg" class="notice err" hidden role="alert"></p>
+  </div>
+
+  <h1 class="card-h" style="font-size:clamp(28px,4.4vw,44px);letter-spacing:0.01em;max-width:20ch;margin:0 0 10px">30 days of everything. Then Pro.</h1>
+  <p class="muted" style="font-size:15px;line-height:1.6;margin:0 0 32px;max-width:60ch">Pricing for the TrueLane app. The Leak Read, Signals and the Desk are for carriers and fleets, and are priced separately, below.</p>
+
+  <div class="price-grid">
+
+    <div class="blueprint price-card">
+      <h3 class="card-h" style="font-size:21px">Free trial</h3>
+      <div class="price">$0<span> for 30 days</span></div>
+      <ul>
+        <li>Everything on</li>
+        <li>No card to start</li>
+        <li>After day 30, viewing and export (CSV, audit bundle) stay free</li>
+      </ul>
+      <div class="price-cta"><a href="index.html#beta" class="btn btn-ghost" style="width:100%;padding:12px 18px;text-decoration:none">Start free in the beta</a></div>
+    </div>
+
+    <div class="blueprint price-card price-featured">
+      <h3 class="card-h" style="font-size:21px;color:var(--color-accent)">TrueLane Pro</h3>
+      <div class="price" id="pro-price">$19.99<span>/mo</span></div>
+      <p class="muted" style="font-size:13px;margin:6px 0 0">or $179/yr &mdash; about $14/mo, billed once a year</p>
+      <ul>
+        <li>Save and edit loads, backed up to your account</li>
+        <li>New trips, invoicing and Mark paid</li>
+        <li>Rate con and dispatch import</li>
+        <li>Route lookups and PDF receipts</li>
+      </ul>
+
+      <div class="price-cta">
+        <div id="buy-live" hidden>
+          <div class="plan-row">
+            <div class="plan">
+              <span class="plan-name">Monthly</span>
+              <span class="plan-price">$19.99<span>/mo</span></span>
+              <span class="plan-note">Renews monthly until you cancel.</span>
+              <button type="button" class="btn btn-primary" data-plan="monthly">Subscribe monthly</button>
+            </div>
+            <div class="plan">
+              <span class="plan-name">Yearly</span>
+              <span class="plan-price">$179<span>/yr</span></span>
+              <span class="plan-note">About $14/mo, billed once a year. Saves $60.88 over twelve months.</span>
+              <button type="button" class="btn btn-primary" data-plan="yearly">Subscribe yearly</button>
+            </div>
+          </div>
+          <p id="buy-msg" class="notice err" hidden role="alert"></p>
+        </div>
+        <div id="buy-needs-app">
+          <p class="need-app"><strong>Open TrueLane and tap Subscribe.</strong> A purchase attaches to your TrueLane account, and this site has no sign-in.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="blueprint price-card">
+      <h3 class="card-h" style="font-size:21px">Carriers and fleets</h3>
+      <div class="price" style="font-size:24px;line-height:1.2">From $349 a month</div>
+      <ul>
+        <li>TrueLane Desk + driver app: $99 + $25 a truck, $349 minimum, no Read required</li>
+        <li>The Leak Read, optional and only for carriers with their own TMS: $750, about a week, credited toward your first 3 months of Signals or the Desk</li>
+        <li>TrueLane Signals: keep your TMS, founding-carrier pricing quoted after the Read</li>
+      </ul>
+      <div class="price-cta"><a href="build.html" class="btn btn-primary" style="width:100%;padding:12px 18px;text-decoration:none">See the desk</a></div>
+    </div>
+
+  </div>
+
+  <p class="fine" style="font-size:13px;margin-top:20px;max-width:70ch">US dollars. Pro renews until you cancel. Invited beta testers have Pro free during the beta. A rate con or dispatch screenshot you import is read by an AI service.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div style="max-width:54ch">
+      <div class="footer-brand">TRUELANE</div>
+      <p class="fine" style="font-size:13px;margin:0">Know your costs, know the market, count every mile. Freight decision-support built for owner-operators.</p>
+    </div>
+    <div class="footer-links">
+      <span class="footer-label">Get in touch</span>
+      <a href="mailto:hello@usetruelane.com">hello@usetruelane.com</a>
+      <a href="work.html">Portfolio</a>
+    </div>
+  </div>
+  <div class="wrap" style="padding:4px 24px 28px"><p class="fine" style="font-size:12px;margin:0">© 2026 TrueLane. All rights reserved. · Superior One Logistics Corp. · <a href="privacy.html" style="color:inherit;text-decoration:underline">Privacy</a> · <a href="terms.html" style="color:inherit;text-decoration:underline">Terms</a></p></div>
+</footer>
+
+<script>
+(function(){
+  // The app opens this page with ?c=<one-time token> (and &manage=1 for the billing portal). No token, no buy buttons: a purchase has to attach to an account.
+  var FUNCTIONS = 'https://upaxcrtusoexbfndctvo.supabase.co/functions/v1';
+  var CHECKOUT_URL = FUNCTIONS + '/stripe-checkout';
+  var PORTAL_URL = FUNCTIONS + '/stripe-portal';
+
+  var params = new URLSearchParams(window.location.search);
+  var token = params.get('c');
+  var status = params.get('status');
+  var manage = params.get('manage') === '1';
+
+  function el(id){ return document.getElementById(id); }
+
+  var banner = el('status-banner');
+  if (status === 'success') {
+    banner.hidden = false;
+    banner.textContent = 'Payment received. Go back to TrueLane: Pro turns on within a minute. If it hasn’t, reopen the app.';
+  } else if (status === 'cancel') {
+    banner.hidden = false;
+    banner.className = 'banner cancel';
+    banner.textContent = 'Checkout was cancelled. You haven’t been charged.';
+  }
+
+  var EXPIRED = 'This link has expired. Open TrueLane and tap Subscribe again.';
+  var GENERIC = 'Couldn’t start that. Try again, or open TrueLane and tap Subscribe.';
+
+  // Stripe sends people to its own hosts; refuse to navigate anywhere else.
+  function stripeUrl(u){
+    try { var x = new URL(u); return x.protocol === 'https:' && /(^|\.)stripe\.com$/.test(x.hostname) ? x.href : null; } catch (e) { return null; }
+  }
+
+  function call(endpoint, body, msgEl, buttons){
+    msgEl.hidden = true;
+    buttons.forEach(function(b){ b.disabled = true; });
+    function fail(text){ msgEl.textContent = text; msgEl.hidden = false; buttons.forEach(function(b){ b.disabled = false; }); }
+    fetch(endpoint, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) })
+      .then(function(r){
+        return r.json().catch(function(){ return {}; }).then(function(j){ return { status: r.status, ok: r.ok, body: j || {} }; });
+      })
+      .then(function(res){
+        var err = res.body && res.body.error;
+        if (res.ok && res.body.url) {
+          var dest = stripeUrl(res.body.url);
+          if (dest) { window.location.assign(dest); return; }
+          return fail(GENERIC);
+        }
+        if (res.status === 409 || err === 'already_pro') return fail('This account already has Pro, so there is nothing to buy. Open TrueLane to check.');
+        if (res.status === 401 || res.status === 403 || err === 'invalid_token' || err === 'expired') return fail(EXPIRED);
+        fail(GENERIC);
+      })
+      .catch(function(){ fail('Network trouble. Check your connection and try again.'); });
+  }
+
+  if (token && manage) {
+    el('manage-panel').hidden = false;
+    var mbtn = el('manage-btn');
+    mbtn.addEventListener('click', function(){ call(PORTAL_URL, { token: token, purpose: 'portal' }, el('manage-msg'), [mbtn]); });
+  }
+
+  if (token) {
+    el('buy-live').hidden = false;
+    el('buy-needs-app').hidden = true;
+    var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-plan]'));
+    buttons.forEach(function(b){
+      b.addEventListener('click', function(){ call(CHECKOUT_URL, { token: token, plan: b.getAttribute('data-plan') }, el('buy-msg'), buttons); });
+    });
+  }
+})();
+</script>
+</body>
+</html>

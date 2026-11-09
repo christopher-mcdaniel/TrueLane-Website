@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>A friend invited you to TrueLane</title>
+<meta name="description" content="A friend invited you to the TrueLane beta, a calculator and records app for owner-operators.">
+<!-- A QR scan lands here as /i/<CODE> (vercel.json rewrites it to this file). The page never contacts a server about the code and shows nothing about who the code belongs to:
+     the code is read from the address and shown back to the visitor to type at sign-up. Not for search engines; the address is not passed on to other sites (the fonts are the
+     same two the rest of the site loads, and the browser sends them no address). Same look as index.html. -->
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="theme-color" content="#0e1117">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230E1117'/%3E%3Cg%20fill='%23E8A020'%20transform='translate(7%207)%20scale(0.18)'%3E%3Crect%20x='0'%20y='0'%20width='100'%20height='17'/%3E%3Crect%20x='41.5'%20y='0'%20width='17'%20height='50.25'/%3E%3Crect%20x='41.5'%20y='55.75'%20width='17'%20height='44.25'/%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --color-bg:#0e1117; --color-surface:#161b24; --color-text:#e8edf2;
+    --color-accent:#e8a020; --color-accent-600:#d4921c; --color-accent-700:#c98b18;
+    --color-divider:color-mix(in srgb, #e8edf2 14%, transparent);
+    --font-heading:"Barlow Condensed", system-ui, sans-serif; --font-heading-weight:600;
+    --font-body:"Barlow", system-ui, sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  body{margin:0; background:var(--color-bg); color:var(--color-text); font-family:var(--font-body); font-size:15px; line-height:1.55; -webkit-font-smoothing:antialiased; text-wrap:pretty;}
+  h1,h2{font-family:var(--font-heading); font-weight:var(--font-heading-weight); line-height:1.12; letter-spacing:-0.015em; margin:0;}
+  p{margin:0;}
+  a{color:var(--color-accent-700); text-underline-offset:3px;}
+  :focus{outline:none;}
+  :focus-visible{outline:2px solid var(--color-accent); outline-offset:2px;}
+  .wrap{max-width:1100px; margin:0 auto;}
+  .kicker{display:block; font-size:13px; line-height:12px; letter-spacing:0.08em; text-transform:uppercase; font-weight:600; color:color-mix(in srgb,#f0c67a 92%, transparent); margin:0 0 16px;}
+  .muted{color:color-mix(in srgb, var(--color-text) 78%, transparent);}
+
+  /* header: the same bar as the home page */
+  .site-header{position:sticky; top:0; z-index:50; background:color-mix(in srgb, #0d1013 70%, transparent); -webkit-backdrop-filter:saturate(180%) blur(12px); backdrop-filter:saturate(180%) blur(12px); border-bottom:1px solid var(--color-divider);}
+  .nav{display:flex; align-items:center; gap:26px; max-width:1100px; margin:0 auto; padding:13px 24px;}
+  .nav-brand{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:19px; letter-spacing:0.04em; margin-right:28px; text-decoration:none; color:#eef4fa;}
+  .nav-link{white-space:nowrap; color:#eef4fa; text-decoration:none; font-size:14px; letter-spacing:0.01em;}
+  .nav-link:hover{color:#fff;}
+  @media (max-width:560px){
+    .nav{flex-wrap:wrap; gap:10px 16px;}
+    .nav-brand{margin-right:auto;}
+    .nav-links{order:3; flex-basis:100%; margin:0; gap:8px 20px; display:flex; flex-wrap:wrap;}
+    .nav-link{font-size:13px;}
+  }
+
+  /* buttons: square, condensed, gold */
+  .btn{display:inline-flex; align-items:center; justify-content:center; gap:6px; cursor:pointer; text-decoration:none; font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:14px; line-height:1.2; color:var(--color-text); background:transparent; border:1px solid var(--color-divider); border-radius:0; padding:7px 12px;}
+  .btn-primary{background:var(--color-accent); color:#0e1117; border-color:var(--color-accent);}
+  .btn-primary:hover{background:var(--color-accent-600); color:#0e1117;}
+  .btn-primary:active{background:var(--color-accent-700);}
+  .btn-ghost{color:#e8edf2; border-color:color-mix(in srgb,#e8edf2 38%, transparent);}
+  .btn-ghost:hover{background:color-mix(in srgb,#ffffff 14%, transparent); color:#fff;}
+  .btn[hidden]{display:none;}
+  .btn-big{padding:14px 28px; font-size:15px;}
+
+  /* the page: the home page's night-freight photo behind, a blueprint frame with gold corners for the code */
+  .hero{position:relative; isolation:isolate; overflow:hidden; min-height:calc(100vh - 53px); background:#0a0c0f url('/image%20(5).jpg') center/cover no-repeat;}
+  .hero::before{content:""; position:absolute; inset:0; z-index:-1; background:
+    linear-gradient(90deg, rgba(10,12,15,.92) 0%, rgba(10,12,15,.74) 32%, rgba(10,12,15,.55) 60%, rgba(10,12,15,.4) 100%),
+    linear-gradient(180deg, rgba(10,12,15,.16) 0%, rgba(10,12,15,0) 32%, rgba(10,12,15,.08) 68%, rgba(10,12,15,.86) 100%);}
+  .hero h1{color:#f5f8fb; font-size:clamp(36px,6vw,64px); line-height:1.04; letter-spacing:0.01em; text-transform:uppercase; max-width:14ch;}
+  .lede{color:color-mix(in srgb,#eef4fa 88%, transparent); font-size:18px; line-height:1.6; max-width:44ch; margin:24px 0 0;}
+  .blueprint{position:relative; border:1px solid var(--color-divider); border-radius:0; background:rgba(14,17,23,.88); padding:26px; margin:32px 0 0; max-width:440px;}
+  .blueprint[hidden]{display:none;}
+  .blueprint>.corner{position:absolute; width:11px; height:11px; color:var(--color-accent);}
+  .blueprint>.corner::before,.blueprint>.corner::after{content:""; position:absolute; background:currentColor;}
+  .blueprint>.corner::before{left:5px; top:0; width:1px; height:100%;}
+  .blueprint>.corner::after{top:5px; left:0; width:100%; height:1px;}
+  .blueprint>.corner.tl{top:-6px; left:-6px;} .blueprint>.corner.tr{top:-6px; right:-6px;}
+  .blueprint>.corner.bl{bottom:-6px; left:-6px;} .blueprint>.corner.br{bottom:-6px; right:-6px;}
+  .code-label{font-size:12px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 72%,transparent); margin:0 0 8px;}
+  .code{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:44px; line-height:1.05; letter-spacing:0.14em; color:var(--color-text); margin:0; font-variant-numeric:tabular-nums; user-select:all; -webkit-user-select:all;}
+  .code-note{margin:14px 0 0; font-size:14px; color:color-mix(in srgb, var(--color-text) 78%, transparent);}
+  .actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:32px; align-items:center;}
+  .fine{margin-top:28px; font-size:13px; color:color-mix(in srgb,#eef4fa 68%, transparent);}
+  .fine a{color:color-mix(in srgb,#eef4fa 80%, transparent);}
+</style>
+<link rel="stylesheet" href="/scale.css">
+</head>
+<body>
+<header class="site-header">
+  <nav class="nav">
+    <a href="/index.html" class="nav-brand">TRUELANE</a>
+    <span class="nav-links">
+      <a href="/index.html#why" class="nav-link">Why TrueLane</a>
+      <a href="/index.html#app" class="nav-link">App</a>
+      <a href="/consulting.html" class="nav-link">Consulting</a>
+      <a href="/pricing.html" class="nav-link">Pricing</a>
+    </span>
+    <a href="/index.html#beta" class="btn btn-primary">Join the beta</a>
+  </nav>
+</header>
+
+<main class="hero">
+  <div class="wrap" style="padding:96px 24px 80px">
+    <span class="kicker">You&rsquo;ve been invited</span>
+    <h1>A friend invited you to TrueLane</h1>
+    <p class="lede">TrueLane shows what a load really pays after fuel and costs. It is in beta for owner-operators.</p>
+
+    <section class="blueprint" id="code-card" hidden aria-labelledby="code-label">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <p class="code-label" id="code-label">Your friend&rsquo;s code</p>
+      <p class="code" id="code" aria-live="polite"></p>
+      <p class="code-note">After you install TrueLane, enter this code when you sign up.</p>
+    </section>
+
+    <div class="actions">
+      <a class="btn btn-primary btn-big" href="/index.html#beta">Join the TrueLane beta</a>
+      <a class="btn btn-ghost btn-big" id="open-app" href="truelane://" hidden>Already have the app? Open in TrueLane</a>
+    </div>
+
+    <p class="fine">Nothing about your friend is shown here. <a href="/privacy.html">Privacy</a> &middot; <a href="/terms.html">Terms</a></p>
+  </div>
+</main>
+<script>
+(function () {
+  // The code is the last part of the address: /i/ABCD2345. Eight characters, no I, O, 0 or 1 (the same rule the app and the server use). Anything else shows the plain invite.
+  var match = /^\/i\/([A-Za-z0-9]{8})\/?$/.exec(location.pathname);
+  var code = match ? match[1].toUpperCase() : '';
+  if (!/^[A-HJ-NP-Z2-9]{8}$/.test(code)) return;
+  document.getElementById('code').textContent = code.slice(0, 4) + '-' + code.slice(4);
+  document.getElementById('code-card').hidden = false;
+  var open = document.getElementById('open-app');
+  open.href = 'truelane://i/' + code;
+  open.hidden = false;
+})();
+</script>
+</body>
+</html>

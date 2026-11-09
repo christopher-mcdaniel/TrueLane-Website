@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================= -->
+<!--  SEO / social. truelane.com is a parked page for sale, not ours, -->
+<!--  so the address is the Vercel site until the real domain is live. -->
+<!--  Switch every page at once with: node scripts/switch-site-domain.mjs <https://origin> -->
+<!-- ============================================================= -->
+<title>TrueLane: Find where your freight leaks money</title>
+<meta name="description" content="TrueLane puts a dollar figure on detention you never billed, empty miles, and loads booked under your floor. Run a TMS? Get the $750 Leak Read from the exports you already have. No TMS? Apply for a free 30-day run of the TrueLane Desk.">
+<meta name="robots" content="index,follow">
+<link rel="canonical" href="https://truelane-three.vercel.app/consulting.html">
+<meta name="theme-color" content="#5980a6">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="TrueLane">
+<meta property="og:title" content="TrueLane: Find where your freight leaks money">
+<meta property="og:description" content="A dollar figure on the detention you never billed, the empty miles, and the loads booked under your floor. Leak Read for TMS carriers, a free 30-day Desk cohort for the rest.">
+<meta property="og:locale" content="en_US">
+<meta property="og:url" content="https://truelane-three.vercel.app/consulting.html">
+<meta property="og:image" content="https://truelane-three.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="TrueLane: find where your freight leaks money">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TrueLane: Find where your freight leaks money">
+<meta name="twitter:description" content="Detention you never billed, empty miles, loads under your floor, in dollars. Leak Read for TMS carriers; free 30-day Desk cohort for the rest.">
+<meta name="twitter:image" content="https://truelane-three.vercel.app/og-image.png">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20width='32'%20height='32'%20rx='7'%20fill='%230E1117'/%3E%3Cg%20fill='%23E8A020'%20transform='translate(7%207)%20scale(0.18)'%3E%3Crect%20x='0'%20y='0'%20width='100'%20height='17'/%3E%3Crect%20x='41.5'%20y='0'%20width='17'%20height='50.25'/%3E%3Crect%20x='41.5'%20y='55.75'%20width='17'%20height='44.25'/%3E%3C/g%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;700&family=Barlow+Condensed:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+  /* ===== Industry design system — tokens (inlined, self-contained) ===== */
+  :root{
+    --color-bg:#0e1117; --color-surface:#161b24; --color-text:#e8edf2;
+    --color-accent:#e8a020; --color-accent-2:#d4921c;
+    --color-divider:color-mix(in srgb, #e8edf2 14%, transparent);
+    --color-accent-600:#d4921c; --color-accent-700:#c98b18;
+    --color-accent-800:#8a5e0f; --color-accent-900:#1a2030;
+    --font-heading:"Barlow Condensed", system-ui, sans-serif;
+    --font-heading-weight:600;
+    --font-body:"Barlow", system-ui, sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0; background:var(--color-bg); color:var(--color-text);
+    font-family:var(--font-body); font-size:15px; line-height:1.55; font-weight:400;
+    text-wrap:pretty; -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,h4,h5,h6{font-family:var(--font-heading); font-weight:var(--font-heading-weight); line-height:1.12; letter-spacing:-0.015em; margin:0;}
+  p{margin:0;}
+  a{color:var(--color-accent-700); text-underline-offset:3px;}
+  a:hover{color:var(--color-accent-900);}
+  img{display:block; max-width:100%;}
+  section[id]{scroll-margin-top:84px;}
+  :focus{outline:none;}
+  :focus-visible{outline:2px solid var(--color-accent); outline-offset:2px;}
+  ::selection{background:color-mix(in srgb, var(--color-accent) 30%, transparent);}
+  .wrap{max-width:1100px;margin:0 auto;}
+  .kicker{display:block;font-size:13px;line-height:12px;letter-spacing:0.08em;text-transform:uppercase;font-weight:600;color:var(--color-accent-700);margin:0 0 12px;}
+  .lede{color:color-mix(in srgb, var(--color-text) 82%, transparent);}
+  .muted{color:color-mix(in srgb, var(--color-text) 78%, transparent);}
+  .fine{color:color-mix(in srgb, var(--color-text) 80%, transparent);}
+
+  /* rules */
+  .hr{height:1px; border:0; background:var(--color-divider);}
+
+  /* ===== Sleek sticky header ===== */
+  .site-header{
+    position:sticky; top:0; z-index:50;
+    background:color-mix(in srgb, var(--color-bg) 82%, transparent);
+    -webkit-backdrop-filter:saturate(180%) blur(12px);
+    backdrop-filter:saturate(180%) blur(12px);
+    border-bottom:1px solid var(--color-divider);
+  }
+  .nav{display:flex; align-items:center; gap:26px; max-width:1100px; margin:0 auto; padding:13px 24px;}
+  .nav-brand{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:19px; letter-spacing:0.04em; margin-right:28px;}
+  .nav-link{color:inherit; text-decoration:none; font-size:14px; letter-spacing:0.01em;}
+  .nav-link:hover{color:var(--color-accent-700);}
+
+  /* buttons */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:6px;
+    cursor:pointer; text-decoration:none;
+    font-family:var(--font-heading); font-weight:var(--font-heading-weight);
+    font-size:14px; line-height:1.2; color:var(--color-text);
+    background:transparent; border:1px solid var(--color-divider); border-radius:0;
+    padding:7px 12px;
+  }
+  .btn-primary{background:var(--color-accent); color:#0e1117; border-color:var(--color-accent);}
+  .btn-primary:hover{background:var(--color-accent-600); color:#0e1117;}
+  .btn-primary:active{background:var(--color-accent-700);}
+  .btn-ghost{color:#e8edf2; border-color:color-mix(in srgb, #e8edf2 30%, transparent); padding-inline:6px;}
+  .btn-ghost:hover{background:color-mix(in srgb, #e8edf2 10%, transparent); color:#fff;}
+  .btn-ghost:active{background:color-mix(in srgb, #e8edf2 18%, transparent);}
+
+  /* blueprint frame + corner registration marks */
+  .blueprint{position:relative; border:1px solid var(--color-divider); border-radius:0;}
+  .blueprint>.corner{position:absolute; width:11px; height:11px; color:var(--color-accent);}
+  .blueprint>.corner::before,.blueprint>.corner::after{content:""; position:absolute; background:currentColor;}
+  .blueprint>.corner::before{left:5px; top:0; width:1px; height:100%;}
+  .blueprint>.corner::after{top:5px; left:0; width:100%; height:1px;}
+  .blueprint>.corner.tl{top:-6px; left:-6px;}
+  .blueprint>.corner.tr{top:-6px; right:-6px;}
+  .blueprint>.corner.bl{bottom:-6px; left:-6px;}
+  .blueprint>.corner.br{bottom:-6px; right:-6px;}
+
+  /* tables */
+  .table{width:100%; border-collapse:collapse; font-size:14px;}
+  .table th{text-align:left; font-size:11px; letter-spacing:0.08em; text-transform:uppercase; color:color-mix(in srgb, var(--color-text) 72%, transparent); padding:7px; border-bottom:1px solid var(--color-divider);}
+  .table td{padding:7px; border-bottom:1px solid color-mix(in srgb, var(--color-text) 8%, transparent);}
+  .table tbody tr:hover{background:color-mix(in srgb, var(--color-text) 4%, transparent);}
+  .val{font-family:var(--font-heading);font-size:27px;font-weight:600;white-space:nowrap;color:var(--color-accent-700);letter-spacing:-0.01em;}
+
+  /* section title blocks */
+  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;}
+  .grid-4{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:32px;}
+  .card-h{font-family:var(--font-heading);font-weight:var(--font-heading-weight);text-transform:uppercase;margin:0;}
+
+  .how-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  @media (max-width:980px){.how-grid{grid-template-columns:repeat(2,1fr);}}
+  @media (max-width:560px){.how-grid{grid-template-columns:1fr;}}
+
+  /* Header on phones: links wrap to their own row instead of vanishing */
+  @media (max-width:560px){
+    .nav{flex-wrap:wrap; gap:10px 16px;}
+    .nav-brand{margin-right:auto;}
+    .nav-links{order:3; flex-basis:100%; margin:0; gap:20px; justify-content:flex-start;}
+    .nav-link{font-size:13px;}
+  }
+
+  /* ===== Hero with aerial freight-interchange night photo ===== */
+  .hero{position:relative; isolation:isolate; overflow:hidden;
+    background:#0a0c0f url('image (5).jpg') center/cover no-repeat;}
+  .hero::before{content:""; position:absolute; inset:0; z-index:-1; background:
+    linear-gradient(90deg, rgba(10,12,15,.92) 0%, rgba(10,12,15,.74) 32%, rgba(10,12,15,.40) 60%, rgba(10,12,15,.18) 100%),
+    linear-gradient(180deg, rgba(10,12,15,.16) 0%, rgba(10,12,15,0) 32%, rgba(10,12,15,.08) 68%, rgba(10,12,15,.86) 100%);}
+  .hero h1{color:#f5f8fb;}
+  .hero .lede{color:color-mix(in srgb,#eef4fa 88%, transparent);}
+  .hero .fine{color:color-mix(in srgb,#eef4fa 68%, transparent);}
+  .hero .btn-ghost{color:#e8edf2; border-color:color-mix(in srgb,#e8edf2 38%, transparent);}
+  .hero .btn-ghost:hover{background:color-mix(in srgb,#ffffff 14%, transparent); color:#fff;}
+  .site-header{background:color-mix(in srgb, #0d1013 70%, transparent);}
+  .site-header .nav-brand,.site-header .nav-link{color:#eef4fa;}
+  .site-header .nav-link:hover{color:#fff;}
+
+  .paths{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:14px;align-items:stretch;margin-top:30px;max-width:860px;}
+  .path{position:relative;display:flex;flex-direction:column;padding:22px 22px 20px;background:rgba(10,12,15,.78);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border:1px solid color-mix(in srgb,#e8edf2 24%,transparent);}
+  .path:first-child{border-color:color-mix(in srgb,var(--color-accent) 60%,transparent);}
+  .path-or{align-self:center;font-family:var(--font-heading);font-weight:600;font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:color-mix(in srgb,#eef4fa 70%,transparent);}
+  .path-h{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(22px,2.4vw,27px);line-height:1.1;text-transform:uppercase;color:#f5f8fb;margin:0 34px 10px 0;}
+  .path-p{font-size:15.5px;line-height:1.5;color:color-mix(in srgb,#eef4fa 88%,transparent);margin:0 0 12px;}
+  .path-price{font-size:14px;color:color-mix(in srgb,#a9cbe8 90%,transparent);margin:0 0 16px;}
+  .path-price b{color:#f5f8fb;font-weight:700;font-size:16px;}
+  .path-btn{padding:12px 20px;font-size:15px;margin-top:auto;}
+  .path-more>summary{position:absolute;top:16px;right:16px;list-style:none;cursor:pointer;width:24px;height:24px;border:1px solid color-mix(in srgb,#e8edf2 40%,transparent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:Georgia,serif;font-style:italic;font-size:14px;line-height:1;color:color-mix(in srgb,#eef4fa 80%,transparent);}
+  .path-more>summary::-webkit-details-marker{display:none;}
+  .path-more>summary:hover,.path-more[open]>summary{border-color:var(--color-accent);color:var(--color-accent);}
+  .path-more>summary:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px;}
+  .path-more>p{font-size:13px;line-height:1.55;color:color-mix(in srgb,#a9cbe8 90%,transparent);margin:14px 0 0;}
+  @media (max-width:700px){.paths{grid-template-columns:1fr;gap:10px;}.path-or{justify-self:center;}}
+
+  /* ===== rhythm: full-bleed bands ===== */
+  .band{position:relative;}
+  .band-tint{background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg));}
+
+  /* ===== icons (Lucide, thin stroke) ===== */
+  .ico{width:30px;height:30px;stroke:var(--color-accent-700);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;display:block;margin-bottom:10px;}
+  .step-ico{width:26px;height:26px;stroke:var(--color-accent-700);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;}
+
+  /* ===== card hover ===== */
+  .card-lift{transition:transform .2s ease, border-color .2s ease, box-shadow .2s ease;}
+  .card-lift:hover{transform:translateY(-4px); border-color:color-mix(in srgb, var(--color-accent) 55%, var(--color-divider)); box-shadow:0 12px 30px color-mix(in srgb,#1d2d3d 13%, transparent);}
+  .card-lift:hover>.corner{color:var(--color-accent);}
+
+  /* ===== scroll reveal (class added by JS; no-JS shows everything) ===== */
+  .reveal{opacity:0; transform:translateY(16px); transition:opacity .6s ease, transform .6s ease;}
+  .reveal.in{opacity:1; transform:none;}
+  @media (prefers-reduced-motion:reduce){ .reveal{opacity:1;transform:none;transition:none;} }
+
+  /* ===== motion: hero entrance, button press, drawn rules, wedge sequence (the same as the app page) ===== */
+  @keyframes hero-in{from{opacity:0; transform:translateY(14px);} to{opacity:1; transform:none;}}
+  .hero-in{animation:hero-in .7s cubic-bezier(.2,.7,.2,1) both; animation-delay:var(--d,0ms);}
+  .btn{transition:transform .08s ease, background .15s ease, border-color .15s ease;}
+  .btn:active{transform:translateY(1px);}
+  .hr.draw{transform:scaleX(0); transform-origin:left center; transition:transform .9s cubic-bezier(.2,.7,.2,1);}
+  .hr.draw.in{transform:none;}
+  .wedge p.seq .w1, .wedge p.seq .w2{display:inline-block; opacity:0; transform:translateY(8px); transition:opacity .7s ease, transform .7s ease;}
+  .wedge p.seq.in .w1{opacity:1; transform:none;}
+  .wedge p.seq.in .w2{opacity:1; transform:none; transition-delay:1s;}
+  @media (prefers-reduced-motion:reduce){
+    .hero-in{animation:none;}
+    .btn{transition:none;}
+    .btn:active{transform:none;}
+    .hr.draw,.wedge p.seq .w1,.wedge p.seq .w2{opacity:1; transform:none; transition:none;}
+  }
+
+  /* ===== nav links group ===== */
+  .nav-links{display:flex; align-items:center; gap:26px; margin-right:auto;}
+
+  /* ===== footer ===== */
+  .site-footer{border-top:1px solid var(--color-divider); background:color-mix(in srgb, var(--color-accent) 4%, var(--color-bg));}
+  .footer-inner{display:flex; flex-wrap:wrap; gap:20px 48px; align-items:flex-start; justify-content:space-between; padding:26px 24px 18px;}
+  .footer-brand{font-family:var(--font-heading); font-weight:var(--font-heading-weight); font-size:20px; letter-spacing:0.04em; margin-bottom:10px;}
+  .footer-links{display:flex; flex-direction:column; gap:8px;}
+  .footer-label{font-size:12px; letter-spacing:0.03em; text-transform:uppercase; color:color-mix(in srgb,var(--color-text) 70%, transparent);}
+  .footer-links a{font-size:14px; text-decoration:none; color:var(--color-accent-700);}
+  .footer-links a:hover{color:var(--color-accent-900);}
+
+  /* ===== intake form ===== */
+  .field{margin-bottom:12px;}
+  .field-row{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;}
+  @media (max-width:520px){.field-row{grid-template-columns:1fr;}}
+  .field label{display:block;font-size:12px;letter-spacing:0.03em;margin-bottom:6px;text-transform:uppercase;color:color-mix(in srgb,var(--color-text) 72%,transparent);}
+  .input{width:100%;font:inherit;font-size:15px;color:var(--color-text);background:var(--color-bg);border:1px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-divider));border-radius:0;padding:10px 12px;transition:border-color .15s ease;}
+  .input:hover{border-color:var(--color-accent);}
+  .input:focus-visible{border-color:var(--color-accent);outline:none;}
+  textarea.input{resize:vertical;min-height:96px;line-height:1.5;}
+  input[type=file].input{padding:8px 10px;font-size:13px;cursor:pointer;}
+  .form-note{display:block;margin-top:6px;font-size:12px;color:color-mix(in srgb,var(--color-text) 62%,transparent);}
+  .form-status{margin:12px 0 0;font-size:14px;line-height:1.5;}
+  .form-status.ok{color:var(--color-accent-700);}
+  .form-status.err{color:#b23b3b;}
+
+  /* progressive disclosure (native <details>) */
+  details.disclose > summary{list-style:none;cursor:pointer;display:inline-flex;align-items:center;gap:9px;font-family:var(--font-heading);font-weight:600;text-transform:uppercase;letter-spacing:0.05em;font-size:13px;color:var(--color-accent-700);padding:10px 14px;border:1px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-divider));transition:color .15s ease, border-color .15s ease, background .15s ease;}
+  details.disclose > summary::-webkit-details-marker{display:none;}
+  details.disclose > summary::before{content:"+";font-size:16px;line-height:1;width:14px;text-align:center;}
+  details.disclose[open] > summary::before{content:"\2013";}
+  details.disclose > summary::after{content:"See more";font-family:var(--font-body);font-weight:400;text-transform:none;letter-spacing:0;font-size:12px;color:color-mix(in srgb, var(--color-text) 58%, transparent);}
+  details.disclose[open] > summary::after{content:"See less";}
+  details.disclose > summary:hover{color:var(--color-accent);border-color:var(--color-accent);background:color-mix(in srgb, var(--color-accent) 8%, transparent);}
+  details.disclose > summary:hover::after{color:color-mix(in srgb, var(--color-text) 82%, transparent);}
+  details.disclose > summary:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px;}
+  details.disclose--sep{border-top:1px solid var(--color-divider);margin-top:28px;padding-top:20px;}
+  .disclose--head > summary{font-family:var(--font-heading);font-weight:var(--font-heading-weight);text-transform:uppercase;font-size:20px;letter-spacing:0;color:var(--color-text);gap:12px;}
+
+  /* audience: carrier-only (segmentation engine removed) */
+
+  /* ===== positioning wedge ===== */
+  .wedge{text-align:center;background:color-mix(in srgb, var(--color-accent) 5%, var(--color-bg));}
+  .wedge p{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:clamp(21px,3.3vw,32px);line-height:1.2;max-width:none;margin:0 auto;text-transform:uppercase;letter-spacing:0.01em;}
+  .wedge .sub{font-family:var(--font-body);font-weight:400;text-transform:none;letter-spacing:0;font-size:16px;line-height:1.55;max-width:54ch;margin:10px auto 0;color:color-mix(in srgb,var(--color-text) 76%,transparent);}
+
+  /* ===== founder block ===== */
+  .founder{display:grid;grid-template-columns:220px 1fr;gap:38px;align-items:start;margin-bottom:48px;}
+  .founder-photo img{width:100%;display:block;filter:grayscale(12%) contrast(1.02);}
+  .founder-photo > .corner{color:var(--color-accent);}
+  .founder-name{font-family:var(--font-heading);font-weight:var(--font-heading-weight);text-transform:uppercase;font-size:27px;line-height:1.05;margin:0;}
+  .founder-role{font-size:13px;letter-spacing:0.05em;text-transform:uppercase;margin:6px 0 18px;opacity:0.72;}
+  .founder .bio{font-size:15px;line-height:1.65;margin:0 0 12px;opacity:0.9;max-width:56ch;}
+  @media(max-width:620px){.founder{grid-template-columns:1fr;gap:22px;} .founder-photo{max-width:210px;}}
+
+  /* ===== finding deck (swipeable readings) ===== */
+  .finding-deck{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;}
+  .finding-deck::-webkit-scrollbar{display:none;}
+  .finding-card{flex:0 0 100%;scroll-snap-align:start;}
+  .finding-nav{display:flex;align-items:center;gap:10px;margin-top:16px;}
+  .finding-dots{display:flex;gap:7px;flex:1;align-items:center;}
+  .finding-dots button{width:8px;height:8px;padding:0;border:0;background:color-mix(in srgb,var(--color-text) 22%,transparent);cursor:pointer;transition:background .2s,transform .2s;}
+  .finding-dots button[aria-current="true"]{background:var(--color-accent-700);transform:scale(1.3);}
+  .finding-arrow{width:34px;height:34px;border:1px solid var(--color-divider);background:var(--color-bg);color:var(--color-accent-700);cursor:pointer;font-size:18px;line-height:1;display:flex;align-items:center;justify-content:center;font-family:var(--font-heading);}
+  .finding-arrow:hover{border-color:var(--color-accent);color:var(--color-accent-900);}
+
+  /* =================================================================== */
+  /*  ENHANCEMENTS — additive polish, safe to delete this whole block     */
+  /*  1 depth · 2 corner discipline · 3 header · 4 form focus · 5 nav      */
+  /* =================================================================== */
+
+  /* 1 · engineered "blueprint board" depth: two ultra-faint fixed radials
+        that show only through the neutral sections — no grunge, no jank   */
+  html{background:var(--color-bg);}
+  body{background:transparent;}
+  body::before{
+    content:""; position:fixed; inset:0; z-index:-1; pointer-events:none;
+    background:
+      radial-gradient(1150px 760px at 78% -6%, color-mix(in srgb, var(--color-accent) 7%, transparent) 0%, transparent 58%),
+      radial-gradient(900px 720px at 2% 106%, color-mix(in srgb, #2b3a4d 16%, transparent) 0%, transparent 60%);
+  }
+
+  /* 2 · reserve the corner registration marks for signature moments
+        (Diagnose card, founder, intake, leak figure). Repeated grid cards
+        and the swipe deck drop them so the motif keeps its meaning         */
+  .finding-card > .corner{display:none;}
+  .no-corner > .corner{display:none;}
+
+  /* 3 · premium settle instead of a hard pop on the sticky header          */
+  .site-header{transition:background .3s ease, backdrop-filter .3s ease, -webkit-backdrop-filter .3s ease, border-color .3s ease;}
+
+  /* 4 · the whole intake frame answers when any field is focused           */
+  .intake-form{transition:border-color .2s ease, box-shadow .2s ease;}
+  .intake-form:focus-within{
+    border-color:var(--color-accent);
+    box-shadow:0 0 0 1px color-mix(in srgb, var(--color-accent) 40%, transparent),
+               0 14px 40px color-mix(in srgb, var(--color-accent) 10%, transparent);
+  }
+  .intake-form:focus-within > .corner{color:var(--color-accent);}
+
+  /* 5 · an engineered underline that draws in left-to-right on nav hover   */
+  .nav-link{position:relative;}
+  .nav-link::after{content:""; position:absolute; left:0; right:100%; bottom:-4px;
+    height:1px; background:var(--color-accent); transition:right .22s ease;}
+  .nav-link:hover::after{right:0;}
+
+  @media (prefers-reduced-motion:reduce){
+    .site-header,.intake-form{transition:none;}
+    .nav-link::after{transition:none;}
+  }
+</style>
+<link rel="stylesheet" href="scale.css">
+<link rel="stylesheet" href="mobile.css">
+<script src="mobile.js" defer></script>
+</head>
+<body>
+<style>
+/* The three doors: the same strip, in the same order, on every page of the site (app, build, consulting). */
+.doors{background:#0a0d12;border-bottom:1px solid var(--color-divider);}
+.doors-in{display:flex;max-width:1100px;margin:0 auto;padding:0 24px;}
+.door{display:flex;align-items:baseline;gap:8px;padding:10px 18px 9px 0;margin-right:18px;text-decoration:none;color:color-mix(in srgb,var(--color-text) 72%,transparent);border-bottom:2px solid transparent;min-height:44px;align-items:center;}
+.door b{font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:15px;letter-spacing:0.06em;text-transform:uppercase;}
+.door span{font-size:12.5px;opacity:.8;}
+.door:hover{color:#fff;}
+.door[aria-current="page"]{color:var(--color-accent);border-bottom-color:var(--color-accent);}
+@media (max-width:640px){.doors-in{padding:0 16px;justify-content:space-between;}.door{margin-right:0;padding-right:0;}.door span{display:none;}}
+</style>
+<nav class="doors" aria-label="TrueLane">
+ <div class="doors-in">
+  <a href="index.html" class="door"><b>App</b><span>for drivers</span></a>
+  <a href="build.html" class="door"><b>Software</b><span>one system for your fleet</span></a>
+  <a href="consulting.html" class="door" aria-current="page"><b>Carriers</b><span>find your leaks</span></a>
+ </div>
+</nav>
+
+
+<header class="site-header">
+  <nav class="nav">
+    <span class="nav-brand">TRUELANE</span>
+    <span class="nav-links">
+      <a href="#how" class="nav-link">How it works</a>
+      <a href="#process" class="nav-link">How it starts</a>
+      <a href="#fit" class="nav-link">About</a>
+    </span>
+    <a href="https://calendly.com/cm145571/new-meeting" class="btn btn-primary" target="_blank" rel="noopener" style="text-decoration:none">Book a 15-min call</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="wrap" style="padding:104px 24px 72px">
+  <span class="kicker hero-in" style="--d:0ms;color:color-mix(in srgb,#a9cbe8 92%, transparent);margin:0 0 16px">For carriers &middot; two ways in</span>
+  <h1 style="font-size:clamp(40px,6vw,72px);line-height:1.04;letter-spacing:0.01em;text-transform:uppercase;margin:0;max-width:none">
+    <span class="hero-in" style="display:block;--d:120ms">Find where your freight</span>
+    <span class="hero-in" style="display:block;--d:260ms">leaks money.</span>
+  </h1>
+  <p class="lede hero-in" style="--d:420ms;font-size:20px;line-height:1.6;max-width:60ch;margin:24px 0 0">TrueLane puts a dollar figure on detention you never billed, empty miles, and loads booked under your floor, then alerts your team when the next one shows up.</p>
+  <div class="paths hero-in" style="--d:560ms">
+    <div class="path">
+      <h2 class="path-h">I run a TMS</h2>
+      <p class="path-p">Keep your TMS. Send 90 days of exports, get one page of dollars by leak.</p>
+      <p class="path-price"><b>$750 one time</b> &middot; report in about a week</p>
+      <a href="#intake" id="read-cta" class="btn btn-primary path-btn" style="text-decoration:none">Get the Leak Read</a>
+      <details class="path-more"><summary aria-label="More about the Leak Read" title="More">i</summary>
+        <p>Credited toward your first 3 months of Signals or the Desk. We check a sample of your export before you pay, and refund you in full if the data can&rsquo;t support a read. Export-only: we never need your TMS login.</p>
+      </details>
+    </div>
+    <span class="path-or" aria-hidden="true">or</span>
+    <div class="path">
+      <h2 class="path-h">No TMS, or on spreadsheets</h2>
+      <p class="path-p">We lend you the Desk for 30 days, Signals included.</p>
+      <p class="path-price"><b>Free</b> &middot; application only</p>
+      <a href="#intake" id="cohort-cta" class="btn btn-ghost path-btn" style="text-decoration:none">Apply for the 30-day cohort</a>
+      <details class="path-more"><summary aria-label="More about the 30-day cohort" title="More">i</summary>
+        <p>Run your next 30 days on the Desk and get your first leak summary at day 30. 5 to 10 carriers, up to 10 trucks each, no card up front. Stay at $349 a month, or export your data free.</p>
+      </details>
+    </div>
+  </div>
+  <p class="fine hero-in" style="--d:700ms;font-size:13px;margin:18px 0 0;max-width:80ch;color:color-mix(in srgb,#a9cbe8 85%, transparent)">Not sure which one you are? <a href="https://calendly.com/cm145571/new-meeting" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Book a 15-min call</a> and we will tell you. Want the full system instead? <a href="build.html" style="color:inherit;text-decoration:underline">See the TrueLane Desk &rarr;</a></p>
+  </div>
+</section>
+
+<section class="wedge">
+  <div class="wrap" style="padding:30px 24px 26px">
+    <p><span class="w1">Find the leak.</span> <span class="w2">Then stop it.</span></p>
+    <p class="sub">One page on your last 90 days, then alerts that catch the next leak.</p>
+  </div>
+</section>
+
+<section id="how" class="band band-tint">
+  <div class="wrap" style="padding:36px 24px 52px">
+  <span class="kicker">01 &middot; How it works</span>
+  <hr class="hr" style="margin:0 0 24px">
+  <div class="how-grid">
+    <div class="blueprint card-lift no-corner" style="overflow:visible;padding:22px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14a9 3 0 0 0 18 0V5"/><path d="M3 12a9 3 0 0 0 18 0"/></svg>
+      <h2 class="card-h" style="font-size:22px">Capture</h2>
+      <p class="muted" style="font-size:15px;line-height:1.55;margin:12px 0 0">Your exports (loads, fuel card, ELD) land in a private workspace. No TMS login.</p>
+    </div>
+    <div class="blueprint card-lift no-corner" style="overflow:visible;padding:22px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+      <h2 class="card-h" style="font-size:22px">Translate</h2>
+      <p class="muted" style="font-size:15px;line-height:1.55;margin:12px 0 0">One engine turns them into profit by lane, customer and truck.</p>
+    </div>
+    <div class="blueprint card-lift" style="overflow:visible;padding:22px;background:#0a0c0f;border-color:var(--color-accent);">
+      <i class="corner tl" style="color:var(--color-accent)"></i><i class="corner tr" style="color:var(--color-accent)"></i><i class="corner bl" style="color:var(--color-accent)"></i><i class="corner br" style="color:var(--color-accent)"></i>
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true" style="color:var(--color-accent)"><circle cx="10.5" cy="10.5" r="7"/><path d="M21 21l-5.6-5.6"/></svg>
+      <h2 class="card-h" style="font-size:22px;color:var(--color-accent)">Diagnose <span style="font-size:12px;font-weight:400;opacity:0.7">&middot; the read</span></h2>
+      <p style="font-size:15px;line-height:1.55;margin:12px 0 0;color:color-mix(in srgb,#e8edf2 80%,transparent)">The few numbers that matter, with the loads behind each one.</p>
+      <p style="font-size:12px;line-height:1.5;margin:12px 0 0;color:var(--color-accent);opacity:0.9;font-family:var(--font-heading);letter-spacing:0.04em;text-transform:uppercase">The number that starts everything.</p>
+    </div>
+    <div class="blueprint card-lift no-corner" style="overflow:visible;padding:22px">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <svg class="ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+      <h2 class="card-h" style="font-size:22px">Monitor <span style="font-size:12px;font-weight:400;opacity:0.7">&mdash; Signals</span></h2>
+      <p class="muted" style="font-size:15px;line-height:1.55;margin:12px 0 0">Reads every load in each export you send, as often as you send them. Alerts to your team by Slack or email, plus a Monday leak report.</p>
+      <p style="font-size:12px;line-height:1.5;margin:12px 0 0;color:var(--color-accent-700);opacity:0.9;font-family:var(--font-heading);letter-spacing:0.04em;text-transform:uppercase">Keeps working after the call.</p>
+    </div>
+  </div>
+
+  <!-- Insight deck (stat-led, swipeable), directly under the four steps as the proof -->
+  <div style="margin-top:40px;max-width:800px">
+      <div class="finding-deck" tabindex="0" aria-label="Sample signals, swipe or use the arrows to see more">
+
+        <!-- Deadhead (carrier) -->
+        <div class="finding-card blueprint" style="background:var(--color-bg);overflow:visible">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;font-size:13px">Signal · sample</span>
+            <span style="font-family:var(--font-heading);font-size:12px;letter-spacing:0.05em;color:color-mix(in srgb, var(--color-text) 55%, transparent)">No. 014</span>
+          </div>
+          <div style="padding:26px 24px 22px">
+            <span style="display:block;font-family:var(--font-heading);font-weight:600;font-size:56px;line-height:1;color:var(--color-accent-700);letter-spacing:-0.01em">$798<span style="font-size:22px;font-weight:400;color:color-mix(in srgb, var(--color-text) 60%, transparent)">/wk</span></span>
+            <span style="display:block;margin-top:14px;font-family:var(--font-heading);font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:0.02em">Dallas → El Paso</span>
+            <p style="font-size:14.5px;line-height:1.6;margin:12px 0 0;color:color-mix(in srgb, var(--color-text) 84%, transparent)">Margin leaking every week on this lane. Not the rate. The truck's coming home empty a quarter of the time.</p>
+            <div style="margin-top:22px">
+              <div style="display:flex;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-bottom:6px;justify-content:space-between">
+                <span>Miles this lane</span><span>25% deadhead</span>
+              </div>
+              <div style="display:flex;height:14px;width:100%;background:var(--color-divider)">
+                <div style="width:75%;background:var(--color-accent);"></div>
+                <div style="width:25%;background:repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-text) 22%, transparent) 0 6px, transparent 6px 12px)"></div>
+              </div>
+            </div>
+          </div>
+          <p style="margin:0;padding:12px 20px;border-top:1px solid var(--color-divider);font-size:12px;color:color-mix(in srgb, var(--color-text) 76%, transparent)">Illustrative example, not a live figure. Real diagnoses come from your data, on the call.</p>
+        </div>
+
+        <!-- Trailer dwell (carrier) -->
+        <div class="finding-card blueprint" style="background:var(--color-bg);overflow:visible">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;font-size:13px">Signal · sample</span>
+            <span style="font-family:var(--font-heading);font-size:12px;letter-spacing:0.05em;color:color-mix(in srgb, var(--color-text) 55%, transparent)">No. 018</span>
+          </div>
+          <div style="padding:26px 24px 22px">
+            <span style="display:block;font-family:var(--font-heading);font-weight:600;font-size:56px;line-height:1;color:var(--color-accent-700);letter-spacing:-0.01em">$2,400<span style="font-size:22px;font-weight:400;color:color-mix(in srgb, var(--color-text) 60%, transparent)">/mo</span></span>
+            <span style="display:block;margin-top:14px;font-family:var(--font-heading);font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:0.02em">Trailers dwelling too long</span>
+            <p style="font-size:14.5px;line-height:1.6;margin:12px 0 0;color:color-mix(in srgb, var(--color-text) 84%, transparent)">Trailers parked at a dock aren't earning. Long dwell ties up equipment you could be turning and quietly runs up detention you may never bill.</p>
+            <div style="margin-top:22px">
+              <div style="display:flex;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-bottom:6px;justify-content:space-between">
+                <span>Time at the dock</span><span>2.5x your target</span>
+              </div>
+              <div style="display:flex;height:14px;width:100%;background:var(--color-divider)">
+                <div style="width:40%;background:var(--color-accent);"></div>
+                <div style="width:60%;background:repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-text) 22%, transparent) 0 6px, transparent 6px 12px)"></div>
+              </div>
+            </div>
+          </div>
+          <p style="margin:0;padding:12px 20px;border-top:1px solid var(--color-divider);font-size:12px;color:color-mix(in srgb, var(--color-text) 76%, transparent)">Illustrative example, not a live figure. Real diagnoses come from your data, on the call.</p>
+        </div>
+
+        <!-- Unbilled detention (all) -->
+        <div class="finding-card blueprint" style="background:var(--color-bg);overflow:visible">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;font-size:13px">Signal · sample</span>
+            <span style="font-family:var(--font-heading);font-size:12px;letter-spacing:0.05em;color:color-mix(in srgb, var(--color-text) 55%, transparent)">No. 033</span>
+          </div>
+          <div style="padding:26px 24px 22px">
+            <span style="display:block;font-family:var(--font-heading);font-weight:600;font-size:56px;line-height:1;color:var(--color-accent-700);letter-spacing:-0.01em">$3,600<span style="font-size:22px;font-weight:400;color:color-mix(in srgb, var(--color-text) 60%, transparent)">/mo</span></span>
+            <span style="display:block;margin-top:14px;font-family:var(--font-heading);font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:0.02em">Detention you never billed</span>
+            <p style="font-size:14.5px;line-height:1.6;margin:12px 0 0;color:color-mix(in srgb, var(--color-text) 84%, transparent)">Drivers sat past free time on 18 stops last month. Most never made it onto an invoice. Time you already paid for, given away.</p>
+            <div style="margin-top:22px">
+              <div style="display:flex;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-bottom:6px;justify-content:space-between">
+                <span>Detained stops</span><span>60% unbilled</span>
+              </div>
+              <div style="display:flex;height:14px;width:100%;background:var(--color-divider)">
+                <div style="width:40%;background:var(--color-accent);"></div>
+                <div style="width:60%;background:repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-text) 22%, transparent) 0 6px, transparent 6px 12px)"></div>
+              </div>
+            </div>
+          </div>
+          <p style="margin:0;padding:12px 20px;border-top:1px solid var(--color-divider);font-size:12px;color:color-mix(in srgb, var(--color-text) 76%, transparent)">Illustrative example, not a live figure. Real diagnoses come from your data, on the call.</p>
+        </div>
+
+        <!-- Dead lane (all) -->
+        <div class="finding-card blueprint" style="background:var(--color-bg);overflow:visible">
+          <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+          <div style="display:flex;align-items:center;justify-content:space-between;padding:13px 20px;border-bottom:1px solid var(--color-divider)">
+            <span style="font-family:var(--font-heading);font-weight:600;text-transform:uppercase;letter-spacing:0.04em;font-size:13px">Signal · sample</span>
+            <span style="font-family:var(--font-heading);font-size:12px;letter-spacing:0.05em;color:color-mix(in srgb, var(--color-text) 55%, transparent)">No. 041</span>
+          </div>
+          <div style="padding:26px 24px 22px">
+            <span style="display:block;font-family:var(--font-heading);font-weight:600;font-size:56px;line-height:1;color:var(--color-accent-700);letter-spacing:-0.01em">$2,100<span style="font-size:22px;font-weight:400;color:color-mix(in srgb, var(--color-text) 60%, transparent)">/mo lost</span></span>
+            <span style="display:block;margin-top:14px;font-family:var(--font-heading);font-weight:600;text-transform:uppercase;font-size:15px;letter-spacing:0.02em">Green Bay → Kansas City</span>
+            <p style="font-size:14.5px;line-height:1.6;margin:12px 0 0;color:color-mix(in srgb, var(--color-text) 84%, transparent)">The rate looks fine. Once fuel, empty miles, and dwell are counted, this lane loses money every run. The kind of leak you can't see until it's added up.</p>
+            <div style="margin-top:22px">
+              <div style="display:flex;font-size:11px;letter-spacing:0.04em;text-transform:uppercase;color:color-mix(in srgb, var(--color-text) 55%, transparent);margin-bottom:6px;justify-content:space-between">
+                <span>Costs on the rate</span><span>+30% you don't see</span>
+              </div>
+              <div style="display:flex;height:14px;width:100%;background:var(--color-divider)">
+                <div style="width:70%;background:var(--color-accent);"></div>
+                <div style="width:30%;background:repeating-linear-gradient(135deg, color-mix(in srgb, var(--color-text) 22%, transparent) 0 6px, transparent 6px 12px)"></div>
+              </div>
+            </div>
+          </div>
+          <p style="margin:0;padding:12px 20px;border-top:1px solid var(--color-divider);font-size:12px;color:color-mix(in srgb, var(--color-text) 76%, transparent)">Illustrative example, not a live figure. Real diagnoses come from your data, on the call.</p>
+        </div>
+
+      </div>
+      <div class="finding-nav">
+        <div class="finding-dots" aria-label="Signals"></div>
+        <button type="button" class="finding-arrow finding-prev" aria-label="Previous signal">&#8249;</button>
+        <button type="button" class="finding-arrow finding-next" aria-label="Next signal">&#8250;</button>
+      </div>
+      <p class="muted" style="font-size:13px;line-height:1.55;margin:18px 0 0;max-width:640px">Every lane is read against all of it &mdash; deadhead, detention, dwell, rate vs. market, cost per mile &mdash; not just the number on the card.</p>
+    </div>
+  </div>
+</section>
+
+<section id="process" class="wrap" style="padding:64px 24px 72px">
+  <span class="kicker">02 &middot; How it starts</span>
+  <hr class="hr" style="margin:0 0 24px">
+  <div class="m-fold" data-more="How it starts: call, Read, Signals">
+  <div class="grid-4" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px">
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:2px">
+        <svg class="step-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:32px;color:var(--color-accent-700)">01</div>
+      </div>
+      <h3 class="card-h" style="font-size:18px;margin:8px 0">Discovery call <span style="font-size:13px;font-weight:400;color:var(--color-accent-700)">&middot; Free</span></h3>
+      <p class="muted" style="font-size:14px;line-height:1.6;margin:0">Fifteen minutes to see if your data is a fit.</p>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:2px">
+        <svg class="step-ico" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+        <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:32px;color:var(--color-accent-700)">02</div>
+      </div>
+      <h3 class="card-h" style="font-size:18px;margin:8px 0">The Leak Read <span style="font-size:13px;font-weight:400;color:var(--color-accent-700)">&middot; $750</span></h3>
+      <p class="muted" style="font-size:14px;line-height:1.6;margin:0">Send one export of your last 90 days. One page back in about a week: dollars by leak.</p>
+    </div>
+    <div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:2px">
+        <svg class="step-ico" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        <div style="font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:32px;color:var(--color-accent-700)">03</div>
+      </div>
+      <h3 class="card-h" style="font-size:18px;margin:8px 0">Signals <span style="font-size:13px;font-weight:400;color:var(--color-accent-700)">&middot; Monthly</span></h3>
+      <p class="muted" style="font-size:14px;line-height:1.6;margin:0">Alerts and a weekly leak report from the exports you send, on the TMS you already run. Founding-carrier pricing, quoted after the Read.</p>
+    </div>
+  </div>
+  <p class="fine" style="font-size:13px;margin:28px 0 0;max-width:62ch">The $750 is credited toward your first 3 months of Signals or the Desk.</p>
+  <p style="font-size:14.5px;line-height:1.6;margin:14px 0 0;max-width:62ch"><b style="font-family:var(--font-heading);font-weight:600;letter-spacing:0.03em;text-transform:uppercase;color:var(--color-accent-700)">No TMS, or yours is too thin to read?</b> <span class="muted">Apply for the 30-day founding cohort: run the Desk free, Signals included, and get your first leak summary at day 30. <a href="#intake" style="color:var(--color-accent-700)">Apply &darr;</a></span></p>
+  </div>
+</section>
+
+
+<section id="fit" style="background:var(--color-accent-900);color:var(--color-text)">
+  <div class="wrap" style="padding:64px 24px">
+    <span class="kicker" style="color:color-mix(in srgb, var(--color-text) 70%, transparent)">03 · Who you'd be working with</span>
+    <hr style="height:1px;border:0;background:color-mix(in srgb, var(--color-text) 20%, transparent);margin:0 0 32px">
+    <div class="founder">
+      <div class="founder-photo blueprint" style="overflow:visible">
+        <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+        <img src="Imagery/founder.jpg" alt="Chris McDaniel, founder of TrueLane">
+      </div>
+      <div>
+        <h3 class="founder-name">Christopher McDaniel</h3>
+        <p class="founder-role">Founder · Freight data analyst</p>
+        <div class="m-fold" data-more="Why I built this">
+        <p class="bio">&ldquo;I&rsquo;ve spent a decade in transportation &mdash; managing some of the largest accounts at Fortune 500 companies, on both the brokerage and carrier side. I&rsquo;ve done the negotiating, run the dispatch, and owned the accounts on both ends of the load.</p>
+        <p class="bio">&ldquo;Along the way I&rsquo;ve seen real data buried, lost in translation, or overlooked &mdash; costing companies hundreds of thousands to millions. TrueLane reads between the lines and produces a clear picture of where your money is going and where the operation can improve.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+    <h2 class="card-h" style="font-size:28px;margin:0 0 4px;max-width:24ch">Real data. Real solutions. Real deal.</h2>
+    <details class="disclose" style="margin-top:24px">
+      <summary>Fit &amp; terms</summary>
+    <div class="grid-3" style="margin-top:20px">
+      <div>
+        <h4 class="card-h" style="font-size:17px;margin:0 0 8px">A good fit</h4>
+        <p style="font-size:14px;line-height:1.6;margin:0;opacity:0.85">An asset-based carrier already running a TMS, fuel cards, or telematics with real history. If you are logging your loads, rates, and miles, we have something to work with. Some mess is fine, and we check a sample before you pay. Everything is delivered remotely.</p>
+      </div>
+      <div>
+        <h4 class="card-h" style="font-size:17px;margin:0 0 8px">No usable data yet?</h4>
+        <p style="font-size:14px;line-height:1.6;margin:0;opacity:0.85">No TMS, or records too thin for a 90-day read? Then there is nothing to audit yet, so I will lend you the Desk instead. The founding cohort is limited to 5 to 10 carriers, up to 10 trucks each, approved on a call. I load your trucks and drivers, you run the Desk free for 30 days with Signals included, and at day 30 you get a leak summary from the loads you ran. Then you stay on at $349 a month or export your data free.</p>
+      </div>
+      <div>
+        <h4 class="card-h" style="font-size:17px;margin:0 0 8px">The terms</h4>
+        <p style="font-size:14px;line-height:1.6;margin:0;opacity:0.85">The Read: $750 flat, about a week turnaround, credited toward your first 3 months of Signals or the Desk. It covers one TMS, one export and the last 90 days; anything beyond that is quoted separately. We check a sample of your export before you pay, and refund you in full if the data cannot support a read. The Desk: $99 + $25 a truck a month, $349 minimum, no Read required. Signals: quoted after the Read, and as current as the exports you send. Both are the same system for every carrier, so there is nothing custom to build or maintain. Founding cohort: 30 days free, application only, no card up front. Then $349 a month (the $99 + $25 a truck formula at 10 trucks, Signals included) only if you say yes, or export your data free. No hourly billing, no surprises.</p>
+      </div>
+    </div>
+    </details>
+  </div>
+</section>
+
+<section id="intake" class="band" style="background-image: linear-gradient(180deg, rgba(10,12,15,.62) 0%, rgba(10,12,15,.78) 45%, rgba(10,12,15,.78) 70%, rgba(10,12,15,.60) 100%), url('Imagery/cta-bg.jpg'); background-size: cover; background-position: center;">
+  <div class="wrap" style="padding:36px 24px 44px">
+  <span class="kicker">04 · Send the details first</span>
+  <hr class="hr" style="margin:0 0 24px">
+  <div class="m-split" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:44px;align-items:start">
+    <div>
+      <h2 class="card-h" style="font-size:28px;max-width:16ch">Skip the blank-page call. Tell me what is going on.</h2>
+      <p class="muted" style="font-size:15px;line-height:1.6;margin:16px 0 0;max-width:48ch">The more I know before we talk, the more useful the call. Describe the headache and note what systems you run. I will show up already knowing where to look.</p>
+      <p class="fine" style="font-size:13px;margin:16px 0 0;max-width:48ch">Want an NDA first? Describe the problem here. The real data waits until we have signed.</p>
+    </div>
+    <form class="blueprint intake-form" style="overflow:visible;padding:22px;background:color-mix(in srgb,var(--color-bg) 88%,transparent)" action="https://api.web3forms.com/submit" method="POST">
+      <i class="corner tl"></i><i class="corner tr"></i><i class="corner bl"></i><i class="corner br"></i>
+      <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_ACCESS_KEY">
+      <input type="hidden" name="subject" value="New TrueLane intake, pre-call details">
+      <input type="hidden" name="from_name" value="TrueLane website">
+      <input type="checkbox" name="botcheck" tabindex="-1" aria-hidden="true" style="display:none">
+      <div class="field-row">
+      <div class="field"><label for="f-name">Name</label><input class="input" id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="f-co">Company</label><input class="input" id="f-co" name="company" type="text" autocomplete="organization" required></div>
+      </div>
+      <div class="field-row">
+      <div class="field"><label for="f-email">Email</label><input class="input" id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-phone">Phone <span style="text-transform:none;letter-spacing:0;opacity:0.6">(optional)</span></label><input class="input" id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
+      </div>
+      <div class="field"><label for="f-sys">What systems do you run?</label><input class="input" id="f-sys" name="systems" type="text" placeholder="TMS, fuel cards, telematics…" required></div>
+      <div class="field"><label for="f-msg">What is your biggest data headache right now?</label><textarea class="input" id="f-msg" name="message" rows="4" required></textarea></div>
+      <div class="field"><label for="f-time">Best time for a 15-min call?</label><input class="input" id="f-time" name="preferred_time" type="text" placeholder="e.g. weekday mornings, Central time"></div>
+      <div style="margin:2px 0 8px"><label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;font-size:13px;line-height:1.45;color:color-mix(in srgb,var(--color-text) 80%,transparent)"><input type="checkbox" id="f-read" name="audit_interest" value="Yes" style="margin-top:3px;flex:0 0 auto"> I would like the $750 Leak Read: a hard-number read on my last 90 days before I commit to anything.</label></div>
+      <div style="margin:0 0 14px"><label style="display:flex;align-items:flex-start;gap:9px;cursor:pointer;font-size:13px;line-height:1.45;color:color-mix(in srgb,var(--color-text) 80%,transparent)"><input type="checkbox" id="f-cohort" name="cohort_interest" value="Yes" style="margin-top:3px;flex:0 0 auto"> I have no TMS, or mine is too thin to read. I would like to apply for the 30-day founding cohort.</label></div>
+      <button class="btn btn-primary" type="submit" style="padding:13px 24px;font-size:15px;width:100%">Send it over</button>
+      <p class="form-note" style="margin-top:10px">Everything you send is handled confidentially, under NDA on request.</p>
+      <p class="form-status" hidden></p>
+    </form>
+  </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <div style="max-width:54ch">
+      <div class="footer-brand">TRUELANE</div>
+      <p class="fine" style="font-size:13px;margin:0">Freight &amp; logistics analytics · Based in Dallas–Fort Worth, working with carriers anywhere.</p>
+      <p class="fine" style="font-size:13px;margin:6px 0 0">Client data handled under NDA and least-access.</p>
+      <p class="fine" style="font-size:13px;margin:6px 0 0">Refer a fellow carrier and get $250 off your next project.</p>
+    </div>
+    <div class="footer-links">
+      <span class="footer-label">Get in touch</span>
+      <a href="mailto:hello@usetruelane.com">hello@usetruelane.com</a>
+      <a href="tel:+14696676823">(469) 667-6823</a>
+      <a href="work.html">Portfolio</a>
+    </div>
+  </div>
+  <div class="wrap" style="padding:4px 24px 28px"><p class="fine" style="font-size:12px;margin:0">© 2026 TrueLane. All rights reserved. · Superior One Logistics Corp. · <a href="consulting-privacy.html" style="color:inherit;text-decoration:underline">Privacy</a></p></div>
+</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(reduce || !('IntersectionObserver' in window)) return;
+  var sel = '.wrap > .kicker, .wrap > h1, .wrap > .lede, .wrap > h2, .wrap > h3, .grid-3 > *, .grid-4 > *, .price-grid > *, .inc-grid > *, .paths > *, .footer-inner > *';
+  var els = Array.prototype.slice.call(document.querySelectorAll(sel)).filter(function(e){ return !e.closest('.hero'); });
+  els.forEach(function(e){
+    e.classList.add('reveal');
+    var par = e.parentNode;
+    if(par && /(^|\s)(grid-3|grid-4|price-grid|inc-grid|paths)(\s|$)/.test(par.className)){
+      var i = Array.prototype.indexOf.call(par.children, e);
+      e.style.transitionDelay = (i % 4) * 70 + 'ms';
+    }
+  });
+  var rules = Array.prototype.slice.call(document.querySelectorAll('.wrap > hr.hr'));
+  rules.forEach(function(e){ e.classList.add('draw'); });
+  var seq = document.querySelector('.wedge p');
+  if(seq) seq.classList.add('seq');
+  var io = new IntersectionObserver(function(ents){
+    ents.forEach(function(en){
+      if(!en.isIntersecting) return;
+      var t = en.target;
+      t.classList.add('in'); io.unobserve(t);
+      if(t.classList.contains('reveal')){
+        setTimeout(function(){ t.classList.remove('reveal','in'); t.style.transitionDelay=''; }, 1100);
+      }
+    });
+  }, {threshold:0.12, rootMargin:'0px 0px -40px 0px'});
+  els.concat(rules, seq ? [seq] : []).forEach(function(e){ io.observe(e); });
+})();
+</script>
+<script>
+(function(){
+  var form=document.querySelector('.intake-form'); if(!form) return;
+  var status=form.querySelector('.form-status');
+  var readBox=document.getElementById('f-read'), readCta=document.getElementById('read-cta');
+  if(readBox&&readCta) readCta.addEventListener('click',function(){ readBox.checked=true; });
+  var cohortBox=document.getElementById('f-cohort'), cohortCta=document.getElementById('cohort-cta');
+  if(cohortBox&&cohortCta) cohortCta.addEventListener('click',function(){ cohortBox.checked=true; });
+  function show(msg,cls){ status.hidden=false; status.textContent=msg; status.className='form-status '+cls; }
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(form.getAttribute('action').indexOf('__FORM_ENDPOINT__')>-1){
+      show('Form endpoint not set yet. Add your Formspree/Web3Forms URL to the form action to go live.','err'); return;
+    }
+    var btn=form.querySelector('button[type=submit]'); var label=btn.textContent;
+    btn.disabled=true; btn.textContent='Sending…';
+    fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}})
+      .then(function(r){
+        if(r.ok){ form.reset(); show("Got it. I will review this before we talk and come to the call ready. I will follow up shortly with a short survey to help me focus on the right numbers, then we will find a time to connect.","ok"); }
+        else { show("That didn't send. Email superior.one.logistics@gmail.com and I'll pick it up.","err"); }
+      })
+      .catch(function(){ show("Network hiccup. Email superior.one.logistics@gmail.com and I'll pick it up.","err"); })
+      .finally(function(){ btn.disabled=false; btn.textContent=label; });
+  });
+})();
+</script>
+<script>
+(function(){
+  var deck=document.querySelector('.finding-deck'); if(!deck) return;
+  var dots=document.querySelector('.finding-dots');
+  var prev=document.querySelector('.finding-prev'), next=document.querySelector('.finding-next');
+  function cards(){ return Array.prototype.filter.call(deck.querySelectorAll('.finding-card'), function(c){ return c.offsetParent!==null; }); }
+  function updateActive(){
+    if(!dots) return; var cs=cards(); if(!cs.length) return;
+    var mid=deck.scrollLeft+deck.clientWidth/2, idx=0, best=Infinity;
+    cs.forEach(function(c,i){ var d=Math.abs((c.offsetLeft+c.offsetWidth/2)-mid); if(d<best){best=d;idx=i;} });
+    Array.prototype.forEach.call(dots.children,function(b,i){ b.setAttribute('aria-current', i===idx?'true':'false'); });
+  }
+  function build(){
+    if(dots){ dots.innerHTML=''; cards().forEach(function(c,i){
+      var b=document.createElement('button'); b.type='button'; b.setAttribute('aria-label','Signal '+(i+1));
+      b.addEventListener('click',function(){ c.scrollIntoView({behavior:'smooth',inline:'start',block:'nearest'}); });
+      dots.appendChild(b);
+    }); }
+    updateActive();
+  }
+  function step(dir){ var cs=cards(); if(!cs.length) return; deck.scrollBy({left:dir*(cs[0].offsetWidth+16),behavior:'smooth'}); }
+  if(prev) prev.addEventListener('click',function(){ step(-1); });
+  if(next) next.addEventListener('click',function(){ step(1); });
+  deck.addEventListener('scroll',function(){ window.requestAnimationFrame(updateActive); });
+  build();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+/* Video slots, expanded: a clip grows out of its slot into a large phone (truelane-site/vslot.js). Shared by index.html and build.html.
+   styles.css is frozen by a test, so this lives in its own file. Same-origin only: no fonts, images or scripts from anywhere else. */
+
+/* ---- the button that fills a slot ---- */
+.vslot-open{position:absolute;inset:0;z-index:2;display:block;margin:0;padding:0;border:0;background:transparent;cursor:pointer;color:var(--color-accent);-webkit-tap-highlight-color:transparent;}
+.vslot-open svg{position:absolute;right:8px;bottom:8px;width:34px;height:34px;padding:8px;box-sizing:border-box;border-radius:999px;background:rgba(10,12,15,.74);border:1px solid color-mix(in srgb,var(--color-accent) 55%,transparent);transition:transform .18s ease,background .18s ease;}
+.vslot-open:hover svg{background:rgba(10,12,15,.9);transform:scale(1.07);}
+.vslot-open:focus-visible{outline:2px solid var(--color-accent);outline-offset:-4px;}
+.vslot.empty .vslot-open{display:none;}
+
+/* ---- the phone ---- */
+.vphone[hidden]{display:none;}
+.vphone{position:fixed;inset:0;z-index:1000;overscroll-behavior:contain;
+  --bz:14px;                                  /* bezel thickness */
+  --ph:min(calc(100vh - 130px),88vh,900px);   /* the phone's height, bezel included; leaves room under it for the controls */
+  --sw:min(calc((var(--ph) - 2 * var(--bz)) * 0.5625), calc(100vw - 2 * var(--bz) - 16px)); /* screen width; the screen stays 9:16 */
+  --sh:calc(var(--sw) * 1.7778);
+}
+@supports (height:1dvh){.vphone{--ph:min(calc(100dvh - 130px),88dvh,900px);}}
+@media (max-width:560px){.vphone{--bz:7px;}}
+.vphone-backdrop{position:absolute;inset:0;background:rgba(5,7,9,.82);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px);}
+.vphone-stage{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:8px;}
+.vphone-device{position:relative;flex:none;width:calc(var(--sw) + 2 * var(--bz));height:calc(var(--sh) + 2 * var(--bz));will-change:transform;}
+/* the body of the phone: drawn behind the screen so it can fade in while the screen grows out of the slot */
+.vphone-chrome{position:absolute;inset:0;border-radius:calc(var(--sw) * 0.15);background:linear-gradient(160deg,#1a1f27,#0b0d11 55%,#14181e);
+  box-shadow:0 0 0 1px color-mix(in srgb,var(--color-accent) 38%,transparent),0 0 0 3px #0a0c0f,0 2px 0 3px rgba(255,255,255,.05),0 34px 90px rgba(0,0,0,.65);}
+.vphone-btn{position:absolute;width:3px;border-radius:2px;background:#20262e;}
+.vphone-btn-a{left:-3px;top:15%;height:3.2%;}
+.vphone-btn-b{left:-3px;top:21%;height:6.4%;}
+.vphone-btn-c{left:-3px;top:29%;height:6.4%;}
+.vphone-btn-r{right:-3px;top:25%;height:10.5%;}
+.vphone-screen{position:absolute;left:var(--bz);top:var(--bz);width:var(--sw);height:var(--sh);border-radius:calc(var(--sw) * 0.115);background:#000;overflow:hidden;}
+.vphone-screen video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;background:#000;}
+.vphone-island{position:absolute;left:50%;top:calc(var(--sw) * 0.03);width:calc(var(--sw) * 0.27);height:calc(var(--sw) * 0.075);transform:translateX(-50%);border-radius:999px;background:#000;pointer-events:none;}
+/* the controls: ordinary page elements under the phone (the player's own controls keep Esc and Tab to themselves once focused, so the page could not close) */
+.vphone-bar{position:fixed;left:50%;bottom:16px;z-index:2;transform:translateX(-50%);display:flex;align-items:center;gap:8px;width:min(380px,calc(100vw - 24px));min-height:48px;padding:4px 10px;box-sizing:border-box;border-radius:999px;border:1px solid color-mix(in srgb,var(--color-accent) 45%,transparent);background:rgba(10,12,15,.88);color:var(--color-text);}
+.vphone-bar button{flex:none;display:grid;place-items:center;width:40px;height:40px;padding:0;border:0;border-radius:999px;background:transparent;color:var(--color-accent);cursor:pointer;}
+.vphone-bar button:hover{background:color-mix(in srgb,var(--color-accent) 16%,transparent);}
+.vphone-bar button svg{width:22px;height:22px;pointer-events:none;}
+.vphone-bar button:focus-visible,.vphone-seek:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px;}
+/* The volume slider sits against the phone's own volume buttons (the two on its left edge). The zone is invisible but hoverable and is wider than the slider, so the pointer can
+   travel from the buttons to the slider without it vanishing. The slider shows on hover or keyboard focus, and a click on the buttons holds it open. */
+.vphone-volzone{position:absolute;left:-52px;top:calc(21% - 10px);width:60px;height:calc(15% + 20px);min-height:116px;}
+.vphone-volbtn{position:absolute;right:0;top:0;width:18px;height:100%;margin:0;padding:0;border:0;border-radius:6px;background:transparent;cursor:pointer;}
+.vphone-volbtn:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px;}
+.vphone-volume{position:absolute;left:0;top:10px;width:34px;height:calc(100% - 20px);box-sizing:border-box;margin:0;padding:8px 0;writing-mode:vertical-lr;direction:rtl;background:rgba(10,12,15,.94);border:1px solid color-mix(in srgb,var(--color-accent) 45%,transparent);border-radius:999px;accent-color:var(--color-accent);cursor:pointer;opacity:0;pointer-events:none;transition:opacity .15s ease;}
+.vphone-volzone:hover .vphone-volume,.vphone-volzone:focus-within .vphone-volume,.vphone-volzone.open .vphone-volume{opacity:1;pointer-events:auto;}
+.vphone-volume:focus-visible{outline:2px solid var(--color-accent);outline-offset:2px;}
+@media (hover:none),(max-width:560px){.vphone-volzone{display:none;}}
+.vphone-seek{flex:1;min-width:0;height:40px;margin:0;background:transparent;accent-color:var(--color-accent);cursor:pointer;}
+.vphone-time{flex:none;min-width:3.2em;font-size:13px;font-variant-numeric:tabular-nums;color:color-mix(in srgb,var(--color-text) 85%,transparent);text-align:right;}
+.vphone-screen video{cursor:pointer;}
+.vphone-close{position:fixed;top:14px;right:14px;z-index:2;min-height:44px;padding:0 18px;border-radius:999px;border:1px solid color-mix(in srgb,var(--color-accent) 60%,transparent);background:rgba(10,12,15,.86);color:var(--color-text);font-family:var(--font-heading);font-weight:var(--font-heading-weight);font-size:16px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+.vphone-close:hover{background:rgba(10,12,15,.96);border-color:var(--color-accent);}
+.vphone-close:focus-visible{outline:2px solid var(--color-accent);outline-offset:3px;}
+
+/* ---- reduced motion: no animation anywhere (vslot.js also skips the grow) ---- */
+@media (prefers-reduced-motion: reduce){
+  .vslot-open svg{transition:none;}
+  .vslot-open:hover svg{transform:none;}
+  .vphone,.vphone *{transition:none!important;animation:none!important;}
+}

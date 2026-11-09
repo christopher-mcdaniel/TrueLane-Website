@@ -1,0 +1,8 @@
+{
+  "rewrites": [{ "source": "/i/:code", "destination": "/invite.html" }],
+  "redirects": [
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "truelanedesk.com" }], "destination": "https://usetruelane.com/build.html", "permanent": true },
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.truelanedesk.com" }], "destination": "https://usetruelane.com/build.html", "permanent": true },
+    { "source": "/(.*)", "has": [{ "type": "host", "value": "www.usetruelane.com" }], "destination": "https://usetruelane.com/$1", "permanent": true }
+  ]
+}
