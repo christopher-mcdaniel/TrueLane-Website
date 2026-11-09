@@ -1,5 +1,7 @@
 <div align="center">
 
+<img src="assets/icon.png" width="96" alt="TrueLane" />
+
 # TrueLane Website
 
 **A fast, hand-built marketing site: three audiences, one design system, no framework.**
